@@ -1,0 +1,12 @@
+_global/config 
+configurações gerais do tema, var globais etc
+sem o _ são especificos, substituir do global
+
+_global/views
+principais view
+
+
+inc/_classes/Template conteúdo fictício
+
+
+controlar os menus em config.php (nivel)
