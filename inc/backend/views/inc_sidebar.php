@@ -30,7 +30,7 @@
             <div class="content-header-section sidebar-mini-visible-b">
                 <!-- Logo -->
                 <span class="content-header-item font-w700 font-size-xl float-left animated fadeIn">
-                    <span class="text-dual-primary-dark">c</span><span class="text-primary">b</span>
+                    <span class="text-dual-primary-dark">s</span><span class="text-primary">p</span>
                 </span>
                 <!-- END Logo -->
             </div>

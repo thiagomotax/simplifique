@@ -9,7 +9,7 @@
  */
 
 // Include required classes
-require 'inc/_classes/Template.php';
+require '../inc/_classes/Template.php';
 
 
 // **************************************************************************************************
@@ -17,7 +17,7 @@ require 'inc/_classes/Template.php';
 // **************************************************************************************************
 
 //                              : Name, version and assets folder's name
-$cb                             = new Template('Simplifique', '1.0', 'assets');
+$cb                             = new Template('Simplifique', '1.0', '../assets');
 
 
 // **************************************************************************************************

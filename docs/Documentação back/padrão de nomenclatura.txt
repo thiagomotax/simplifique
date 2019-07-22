@@ -1,0 +1,7 @@
+padrão de nomenclatura
+
+lançamento de frequencia(selecionar data manual?)
+
+na parte de anexo, nomeAnexo serve tanto para nome do anexo ou linkagem
+
+a foto do aluno será dada pelo cpf.extensao(jpg, png) - opcional

@@ -1,7 +1,9 @@
-<?php require 'inc/_global/config.php'; ?>
-<?php require 'inc/_global/views/head_start.php'; ?>
-<?php require 'inc/_global/views/head_end.php'; ?>
-<?php require 'inc/_global/views/page_start.php'; ?>
+<?php require '../inc/_global/config.php'; ?>
+<?php require '../inc/_global/views/head_start.php'; ?>
+<?php require '../inc/_global/views/head_end.php'; ?>
+<?php require '../inc/_global/views/page_start.php'; ?>
+
+
 
 <!-- Page Content -->
 <div class="bg-gd-emerald">
@@ -26,11 +28,29 @@
                     <div class="form-group row">
                         <div class="col-12">
                             <div class="form-material floating">
-                                <input type="text" class="form-control" id="signup-username" name="signup-username">
-                                <label for="signup-username">Usuário</label>
+                                <input type="text" class="form-control" id="signup-name" name="signup-name">
+                                <label for="signup-email">Nome</label>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <div class="form-material floating">
+                                <input type="text" class="form-control" id="signup-cpf" name="signup-cpf">
+                                <label for="signup-cpf">CPF</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                            <div class="col-lg-12">
+                                <div class="form-material floating">
+                                    <input type="text" class="js-masked-date form-control" id="signup-data" name="signup-data" >
+                                    <label for="signup-data">Data de nascimento</label>
+                                </div>
+                            </div>
+                        </div>
                     <div class="form-group row">
                         <div class="col-12">
                             <div class="form-material floating">
@@ -50,11 +70,12 @@
                     <div class="form-group row">
                         <div class="col-12">
                             <div class="form-material floating">
-                                <input type="password" class="form-control" id="signup-password-confirm" name="signup-password-confirm">
+                            <input type="password" class="form-control" id="signup-password-confirm" name="signup-password-confirm">
                                 <label for="signup-password-confirm">Confirmação de senha</label>
                             </div>
                         </div>
                     </div>
+                    <div class="form-group row"></div>                   
                     <div class="form-group row text-center">
                         <div class="col-12">
                             <label class="css-control css-control-primary css-checkbox">
@@ -66,12 +87,14 @@
                     </div>
                     <div class="form-group row gutters-tiny">
                         <div class="col-12 mb-10">
-                            <button type="submit" class="btn btn-block btn-hero btn-noborder btn-rounded btn-alt-success">
+                            <button type="submit"
+                                class="btn btn-block btn-hero btn-noborder btn-rounded btn-alt-success">
                                 <i class="si si-user-follow mr-10"></i> Registrar
                             </button>
                         </div>
                         <div class="col-6">
-                            <a class="btn btn-block btn-noborder btn-rounded btn-alt-secondary" href="#" data-toggle="modal" data-target="#modal-terms">
+                            <a class="btn btn-block btn-noborder btn-rounded btn-alt-secondary" href="#"
+                                data-toggle="modal" data-target="#modal-terms">
                                 <i class="si si-book-open text-muted mr-10"></i> Ler Termos
                             </a>
                         </div>
@@ -89,7 +112,7 @@
 </div>
 <!-- END Page Content -->
 
-<?php require 'inc/_global/views/page_end.php'; ?>
+<?php require '../inc/_global/views/page_end.php'; ?>
 
 <!-- Terms Modal -->
 <div class="modal fade" id="modal-terms" tabindex="-1" role="dialog" aria-labelledby="modal-terms" aria-hidden="true">
@@ -118,12 +141,21 @@
 </div>
 <!-- END Terms Modal -->
 
-<?php require 'inc/_global/views/footer_start.php'; ?>
+<?php require '../inc/_global/views/footer_start.php'; ?>
 
 <!-- Page JS Plugins -->
 <?php $cb->get_js('js/plugins/jquery-validation/jquery.validate.min.js'); ?>
+<?php $cb->get_js('js/plugins/masked-inputs/jquery.maskedinput.min.js'); ?>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#signup-cpf").mask("999.999.999-99");
+	});
+</script>
 
 <!-- Page JS Code -->
-<?php $cb->get_js('js/pages/op_auth_signup.min.js'); ?>
+<?php $cb->get_js('/js/custom/register.js'); ?>
 
-<?php require 'inc/_global/views/footer_end.php'; ?>
+<script>jQuery(function(){ Codebase.helpers(['masked-inputs']); });</script>
+
+<?php require '../inc/_global/views/footer_end.php'; ?>
+

@@ -1,17 +1,17 @@
 /*
- *  Document   : op_auth_signin.js
+ *  Document   : op_auth_reminder.js
  *  Author     : pixelcave
- *  Description: Custom JS code used in Sign In Page
+ *  Description: Custom JS code used in Password Reminder Page
  */
 
 // Form Validation, for more examples you can check out https://github.com/jzaefferer/jquery-validation
-class OpAuthSignIn {
+class OpAuthReminder {
     /*
-     * Init Sign In Form Validation
+     * Init Password Reminder Form Validation
      *
      */
-    static initValidationSignIn() {
-        jQuery('.js-validation-signin').validate({
+    static initValidationReminder() {
+        jQuery('.js-validation-reminder').validate({
             errorClass: 'invalid-feedback animated fadeInDown',
             errorElement: 'div',
             errorPlacement: (error, e) => {
@@ -25,23 +25,15 @@ class OpAuthSignIn {
                 jQuery(e).remove();
             },
             rules: {
-                'login-username': {
+                'reminder-credential': {
                     required: true,
-                    minlength: 3
-                },
-                'login-password': {
-                    required: true,
-                    minlength: 5
+                    email: true
                 }
             },
             messages: {
-                'login-username': {
-                    required: 'Please enter a username',
-                    minlength: 'Your username must consist of at least 3 characters'
-                },
-                'login-password': {
-                    required: 'Please provide a password',
-                    minlength: 'Your password must be at least 5 characters long'
+                'reminder-credential': {
+                    required: 'Por favor, digite seu e-mail',
+                    email: 'E-mail inválido, preencha corretamente'
                 }
             }
         });
@@ -52,9 +44,9 @@ class OpAuthSignIn {
      *
      */
     static init() {
-        this.initValidationSignIn();
+        this.initValidationReminder();
     }
 }
 
 // Initialize when page loads
-jQuery(() => { OpAuthSignIn.init(); });
+jQuery(() => { OpAuthReminder.init(); });

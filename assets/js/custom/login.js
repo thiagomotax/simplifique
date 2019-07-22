@@ -1,17 +1,17 @@
 /*
- *  Document   : op_auth_reminder.js
+ *  Document   : op_auth_signin.js
  *  Author     : pixelcave
- *  Description: Custom JS code used in Password Reminder Page
+ *  Description: Custom JS code used in Sign In Page
  */
 
 // Form Validation, for more examples you can check out https://github.com/jzaefferer/jquery-validation
-class OpAuthReminder {
+class OpAuthSignIn {
     /*
-     * Init Password Reminder Form Validation
+     * Init Sign In Form Validation
      *
      */
-    static initValidationReminder() {
-        jQuery('.js-validation-reminder').validate({
+    static initValidationSignIn() {
+        jQuery('.js-validation-signin').validate({
             errorClass: 'invalid-feedback animated fadeInDown',
             errorElement: 'div',
             errorPlacement: (error, e) => {
@@ -25,14 +25,23 @@ class OpAuthReminder {
                 jQuery(e).remove();
             },
             rules: {
-                'reminder-credential': {
+                'login-email': {
                     required: true,
-                    minlength: 3
+                    email: true
+                },
+                'login-password': {
+                    required: true,
+                    minlength: 5
                 }
             },
             messages: {
-                'reminder-credential': {
-                    required: 'Please enter a valid credential'
+                'login-email': {
+                    required: 'Por favor, preencha seu e-mail',
+                    email: 'Seu e-mail deve estar na forma josé@exemplo.com',
+                },
+                'login-password': {
+                    required: 'Por favor, preencha sua senha',
+                    minlength: 'Sua senha tem no mínimo 8 caracteres'
                 }
             }
         });
@@ -43,9 +52,9 @@ class OpAuthReminder {
      *
      */
     static init() {
-        this.initValidationReminder();
+        this.initValidationSignIn();
     }
 }
 
 // Initialize when page loads
-jQuery(() => { OpAuthReminder.init(); });
+jQuery(() => { OpAuthSignIn.init(); });

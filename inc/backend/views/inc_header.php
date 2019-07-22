@@ -45,7 +45,7 @@
                     </a>
 
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="op_auth_signin.php">
+                    <a class="dropdown-item" href="viewLogin.php">
                         <i class="si si-logout mr-5"></i> Sair
                     </a>
                 </div>

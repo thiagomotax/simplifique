@@ -20,7 +20,7 @@
                     <div class="row no-gutters items-push">
                         <div class="col-6">
                             <label class="css-control css-control-primary css-radio">
-                                <input type="radio" class="css-control-input" name="radio-group2" checked>
+                                    <input type="radio" class="css-control-input" name="radio-group2" checked>
                                 <span class="css-control-indicator"></span> Yes
                             </label>
                             <label class="css-control css-control-primary css-radio">

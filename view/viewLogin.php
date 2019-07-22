@@ -1,7 +1,7 @@
-<?php require 'inc/_global/config.php'; ?>
-<?php require 'inc/_global/views/head_start.php'; ?>
-<?php require 'inc/_global/views/head_end.php'; ?>
-<?php require 'inc/_global/views/page_start.php'; ?>
+<?php require '../inc/_global/config.php'; ?>
+<?php require '../inc/_global/views/head_start.php'; ?>
+<?php require '../inc/_global/views/head_end.php'; ?>
+<?php require '../inc/_global/views/page_start.php'; ?>
 
 <!-- Page Content -->
 <div class="bg-gd-dusk">
@@ -26,8 +26,8 @@
                     <div class="form-group row">
                         <div class="col-12">
                             <div class="form-material floating">
-                                <input type="text" class="form-control" id="login-username" name="login-username">
-                                <label for="login-username">Usuário</label>
+                                <input type="text" class="form-control" id="login-email" name="login-email">
+                                <label for="login-email">E-mail</label>
                             </div>
                         </div>
                     </div>
@@ -64,13 +64,13 @@
 </div>
 <!-- END Page Content -->
 
-<?php require 'inc/_global/views/page_end.php'; ?>
-<?php require 'inc/_global/views/footer_start.php'; ?>
+<?php require '../inc/_global/views/page_end.php'; ?>
+<?php require '../inc/_global/views/footer_start.php'; ?>
 
 <!-- Page JS Plugins -->
-<?php $cb->get_js('js/plugins/jquery-validation/jquery.validate.min.js'); ?>
+<?php $cb->get_js('/js/plugins/jquery-validation/jquery.validate.min.js'); ?>
 
 <!-- Page JS Code -->
-<?php $cb->get_js('js/pages/op_auth_signin.min.js'); ?>
+<?php $cb->get_js('/js/custom/login.js'); ?>
 
-<?php require 'inc/_global/views/footer_end.php'; ?>
+<?php require '../inc/_global/views/footer_end.php'; ?>

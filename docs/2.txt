@@ -1,0 +1,11 @@
+aluno cadastra email e senha e depois o prof adiciona ele a um curso selecionando ele através do email ou algo do tipo
+ele faz cadastro com os dados dele e o proff ou admin matricula no curso
+
+qd for adicionar, se for na parte de adc aluno, seta o nivel 1, e assim igual nas outras
+começa como 0 - "visitante"
+1 - aluno
+2 - professor
+3 - admin
+
+após registro enviar email falando que está pendente de aprovação e qd for aprovado avisar que foi adicionado no curso x etc
+

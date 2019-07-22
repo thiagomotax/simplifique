@@ -1,12 +1,12 @@
-<?php require 'inc/_global/config.php'; ?>
-<?php require 'inc/backend/config.php'; ?>
-<?php require 'inc/_global/views/head_start.php'; ?>
+<?php require '../inc/_global/config.php'; ?>
+<?php require '../inc/backend/config.php'; ?>
+<?php require '../inc/_global/views/head_start.php'; ?>
 
 <!-- Page JS Plugins CSS -->
 <?php $cb->get_css('js/plugins/datatables/dataTables.bootstrap4.css'); ?>
 
-<?php require 'inc/_global/views/head_end.php'; ?>
-<?php require 'inc/_global/views/page_start.php'; ?>
+<?php require '../inc/_global/views/head_end.php'; ?>
+<?php require '../inc/_global/views/page_start.php'; ?>
 
 <!-- Page Content -->
 <div class="content">
@@ -15,7 +15,7 @@
             <i class="fa fa-eye text-muted mr-5"></i> Listar alunos
         </h2>
         <h3 class="h5 text-muted mb-0">
-            Clique em ver aluno para editar ou excluir seus dados
+            Clique em ver aluno para editar ou exclua-o
         </h3>
     </div>
 
@@ -46,12 +46,14 @@
                             <?php $cb->get_tag(); ?>
                         </td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Editar aluno">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Excluir aluno">
-                                <i class="fa fa-times"></i>
-                            </button>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Ver">
+                                        <i class="fa fa-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Excluir">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
                         </td>
                         
                     </tr>
@@ -64,8 +66,8 @@
 </div>
 <!-- END Page Content -->
 
-<?php require 'inc/_global/views/page_end.php'; ?>
-<?php require 'inc/_global/views/footer_start.php'; ?>
+<?php require '../inc/_global/views/page_end.php'; ?>
+<?php require '../inc/_global/views/footer_start.php'; ?>
 
 <!-- Page JS Plugins -->
 <?php $cb->get_js('js/plugins/datatables/jquery.dataTables.min.js'); ?>
@@ -74,4 +76,4 @@
 <!-- Page JS Code -->
 <?php $cb->get_js('js/pages/be_tables_datatables.min.js'); ?>
 
-<?php require 'inc/_global/views/footer_end.php'; ?>
+<?php require '../inc/_global/views/footer_end.php'; ?>
