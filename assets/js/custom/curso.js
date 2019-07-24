@@ -71,6 +71,7 @@ $(document).ready(function () {
       var dados = $('#verMembro-form').serializeArray();
       $body = $("body");
       $body.addClass("loading");
+      $('#verCurso').modal('hide');
       $.ajax({
           type: "POST",
           url: "../controller/controllerCurso.php",
@@ -78,7 +79,6 @@ $(document).ready(function () {
           success: function (result) {
               if (result == 1) {
                 $body.removeClass("loading");
-                $('#verCurso').modal('hide');
                 Swal.fire({
                   type: 'success',
                   showConfirmButton: false,
