@@ -1,0 +1,8 @@
+se cadastra pelo registrar é aluno, se cadastra 
+
+
+na hr de confirmar o aluno, seleciona o curso dele
+
+
+na hr de confirmar o professor, seleciona as disciplinas que ele da aula
+select2multiple favoritos

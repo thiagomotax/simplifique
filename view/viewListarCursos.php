@@ -45,7 +45,7 @@ body.loading .fuck{
 <div class="content">
     <div class="my-50 text-center">
         <h2 class="font-w700 text-black mb-10">
-            <i class="fa fa-eye text-muted mr-5"></i> Listar cursos
+            <i class="fa fa-eye text-muted mr-5 text-primary"></i> Listar cursos
         </h2>
         <h3 class="h5 text-muted mb-0">
             Clique em ver curso para ver/editar seus detalhes ou exclua-o
@@ -77,7 +77,15 @@ body.loading .fuck{
 </form>
     <!-- END Dynamic Table Full -->
 
-
+<style>
+#nomeC {
+  display: block;
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+    </style>
 
     <!-- <button type="button" class="btn btn-alt-info" data-toggle="modal" data-target="#verCurso">Launch Modal</button> -->
     <!-- Normal Modal -->
@@ -190,6 +198,7 @@ $(document).ready(function() {
                 "width": "20%"
             }
         ],
+        "order": [[ 0, "desc" ]],
         "lengthMenu": [
             [5, 10, 15, 20],
             [5, 10, 15, 20]

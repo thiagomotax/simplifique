@@ -40,22 +40,14 @@ $(document).ready(function () {
             success: function (result) {
               if (result == 1) {
                 $body.removeClass("loading");
-                Swal.fire({
-                  type: 'success',
-                  showConfirmButton: false,
-                  html:
-                  '<button id="ok" class="btn btn-primary"><i class="fa fa-plus"></i> Cadastrar outro</button>',
-                  title: 'Curso cadastrado com sucesso!',
-                  footer: '<a href="viewListarCursos.php">Ver lista de cursos</a>'
-                });
-                $("#form-cadastrar-curso")[0].reset();
-                $("#ok").click(function () {
-                  Swal.close();
-                });
+                $("#form-cadastrar-curso")[0].reset()
+                alerta("success", "Curso cadastrado com sucesso!", " Cadastrar outro", "Ver lista de cursos", "viewListarCursos.php");               
+                atualizarTabela();
                 
-              } else if (result == 2) {
+              } else if(result == 2){
                 $body.removeClass("loading");
-                // $('#nome').focus();
+                alerta("error", "Erro ao cadastrar curso!", " Cadastrar outro", "Ver lista de cursos", "viewListarCursos.php");         
+                atualizarTabela();
               }     
             }
           });
@@ -65,7 +57,6 @@ $(document).ready(function () {
     });
   });
 
-  // Função para editar Serviço
 $(document).ready(function () {
   $('#btnEditarCurso').click(function () {
       var dados = $('#verMembro-form').serializeArray();
@@ -79,24 +70,13 @@ $(document).ready(function () {
           success: function (result) {
               if (result == 1) {
                 $body.removeClass("loading");
-                Swal.fire({
-                  type: 'success',
-                  showConfirmButton: false,
-                  html:
-                  '<button id="ok" type="submit" class="btn btn-primary"><i class="fa fa-eye"></i> Ver cursos</button>',
-                  title: 'Curso editado com sucesso!',
-                  footer: '<a href="viewAdicionarCurso.php">Adicionar novo curso</a>'
-                });
-                $("#ok").click(function () {
-                  Swal.close();
-                });                
-                  var table = $('#listar_cursos').DataTable();
-                  table.ajax.reload(null, false);
+                alerta("success", "Curso editado com sucesso!", " Ver cursos", "Adicionar novo curso", "viewAdicionarCurso.php");               
+                atualizarTabela();
                   
-              } else if (result == 2) {
-                  var table = $('#listar_cursos').DataTable();
-                  table.ajax.reload(null, false);
-                  Swal.fire("erro ao editar");
+              } else if(result == 2){
+                $body.removeClass("loading");
+                alerta("error", "Erro ao editar curso", " Ver cursos", "Adicionar novo curso", "viewAdicionarCurso.php");               
+                atualizarTabela();
               }
           }
       });
@@ -109,13 +89,12 @@ function excluirCurso(id) {
   var id = $('#rowDeleteCurso_' + (id - 1)).attr("data-id");
 
   Swal.fire({
-      title: 'Confirma?',
-      text: "Deseja realmente excluir o curso " + nome + "?",
+      title: "Deseja realmente excluir o curso " + nome + "?",
       type: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Sim, excluir!",
-      cancelButtonText: "Não, cancelar!",
+      confirmButtonColor: "#D05BE2",
+      confirmButtonText: "<i class='fa fa-times'></i> Excluir",
+      cancelButtonText: "<i class='fa fa-check'></i> Cancelar",
       preConfirm: function () {
         $body = $("body");
         $body.addClass("loading");
@@ -129,23 +108,13 @@ function excluirCurso(id) {
               success: function (result) {
                   if (result == 1) {
                     $body.removeClass("loading");
-                    Swal.fire({
-                      type: 'success',
-                      showConfirmButton: false,
-                      html:
-                      '<button id="ok" type="submit" class="btn btn-primary"><i class="fa fa-eye"></i> Ver cursos</button>',
-                      title: 'Curso excluído com sucesso!',
-                      footer: '<a href="viewAdicionarCurso.php">Adicionar novo curso</a>'
-                    });
-                    $("#ok").click(function () {
-                      Swal.close();
-                    });
-                      var table = $('#listar_cursos').DataTable();
-                      table.ajax.reload(null, false);
+                    alerta("success", "Curso excluído com sucesso!", " Ver cursos", "Adicionar novo curso", "viewAdicionarCurso.php");
+                    atualizarTabela();
                   }
-                  else{
+                  else if(result == 2){
                     $body.removeClass("loading");
-                    alert("fuck");
+                    alerta("error", "Erro ao excluir o curso!", " Ver cursos", "Adicionar novo curso", "viewAdicionarCurso.php");
+                    atualizarTabela();
                   }
 
               }
@@ -154,6 +123,24 @@ function excluirCurso(id) {
   });
   return false;
 }
+  function alerta(type, title, button, footer, link){
+    Swal.fire({
+      type: type,
+      showConfirmButton: false,
+      html:
+      '<button id="ok" type="submit" class="btn btn-primary"><i class="fa fa-eye"></i>'+ button +'</button>',
+      title: title,
+      footer: '<a href="'+link+'">'+footer+'</a>'
+    });
+    $("#ok").click(function () {
+      Swal.close();
+    });
+  }
+
+  function atualizarTabela(){
+    var table = $('#listar_cursos').DataTable();
+    table.ajax.reload(null, false);
+  }
 
   function editarCurso(id) {
     var idCurso = $('#rowEditarCurso_' + (id - 1)).attr("data-id");

@@ -39,7 +39,7 @@
     <div class="content">
         <div class="my-50 text-center">
             <h2 class="font-w700 text-black mb-10">
-                <i class="fa fa-plus text-muted mr-5"></i> Adicionar curso
+                <i class="fa fa-plus text-muted mr-5 text-primary"></i> Adicionar curso
             </h2>
             <h3 class="h5 text-muted mb-0">
                 Preencha os dados abaixo e clique em adicionar
