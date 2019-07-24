@@ -52,11 +52,11 @@ $cb->main_nav                   = array(
         'sub'   => array(
             array(
                 'name'  => 'Listar professores',
-                'url'   => '.php'
+                'url'   => 'viewListarProfessores.php'
             ),
             array(
                 'name'  => 'Adicionar professor',
-                'url'   => '.php'
+                'url'   => 'viewAdicionarProfessor.php'
             )
         )
     ),
@@ -66,11 +66,11 @@ $cb->main_nav                   = array(
         'sub'   => array(
             array(
                 'name'  => 'Listar cursos',
-                'url'   => '.php'
+                'url'   => 'viewListarCursos.php'
             ),
             array(
                 'name'  => 'Adicionar curso',
-                'url'   => '.php'
+                'url'   => 'viewAdicionarCurso.php'
             )
         )
     ),
@@ -80,11 +80,11 @@ $cb->main_nav                   = array(
         'sub'   => array(
             array(
                 'name'  => 'Listar disciplinas',
-                'url'   => '.php'
+                'url'   => 'viewListarDisciplinas.php'
             ),
             array(
                 'name'  => 'Adicionar disciplina',
-                'url'   => '.php'
+                'url'   => 'viewAdicionarDisciplina.php'
             )
         )
     )

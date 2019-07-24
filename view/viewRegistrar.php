@@ -15,7 +15,7 @@
                 <span class="font-size-xl text-primary-dark">sim</span><span class="font-size-xl">plifique</span>
             </a>
             <h1 class="h2 font-w700 mt-50 mb-10">Criar nova conta</h1>
-            <h2 class="h4 font-w400 text-muted mb-0">Por favor, preencha seus dados abaixo</h2>
+            <h2 class="h4 font-w400 text-muted mb-0">Por favor, preencha cuidadosamente seus dados abaixo</h2>
         </div>
         <!-- END Header -->
 
@@ -50,7 +50,20 @@
                                     <label for="signup-data">Data de nascimento</label>
                                 </div>
                             </div>
-                        </div>
+                    </div>
+                    <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="form-material floating">
+                                    <select class="form-control" id="material-select2" name="material-select2">
+                                        <option></option><!-- Empty value for demostrating material select box -->
+                                        <option value="1">Option #1</option>
+                                        <option value="2">Option #2</option>
+                                        <option value="3">Option #3</option>
+                                    </select>
+                                    <label for="material-select2">Curso</label>
+                                </div>
+                            </div>
+                    </div>
                     <div class="form-group row">
                         <div class="col-12">
                             <div class="form-material floating">
