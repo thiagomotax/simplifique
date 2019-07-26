@@ -2,7 +2,7 @@
 
 require_once('../database/Database.php');
 
-class DaoCurso {
+class DaoDisciplina {
 
     private $conn;
 
@@ -17,18 +17,24 @@ class DaoCurso {
         return $stmt;
     }
 
-    public function adicionarCurso(ModelCurso $curso) {
+    public function adicionarDisciplina(ModelDisciplina $disciplina) {
         try {
-            $nomeCurso = $curso->getNomeCurso();
-            $descricaoCurso = $curso->getDescricaoCurso();
+            $idCurso = $disciplina->getIdCurso();
+            $idProfessor = $disciplina->getIdProfessor();
+            $nomeDisciplina = $disciplina->getNomeDisciplina();
+            $anoDisciplina = $disciplina->getAnoDisciplina();
 
 
-            $stmt = $this->conn->prepare("INSERT INTO curso(nomeCurso, descricaoCurso)
-                 VALUES (:nome, :descricao)");
+
+            $stmt = $this->conn->prepare("INSERT INTO disciplina(idCurso, idProfessor, nomeDisciplina, anoDisciplina)
+                 VALUES (:idC, :idP, :nome, :ano)");
 
                 
-            $stmt->bindparam(":nome", $nomeCurso);
-            $stmt->bindparam(":descricao", $descricaoCurso);
+            $stmt->bindparam(":idC", $idCurso);
+            $stmt->bindparam(":idP", $idProfessor);
+            $stmt->bindparam(":nome", $nomeDisciplina);
+            $stmt->bindparam(":ano", $anoDisciplina);
+
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
@@ -42,18 +48,24 @@ class DaoCurso {
         }
     }
 
-    public function atualizarCurso(ModelCurso $curso) {
+    public function atualizarDisciplina(ModelDisciplina $disciplina) {
         try {
-            $id = $curso->getIdCurso();
-            $nome = $curso->getNomeCurso();
-            $descricao = $curso->getDescricaoCurso();
+            $idDisciplina = $disciplina->getIdDisciplina();
+            $idCurso = $disciplina->getIdCurso();
+            $idProfessor = $disciplina->getIdProfessor();
+            $nomeDisciplina = $disciplina->getNomeDisciplina();
+            $anoDisciplina = $disciplina->getAnoDisciplina();
 
 
-            $stmt = $this->conn->prepare("UPDATE curso SET nomeCurso = ?, descricaoCurso = ? WHERE idCurso = ?");
 
-            $stmt->bindparam(1, $nome);
-            $stmt->bindparam(2, $descricao);
-            $stmt->bindparam(3, $id);
+            $stmt = $this->conn->prepare("UPDATE disciplina SET idCurso = ?, idProfesor = ?, nomeDisciplina = ?, anoDisciplina = ? WHERE idDisciplina = ?");
+
+            $stmt->bindparam(1, $idCurso);
+            $stmt->bindparam(2, $idProfessor);
+            $stmt->bindparam(3, $nomeDisciplina);
+            $stmt->bindparam(4, $anoDisciplina);
+            $stmt->bindparam(5, $idDisciplina);
+
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
@@ -66,10 +78,10 @@ class DaoCurso {
         }
     }
 
-    public function excluirCurso(ModelCurso $curso) {
+    public function excluirDisciplina(ModelDisciplina $disciplina) {
         try {
-            $id = $curso->getIdCurso();
-            $stmt = $this->conn->prepare("DELETE FROM curso WHERE idCurso = ?");
+            $id = $disciplina->getIdDisciplina();
+            $stmt = $this->conn->prepare("DELETE FROM disciplina WHERE idDisciplina = ?");
 
             $stmt->bindparam(1, $id);
             $stmt->execute();

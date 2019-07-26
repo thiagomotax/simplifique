@@ -4,12 +4,23 @@
 
 <!-- Page JS Plugins CSS -->
 <?php $cb->get_css('js/plugins/datatables/dataTables.bootstrap4.css'); ?>
-
+<?php $cb->get_css('js/plugins/select2/css/select2.css'); ?>
 
 <?php require '../inc/_global/views/head_end.php'; ?>
 <?php require '../inc/_global/views/page_start.php'; ?>
 
-<?php $cb->get_css('js/plugins/sweetalert2/sweetalert2.min.css'); ?>
+<?php
+require_once("../dao/DaoCurso.php");    
+$cursosDao = new DaoCurso();
+$stmtCursos = $cursosDao->runQuery("SELECT * FROM curso");
+$stmtCursos->execute();
+
+require_once("../dao/DaoProfessor.php");
+$professoresDao = new DaoProfessor();
+$stmtProfessores = $professoresDao->runQuery("SELECT * FROM professor p, usuario u WHERE p.idUsuario = u.idUsuario");
+$stmtProfessores->execute();
+?>
+
 
 <style>
     /* Start by setting display:none to make this hidden.
@@ -45,10 +56,10 @@ body.loading .fuck{
 <div class="content">
     <div class="my-50 text-center">
         <h2 class="font-w700 text-black mb-10">
-            <i class="fa fa-eye text-muted mr-5 text-primary"></i> Listar cursos
+            <i class="fa fa-eye text-muted mr-5 text-primary"></i> Listar disciplinas
         </h2>
         <h3 class="h5 text-muted mb-0">
-            Clique em ver curso para ver/editar seus detalhes ou exclua-o
+            Clique em ver disciplina para ver/editar seus detalhes ou exclua-a
         </h3>
     </div>
 
@@ -59,12 +70,13 @@ body.loading .fuck{
         </div> -->
         <div class="block-content block-content-full">
             <table class="table table-bordered table-hover js-dataTable-full" cellspacing="0" width="100%"
-                style="width: 100%; white-space: normal;" id="listar_cursos">
+                style="width: 100%; white-space: normal;" id="listar_disciplinas">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Nome do curso</th>
-                        <th>Descrição</th>
+                        <th>Nome</th>
+                        <th>Curso</th>
+                        <th>Professor</th>
+                        <th>Ano</th>
                         <th class="text-center">Ações</th>
                     </tr>
                 </thead>
@@ -89,9 +101,9 @@ body.loading .fuck{
 
     <!-- <button type="button" class="btn btn-alt-info" data-toggle="modal" data-target="#verCurso">Launch Modal</button> -->
     <!-- Normal Modal -->
-    <form class="form-horizontal js-validation-lista-curso" id="verMembro-form" method="POST">
+    <form class="form-horizontal js-validation-lista-disciplina" id="verDisciplina-form" method="POST">
     <input type="hidden" name="acao" value="editar">
-    <div class="modal" id="verCurso" tabindex="-1" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
+    <div class="modal" id="verDisciplina" tabindex="-1" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered " role="document">
             <div class="modal-content">
             <input type="hidden" name="id" id="id">
@@ -108,16 +120,35 @@ body.loading .fuck{
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <div class="form-material">
-                                    <input type="text" class="form-control" id="nome" name="nome">
-                                    <label for="nome">Nome do curso</label>
+                                    <input type="text" class="form-control" id="nomeD" name="nomeD">
+                                    <label for="nomeD">Nome do disciplina</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-12">
                                 <div class="form-material">
-                                    <textarea class="form-control" id="descricao" name="descricao" rows="8"></textarea>
-                                    <label for="descricao">Descrição do curso</label>
+                                    <select class="js-select2 form-control"  style="width: 100%;" data-placeholder="Selecione o professor" single>
+                                    <option></option>
+                                    <option>D</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <div class="form-material">
+                                    <input class="form-control" id="nomeP" name="nomeP"></input>
+                                    <label for="nomeP">Nome do professor</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <div class="form-material">
+                                    <input class="form-control" id="ano" name="ano"></input>
+                                    <label for="ano">Ano da disciplina</label>
                                 </div>
                             </div>
                         </div>
@@ -146,6 +177,13 @@ body.loading .fuck{
 <?php $cb->get_js('js/plugins/datatables/dataTables.bootstrap4.min.js'); ?>
 <?php $cb->get_js('/js/plugins/jquery-validation/jquery.validate.min.js'); ?>
 <?php $cb->get_js('/js/plugins/sweetalert2/sweetalert2.min.js'); ?>
+<?php $cb->get_js('js/plugins/select2/js/select2.full.min.js'); ?>
+
+<script>
+jQuery(function() {
+    Codebase.helpers('select2');
+});
+</script>
 
 <style>
 table.dataTable tbody td {
@@ -163,7 +201,7 @@ $(document).ready(function() {
     jQuery('.js-dataTable-full').dataTable({
         "columnDefs": [{
                 "targets": [0],
-                "visible": false,
+                "visible": true,
             },
             {
                 "targets": [1],
@@ -171,28 +209,35 @@ $(document).ready(function() {
             },
             {
                 "targets": [2],
-                "visible": false,
+                "visible": true,
             },
             {
                 "targets": [3],
+                "visible": false,
+            },
+            {
+                "targets": [4],
                 "visible": true,
             }
         ],
         "pagingType": "simple_numbers",
         "pageLength": 5,
         "ajax": {
-            "url": "viewAjaxCursos.php",
+            "url": "viewAjaxDisciplinas.php",
             "type": "POST"
         },
         "columns": [{
-                "data": "idCurso"
+                "data": "nomeDisciplina"
             },
             {
                 "data": "nomeCurso",
-                "width": "80%"
+                // "width": "80%"
             },
             {
-                "data": "descricaoCurso"
+                "data": "nomeProfessor"
+            },
+            {
+                "data": "anoDisciplina"
             },
             {
                 "data": "button",
@@ -233,7 +278,7 @@ $(document).ready(function() {
 </script>
 
 
-<?php $cb->get_js('/js/custom/curso.js'); ?>
+<?php $cb->get_js('/js/custom/disciplina.js'); ?>
 
 
 

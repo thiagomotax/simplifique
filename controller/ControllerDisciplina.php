@@ -14,56 +14,62 @@ switch ($acao) {
         break;
 }
 
-function adicionarCurso() {
-    require_once ('../model/ModelCurso.php');
-    require_once ('../dao/DaoCurso.php');
-    $dao = new DaoCurso();
+function adicionarDisciplina() {
+    require_once ('../model/ModelDisciplina.php');
+    require_once ('../dao/DaoDisciplina.php');
+    $dao = new DaoDisciplina();
 
+    $idCurso = filter_var($_POST["idC"], FILTER_SANITIZE_NUMBER_INT);
+    $idProfessor = filter_var($_POST["idP"], FILTER_SANITIZE_NUMBER_INT);
     $nome = filter_var($_POST["nome"], FILTER_SANITIZE_STRING);
-    $descricao = filter_var($_POST["descricao"], FILTER_SANITIZE_STRING);
+    $ano = filter_var($_POST["ano"], FILTER_SANITIZE_STRING);
 
 
-    $Curso = new ModelCurso();
-    $Curso->setNomeCurso($nome);
-    $Curso->setDescricaoCurso($descricao);
 
-    $dao->adicionarCurso($Curso);
+
+    $Disciplina = new ModelDisciplina();
+    $Disciplina->setIdCurso($idCurso);
+    $Disciplina->setIdProfessor($idProfessor);
+    $Disciplina->setNomeDisciplina($nome);
+    $Disciplina->setAnoDisciplina($ano);
+
+    $dao->adicionarDisciplina($Disciplina);
     
 }
 
-function atualizarCurso() {
-    require_once ('../model/ModelCurso.php');
-    require_once ('../dao/DaoCurso.php');
-    $dao = new DaoCurso();
+function atualizarDisciplina() {
+    require_once ('../model/ModelDisciplina.php');
+    require_once ('../dao/DaoDisciplina.php');
+    $dao = new DaoDisciplina();
    
     $id = filter_var($_POST["id"], FILTER_SANITIZE_NUMBER_INT);
     $nome = filter_var($_POST["nome"], FILTER_SANITIZE_STRING);
     $descricao = filter_var($_POST["descricao"], FILTER_SANITIZE_STRING);
 
 
-    $Curso = new ModelCurso();
-    $Curso->setIdCurso($id);
-    $Curso->setNomeCurso($nome);
-    $Curso->setDescricaoCurso($descricao);
+    $Disciplina = new ModelDisciplina();
+    $Disciplina->setIdDisciplina($id);
+    $Disciplina->setNomeDisciplina($nome);
+    $Disciplina->setDescricaoDisciplina($descricao);
 
 
-    $dao->atualizarCurso($Curso);
+    $dao->atualizarDisciplina($Disciplina);
 }
 
 
 
-function deletarCurso() {
-    require_once ('../model/ModelCurso.php');
-    require_once ('../dao/DaoCurso.php');
+function deletarDisciplina() {
+    require_once ('../model/ModelDisciplina.php');
+    require_once ('../dao/DaoDisciplina.php');
 
-    $dao = new DaoCurso();
+    $dao = new DaoDisciplina();
     $id = filter_var($_POST["id"], FILTER_SANITIZE_NUMBER_INT);
 
-    $Curso = new ModelCurso();
-    $Curso->setIdCurso($id);
+    $Disciplina = new ModelDisciplina();
+    $Disciplina->setIdDisciplina($id);
 
 
-    $dao->excluirCurso($Curso);
+    $dao->excluirDisciplina($Disciplina);
 }
 
 

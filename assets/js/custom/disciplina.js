@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    $('#button-cadastrar-curso').click(function () {
-      jQuery('.js-validation-curso').validate({
+    $('#button-cadastrar-disciplina').click(function () {
+      jQuery('.js-validation-disciplina').validate({
         errorClass: 'invalid-feedback animated fadeInDown',
         errorElement: 'div',
         errorPlacement: (error, e) => {
@@ -17,36 +17,50 @@ $(document).ready(function () {
             'nome': {
                 required: true,
             },
-            'descricao': {
+            'idP': {
                 required: true,
+            },
+            'idC': {
+                required: true,
+            },
+            'ano': {
+                required: true,
+                maxlength: 4
             }
         },
         messages: {
             'nome': {
-                required: 'Por favor, preencha o nome do curso!'
+                required: 'Por favor, preencha o nome da disciplina!'
             },
-            'descricao': {
-                required: 'Por favor, preencha a descrição do curso!'
+            'idP': {
+                required: 'Por favor, preencha a o professor da disciplina!'
+            },
+            'idC': {
+                required: 'Por favor, o disciplina que a disciplina pertence'
+            },
+            'ano': {
+                required: 'Por favor, preencha a ano do disciplina!',
+                maxlength: 'Preencha o ano na forma YYYY'
             }
         },
         submitHandler: function (form) {
-          var dados = $('#form-cadastrar-curso').serializeArray();
+          var dados = $('#form-cadastrar-disciplina').serializeArray();
           $body = $("body");
           $body.addClass("loading");
           $.ajax({
             type: "POST",
-            url: "../controller/controllerCurso.php",
+            url: "../controller/controllerDisciplina.php",
             data: dados,
             success: function (result) {
               if (result == 1) {
                 $body.removeClass("loading");
-                $("#form-cadastrar-curso")[0].reset()
-                alerta("success", "Curso cadastrado com sucesso!", " Cadastrar outro", "Ver lista de cursos", "viewListarCursos.php");               
+                $("#form-cadastrar-disciplina")[0].reset()
+                alerta("success", "Disciplina cadastrada com sucesso!", " Cadastrar outra", "Ver lista de disciplinas", "viewListarDisciplinas.php");               
                 atualizarTabela();
                 
               } else if(result == 2){
                 $body.removeClass("loading");
-                alerta("error", "Erro ao cadastrar curso!", " Cadastrar outro", "Ver lista de cursos", "viewListarCursos.php");         
+                alerta("error", "Erro ao cadastrar disciplina!", " Cadastrar outra", "Ver lista de disciplinas", "viewListarDisciplinas.php");         
                 atualizarTabela();
               }     
             }
@@ -58,24 +72,24 @@ $(document).ready(function () {
   });
 
 $(document).ready(function () {
-  $('#btnEditarCurso').click(function () {
-      var dados = $('#verMembro-form').serializeArray();
+  $('#btnEditarDisciplina').click(function () {
+      var dados = $('#verDisciplina-form').serializeArray();
       $body = $("body");
       $body.addClass("loading");
-      $('#verCurso').modal('hide');
+      $('#verDisciplina').modal('hide');
       $.ajax({
           type: "POST",
-          url: "../controller/controllerCurso.php",
+          url: "../controller/controllerDisciplina.php",
           data: dados,
           success: function (result) {
               if (result == 1) {
                 $body.removeClass("loading");
-                alerta("success", "Curso editado com sucesso!", " Ver cursos", "Adicionar novo curso", "viewAdicionarCurso.php");               
+                alerta("success", "Disciplina editado com sucesso!", " Ver disciplinas", "Adicionar nova disciplina", "viewAdicionarDisciplina.php");               
                 atualizarTabela();
                   
               } else if(result == 2){
                 $body.removeClass("loading");
-                alerta("error", "Erro ao editar curso", " Ver cursos", "Adicionar novo curso", "viewAdicionarCurso.php");               
+                alerta("error", "Erro ao editar Disciplina", " Ver disciplinas", "Adicionar nova disciplina", "viewAdicionarDisciplina.php");               
                 atualizarTabela();
               }
           }
@@ -84,12 +98,12 @@ $(document).ready(function () {
   });
 });
 
-function excluirCurso(id) {
-  var nome = $('#rowDeleteCurso_' + (id - 1)).attr("data-nome");
-  var id = $('#rowDeleteCurso_' + (id - 1)).attr("data-id");
+function excluirDisciplina(id) {
+  var nome = $('#rowDeleteDisciplina_' + (id - 1)).attr("data-nome");
+  var id = $('#rowDeleteDisciplina_' + (id - 1)).attr("data-id");
 
   Swal.fire({
-      title: "Deseja realmente excluir o curso " + nome + "?",
+      title: "Deseja realmente excluir o disciplina " + nome + "?",
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: "#D05BE2",
@@ -100,7 +114,7 @@ function excluirCurso(id) {
         $body.addClass("loading");
           $.ajax({
               type: "POST",
-              url: "../controller/ControllerCurso.php",
+              url: "../controller/ControllerDisciplina.php",
               data: {
                   acao: "excluir",
                   id: id
@@ -108,12 +122,12 @@ function excluirCurso(id) {
               success: function (result) {
                   if (result == 1) {
                     $body.removeClass("loading");
-                    alerta("success", "Curso excluído com sucesso!", " Ver cursos", "Adicionar novo curso", "viewAdicionarCurso.php");
+                    alerta("success", "Disciplina excluída com sucesso!", " Ver disciplinas", "Adicionar nova disciplina", "viewAdicionarDisciplina.php");
                     atualizarTabela();
                   }
                   else if(result == 2){
                     $body.removeClass("loading");
-                    alerta("error", "Erro ao excluir o curso!", " Ver cursos", "Adicionar novo curso", "viewAdicionarCurso.php");
+                    alerta("error", "Erro ao excluir a disciplina!", " Ver disciplinas", "Adicionar nova disciplina", "viewAdicionarDisciplina.php");
                     atualizarTabela();
                   }
 
@@ -138,19 +152,25 @@ function excluirCurso(id) {
   }
 
   function atualizarTabela(){
-    var table = $('#listar_cursos').DataTable();
+    var table = $('#listar_disciplinas').DataTable();
     table.ajax.reload(null, false);
   }
 
-  function editarCurso(id) {
-    var idCurso = $('#rowEditarCurso_' + (id - 1)).attr("data-id");
-    var nomeCurso = $('#rowEditarCurso_' + (id - 1)).attr("data-nome");
-    var descricaoCurso = $('#rowEditarCurso_' + (id - 1)).attr("data-descricao");
+  function editarDisciplina(id) {
+    var idDisciplina = $('#rowEditarDisciplina_' + (id - 1)).attr("data-idD");
+    var idCurso = $('#rowEditarDisciplina_' + (id - 1)).attr("data-idC");
+    var idProfessor = $('#rowEditarDisciplina_' + (id - 1)).attr("data-idP");
+    var nomeDisciplina = $('#rowEditarDisciplina_' + (id - 1)).attr("data-nome");
+    var anoDisciplina = $('#rowEditarDisciplina_' + (id - 1)).attr("data-ano");
 
-    $('#verCurso').modal('show');
-    $('.modal .modal-dialog .modal-content #nomeC').text("Detalhes do curso " + nomeCurso);
-    $('.modal .modal-dialog .modal-content #id').val(idCurso);
-    $('.modal .modal-dialog .modal-content #nome').val(nomeCurso);
-    $('.modal .modal-dialog .modal-content #descricao').val(descricaoCurso);
+    // document.getElementById('idPx').options[0].text = nomeDisciplina;
+    $('#verDisciplina').modal('show');
+    $('.modal .modal-dialog .modal-content #nomeC').text("Detalhes da disciplina " + nomeDisciplina);
+    $('.modal .modal-dialog .modal-content #idD').val(idDisciplina);
+    $('.modal .modal-dialog .modal-content #idP').val(nomeDisciplina);
+    $('.modal .modal-dialog .modal-content #nomeCs').val(idCurso);
+    $('.modal .modal-dialog .modal-content #nomeP').val(nomeDisciplina);
+    $('.modal .modal-dialog .modal-content #nomeD').val(nomeDisciplina);
+    $('.modal .modal-dialog .modal-content #ano').val(anoDisciplina);
   
 }
