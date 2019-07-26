@@ -1,2 +1,8 @@
 tratar formulario modal de edit
 mudar o tipo de datatable pra ser + responsiva
+
+
+na hr de editar no modal, colocar as mascasras de emai etc
+
+
+sempre pegar em minusculo os campos

@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    $('#button-cadastrar-professor').click(function () {
-      jQuery('.js-validation-professor').validate({
+    $('#button-cadastrar-aluno').click(function () {
+      jQuery('.js-validation-aluno').validate({
         errorClass: 'invalid-feedback animated fadeInDown',
         errorElement: 'div',
         errorPlacement: (error, e) => {
@@ -39,18 +39,18 @@ $(document).ready(function () {
       },
       messages: {
         'nome': {
-            required: 'Por favor, digite o nome do professor',
+            required: 'Por favor, digite o nome do aluno',
         },
         'cpf': {
-            required: 'Por favor, digite o cpf do professor',
+            required: 'Por favor, digite o cpf do aluno',
             cpfBR: 'Digite um cpf válido'
         },
         'email': {
-            required: 'Por favor, digite o e-mail do professor',
+            required: 'Por favor, digite o e-mail do aluno',
             email: 'Digite um endereço de email válido'
         },
         'senha': {
-            required: 'Por favor, digite a senha do professor',
+            required: 'Por favor, digite a senha do aluno',
             minlength: 'A senha deve ter no mínimo 8 caracteres'
         },
         'confirm-senha': {
@@ -59,25 +59,25 @@ $(document).ready(function () {
             equalTo: 'Digite a mesma senha do campo acima'
         },
         'data': {
-            required: 'Por favor, preencha a data de nascimento do professor'
+            required: 'Por favor, preencha a data de nascimento do aluno'
         }
     },
         submitHandler: function (form) {
-          var dados = $('#form-cadastrar-professor').serializeArray();
+          var dados = $('#form-cadastrar-aluno').serializeArray();
           $body = $("body");
           $body.addClass("loading");
           $.ajax({
             type: "POST",
-            url: "../controller/ControllerProfessor.php",
+            url: "../controller/ControllerAluno.php",
             data: dados,
             success: function (result) {
               if (result == 1) {
                 $body.removeClass("loading");
-                $("#form-cadastrar-professor")[0].reset()
-                alerta("success", "Professor cadastrado com sucesso!", " Cadastrar outro", "Ver lista de professores", "viewListarProfessores.php");                               
+                $("#form-cadastrar-aluno")[0].reset()
+                alerta("success", "Aluno cadastrado com sucesso!", " Cadastrar outro", "Ver lista de alunos", "viewListarAlunos.php");                               
               } else if(result == 2){
                 $body.removeClass("loading");
-                alerta("error", "Erro ao cadastrar professor!", " Cadastrar outro", "Ver lista de professores", "viewListarProfessores.php");         
+                alerta("error", "Erro ao cadastrar aluno!", " Cadastrar outro", "Ver lista de alunos", "viewListarAlunos.php");         
               }     
             }
           });
@@ -88,24 +88,25 @@ $(document).ready(function () {
   });
 
 $(document).ready(function () {
-  $('#btnEditarProfessor').click(function () {
-      var dados = $('#verProfessor-form').serializeArray();
+  $('#btnEditarAluno').click(function () {
+      var dados = $('#verAluno-form').serializeArray();
       $body = $("body");
       $body.addClass("loading");
-      $('#verProfessor').modal('hide');
+      $('#verAluno').modal('hide');
       $.ajax({
           type: "POST",
-          url: "../controller/ControllerProfessor.php",
+          url: "../controller/ControllerAluno.php",
           data: dados,
           success: function (result) {
+              alert(result);
               if (result == 1) {
                 $body.removeClass("loading");
-                alerta("success", "Professor editado com sucesso!", " Ver professores", "Adicionar novo professor", "viewAdicionarProfessor.php");               
+                alerta("success", "Aluno editado com sucesso!", " Ver alunos", "Adicionar novo aluno", "viewAdicionarAluno.php");               
                 atualizarTabela();
                   
               } else if(result == 2){
                 $body.removeClass("loading");
-                alerta("error", "Erro ao editar professor", " Ver professores", "Adicionar novo professor", "viewAdicionarProfessor.php");               
+                alerta("error", "Erro ao editar aluno", " Ver alunos", "Adicionar novo aluno", "viewAdicionarAluno.php");               
                 atualizarTabela();
               }
           }
@@ -114,12 +115,12 @@ $(document).ready(function () {
   });
 });
 
-function excluirProfessor(id) {
-  var nome = $('#rowDeleteProfessor_' + (id - 1)).attr("data-nome");
-  var id = $('#rowDeleteProfessor_' + (id - 1)).attr("data-id");
+function excluirAluno(id) {
+  var nome = $('#rowDeleteAluno_' + (id - 1)).attr("data-nome");
+  var id = $('#rowDeleteAluno_' + (id - 1)).attr("data-id");
 
   Swal.fire({
-      title: "Deseja realmente excluir o professor " + nome + "?",
+      title: "Deseja realmente excluir o aluno " + nome + "?",
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: "#D05BE2",
@@ -130,7 +131,7 @@ function excluirProfessor(id) {
         $body.addClass("loading");
           $.ajax({
               type: "POST",
-              url: "../controller/ControllerProfessor.php",
+              url: "../controller/ControllerAluno.php",
               data: {
                   acao: "excluir",
                   id: id
@@ -138,12 +139,12 @@ function excluirProfessor(id) {
               success: function (result) {
                   if (result == 1) {
                     $body.removeClass("loading");
-                    alerta("success", "Professor excluído com sucesso!", " Ver professores", "Adicionar novo professor", "viewAdicionarProfessor.php");
+                    alerta("success", "Aluno excluído com sucesso!", " Ver alunos", "Adicionar novo aluno", "viewAdicionarAluno.php");
                     atualizarTabela();
                   }
                   else if(result == 2){
                     $body.removeClass("loading");
-                    alerta("error", "Erro ao excluir o professor!", " Ver professores", "Adicionar novo professor", "viewAdicionarProfessor.php");
+                    alerta("error", "Erro ao excluir o aluno!", " Ver alunos", "Adicionar novo aluno", "viewAdicionarAluno.php");
                     atualizarTabela();
                   }
 
@@ -168,26 +169,26 @@ function excluirProfessor(id) {
   }
 
   function atualizarTabela(){
-    var table = $('#listar_professores').DataTable();
+    var table = $('#listar_alunos').DataTable();
     table.ajax.reload(null, false);
   }
 
-  function editarProfessor(id) {
-    var idProfessor = $('#rowEditarProfessor_' + (id - 1)).attr("data-id");
-    var nomeProfessor = $('#rowEditarProfessor_' + (id - 1)).attr("data-nome");
-    var cpfProfessor = $('#rowEditarProfessor_' + (id - 1)).attr("data-cpf");
-    var dataProfessor = $('#rowEditarProfessor_' + (id - 1)).attr("data-data");
-    var emailProfessor = $('#rowEditarProfessor_' + (id - 1)).attr("data-email");
-    var senhaProfessor = $('#rowEditarProfessor_' + (id - 1)).attr("data-senha");
+  function editarAluno(id) {
+    var idAluno = $('#rowEditarAluno_' + (id - 1)).attr("data-id");
+    var nomeAluno = $('#rowEditarAluno_' + (id - 1)).attr("data-nome");
+    var cpfAluno = $('#rowEditarAluno_' + (id - 1)).attr("data-cpf");
+    var dataAluno = $('#rowEditarAluno_' + (id - 1)).attr("data-data");
+    var emailAluno = $('#rowEditarAluno_' + (id - 1)).attr("data-email");
+    var senhaAluno = $('#rowEditarAluno_' + (id - 1)).attr("data-senha");
 
-    $('#verProfessor').modal('show');
-    $('.modal .modal-dialog .modal-content #nomeP').text("Detalhes do professor(a) " + nomeProfessor);
-    $('.modal .modal-dialog .modal-content #id').val(idProfessor);
-    $('.modal .modal-dialog .modal-content #nome').val(nomeProfessor);
-    $('.modal .modal-dialog .modal-content #cpf').val(cpfProfessor);
-    $('.modal .modal-dialog .modal-content #data').val(dataProfessor);
-    $('.modal .modal-dialog .modal-content #email').val(emailProfessor);
-    $('.modal .modal-dialog .modal-content #senha').val(senhaProfessor);
+    $('#verAluno').modal('show');
+    $('.modal .modal-dialog .modal-content #nomeP').text("Detalhes do aluno(a) " + nomeAluno);
+    $('.modal .modal-dialog .modal-content #id').val(idAluno);
+    $('.modal .modal-dialog .modal-content #nome').val(nomeAluno);
+    $('.modal .modal-dialog .modal-content #cpf').val(cpfAluno);
+    $('.modal .modal-dialog .modal-content #data').val(dataAluno);
+    $('.modal .modal-dialog .modal-content #email').val(emailAluno);
+    $('.modal .modal-dialog .modal-content #senha').val(senhaAluno);
   
 }
 

@@ -45,10 +45,10 @@ body.loading .fuck{
 <div class="content">
     <div class="my-50 text-center">
         <h2 class="font-w700 text-black mb-10">
-            <i class="fa fa-eye text-muted mr-5 text-primary"></i> Listar professores
+            <i class="fa fa-eye text-muted mr-5 text-primary"></i> Listar alunos
         </h2>
         <h3 class="h5 text-muted mb-0">
-            Clique em ver professor para ver/editar seus detalhes ou exclua-o
+            Clique em ver aluno para ver/editar seus detalhes ou exclua-o
         </h3>
     </div>
 
@@ -59,7 +59,7 @@ body.loading .fuck{
         </div> -->
         <div class="block-content block-content-full ">
             <table class="table table-bordered table-hover js-dataTable-full" cellspacing="0" width="100%"
-                style="width: 100%; white-space: normal;" id="listar_professores">
+                style="width: 100%; white-space: normal;" id="listar_alunos">
                 <thead>
                     <tr>
                         <th>id</th>
@@ -92,9 +92,9 @@ body.loading .fuck{
 
     <!-- <button type="button" class="btn btn-alt-info" data-toggle="modal" data-target="#verCurso">Launch Modal</button> -->
     <!-- Normal Modal -->
-    <form class="form-horizontal" id="verProfessor-form" method="POST">
+    <form class="form-horizontal" id="verAluno-form" method="POST">
     <input type="hidden" name="acao" value="editar">
-    <div class="modal" id="verProfessor" tabindex="-1" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
+    <div class="modal" id="verAluno" tabindex="-1" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered " role="document">
             <div class="modal-content">
             <input type="hidden" name="id" id="id">
@@ -112,7 +112,7 @@ body.loading .fuck{
                             <div class="col-md-12">
                                 <div class="form-material">
                                     <input type="text" class="form-control" id="nome" name="nome">
-                                    <label for="nome">Nome do Professor</label>
+                                    <label for="nome">Nome do aluno</label>
                                 </div>
                             </div>
                         </div>
@@ -120,15 +120,15 @@ body.loading .fuck{
                             <div class="col-12">
                                 <div class="form-material">
                                     <input type="text" class="form-control" id="cpf" name="cpf"></input>
-                                    <label for="cpf">CPF do professor</label>
+                                    <label for="cpf">CPF do aluno</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-12">
                                 <div class="form-material">
-                                    <input type="text" class="form-control js-masked-date" id="data" name="data"></input>
-                                    <label for="data">Data de nascimento do professor</label>
+                                    <input type="text" class="js-masked-date form-control" id="data" name="data"></input>
+                                    <label for="data">Data de nascimento do aluno</label>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +136,7 @@ body.loading .fuck{
                             <div class="col-12">
                                 <div class="form-material">
                                     <input type="text" class="form-control" id="email" name="email"></input>
-                                    <label for="email">Email do professor</label>
+                                    <label for="email">Email do aluno</label>
                                 </div>
                             </div>
                         </div>
@@ -144,7 +144,7 @@ body.loading .fuck{
                             <div class="col-12">
                                 <div class="form-material">
                                     <input type="text" class="form-control" id="senha" name="senha"></input>
-                                    <label for="senha">Senha do professor</label>
+                                    <label for="senha">Senha do aluno</label>
                                 </div>
                             </div>
                         </div>
@@ -152,7 +152,7 @@ body.loading .fuck{
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-alt-success" id="btnEditarProfessor" data-dismiss="modal">
+                    <button type="button" class="btn btn-alt-success" id="btnEditarAluno" data-dismiss="modal">
                         <i class="fa fa-check"></i> Salvar
                     </button>
                 </div>
@@ -172,6 +172,7 @@ body.loading .fuck{
 <?php $cb->get_js('js/plugins/datatables/jquery.dataTables.min.js'); ?>
 <?php $cb->get_js('js/plugins/datatables/dataTables.bootstrap4.min.js'); ?>
 <?php $cb->get_js('/js/plugins/jquery-validation/jquery.validate.min.js'); ?>
+
 <?php $cb->get_js('/js/plugins/sweetalert2/sweetalert2.min.js'); ?>
 <style>
 table.dataTable tbody td {
@@ -219,30 +220,30 @@ $(document).ready(function() {
         "pagingType": "simple_numbers",
         "pageLength": 5,
         "ajax": {
-            "url": "viewAjaxProfessores.php",
+            "url": "viewAjaxAlunos.php",
             "type": "POST"
         },
         "columns": [{
-                "data": "idProfessor"
+                "data": "idAluno"
             },
             {
-                "data": "nomeProfessor",
+                "data": "nomeAluno",
                 // "width": "80%"
             },
             {
-                "data": "cpfProfessor",
+                "data": "cpfAluno",
                 // "width": "80%"
             },
             {
-                "data": "dataProfessor",
+                "data": "dataAluno",
                 // "width": "80%"
             },
             {
-                "data": "emailProfessor",
+                "data": "emailAluno",
                 // "width": "80%"
             },
             {
-                "data": "senhaProfessor"
+                "data": "senhaAluno"
             },
             {
                 "data": "button",
@@ -287,12 +288,11 @@ $(document).ready(function() {
 		$("#cpf").mask("999.999.999-99");
 	});
 </script>
-<?php $cb->get_js('/js/custom/professor.js'); ?>
+
+<?php $cb->get_js('/js/custom/aluno.js'); ?>
 
 <?php $cb->get_js('js/plugins/masked-inputs/jquery.maskedinput.min.js'); ?>
 <script>jQuery(function(){ Codebase.helpers(['masked-inputs']); });</script>
-
-
 
 <!-- Page JS Code -->
 
