@@ -1,0 +1,2 @@
+tratar formulario modal de edit
+mudar o tipo de datatable pra ser + responsiva

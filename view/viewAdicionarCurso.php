@@ -58,7 +58,7 @@
                             </p>
                         </div>
                         <div class="col-lg-8">
-                            <div class="form-material">
+                            <div class="form-material floating">
                                 <input type="text" class="form-control" id="nome" name="nome">
                                 <label for="nome">Nome</label>
                             </div>
@@ -73,7 +73,7 @@
                             </p>
                         </div>
                         <div class="col-lg-8">
-                            <div class="form-material">
+                            <div class="form-material floating">
                                 <input type="text" class="form-control" id="descricao" name="descricao">
                                 <label for="descricao">Descrição</label>
                             </div>

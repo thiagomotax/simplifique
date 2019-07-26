@@ -1,0 +1,2 @@
+disparar uma trigger ao inves de pegar oldid, aí verificar o tipo do usuario (1 pra aluno e 2 pra professor) após iso inserir na tabela correspondente o novo aluno ou novo professor.
+crud separado - por enquanto fazer sem trigger

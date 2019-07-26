@@ -45,10 +45,10 @@ body.loading .fuck{
 <div class="content">
     <div class="my-50 text-center">
         <h2 class="font-w700 text-black mb-10">
-            <i class="fa fa-eye text-muted mr-5 text-primary"></i> Listar cursos
+            <i class="fa fa-eye text-muted mr-5 text-primary"></i> Listar professores
         </h2>
         <h3 class="h5 text-muted mb-0">
-            Clique em ver curso para ver/editar seus detalhes ou exclua-o
+            Clique em ver professor para ver/editar seus detalhes ou exclua-o
         </h3>
     </div>
 
@@ -57,14 +57,17 @@ body.loading .fuck{
         <!-- <div class="block-header block-header-default">
             <h3 class="block-title">Dynamic Table <small>Full</small></h3>
         </div> -->
-        <div class="block-content block-content-full">
+        <div class="block-content block-content-full ">
             <table class="table table-bordered table-hover js-dataTable-full" cellspacing="0" width="100%"
-                style="width: 100%; white-space: normal;" id="listar_cursos">
+                style="width: 100%; white-space: normal;" id="listar_professores">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Nome do curso</th>
-                        <th>Descrição</th>
+                        <th>id</th>
+                        <th>Nome</th>
+                        <th>Cpf</th>
+                        <th>Data</th>
+                        <th>Email</th>
+                        <th>Senha</th>
                         <th class="text-center">Ações</th>
                     </tr>
                 </thead>
@@ -78,7 +81,7 @@ body.loading .fuck{
     <!-- END Dynamic Table Full -->
 
 <style>
-#nomeC {
+#nomeP {
   display: block;
   width: 100px;
   overflow: hidden;
@@ -89,15 +92,15 @@ body.loading .fuck{
 
     <!-- <button type="button" class="btn btn-alt-info" data-toggle="modal" data-target="#verCurso">Launch Modal</button> -->
     <!-- Normal Modal -->
-    <form class="form-horizontal js-validation-lista-curso" id="verMembro-form" method="POST">
+    <form class="form-horizontal" id="verProfessor-form" method="POST">
     <input type="hidden" name="acao" value="editar">
-    <div class="modal" id="verCurso" tabindex="-1" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
+    <div class="modal" id="verProfessor" tabindex="-1" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered " role="document">
             <div class="modal-content">
             <input type="hidden" name="id" id="id">
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-primary">
-                        <h3 class="block-title" id="nomeC"></h3>
+                        <h3 class="block-title" id="nomeP"></h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                 <i class="si si-close"></i>
@@ -109,15 +112,39 @@ body.loading .fuck{
                             <div class="col-md-12">
                                 <div class="form-material">
                                     <input type="text" class="form-control" id="nome" name="nome">
-                                    <label for="nome">Nome do curso</label>
+                                    <label for="nome">Nome do Professor</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-12">
                                 <div class="form-material">
-                                    <textarea class="form-control" id="descricao" name="descricao" rows="8"></textarea>
-                                    <label for="descricao">Descrição do curso</label>
+                                    <input type="text" class="form-control" id="cpf" name="cpf"></input>
+                                    <label for="cpf">CPF do professor</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <div class="form-material">
+                                    <input type="text" class="form-control" id="data" name="data"></input>
+                                    <label for="data">Data de nascimento do professor</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <div class="form-material">
+                                    <input type="text" class="form-control" id="email" name="email"></input>
+                                    <label for="email">Email do professor</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <div class="form-material">
+                                    <input type="text" class="form-control" id="senha" name="senha"></input>
+                                    <label for="senha">Senha do professor</label>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +152,7 @@ body.loading .fuck{
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-alt-success" id="btnEditarCurso" data-dismiss="modal">
+                    <button type="button" class="btn btn-alt-success" id="btnEditarProfessor" data-dismiss="modal">
                         <i class="fa fa-check"></i> Salvar
                     </button>
                 </div>
@@ -146,7 +173,6 @@ body.loading .fuck{
 <?php $cb->get_js('js/plugins/datatables/dataTables.bootstrap4.min.js'); ?>
 <?php $cb->get_js('/js/plugins/jquery-validation/jquery.validate.min.js'); ?>
 <?php $cb->get_js('/js/plugins/sweetalert2/sweetalert2.min.js'); ?>
-
 <style>
 table.dataTable tbody td {
     word-break: break-word;
@@ -171,32 +197,56 @@ $(document).ready(function() {
             },
             {
                 "targets": [2],
-                "visible": false,
+                "visible": true,
             },
             {
                 "targets": [3],
+                "visible": false,
+            },
+            {
+                "targets": [4],
+                "visible": true,
+            },
+            {
+                "targets": [5],
+                "visible": false,
+            },
+            {
+                "targets": [6],
                 "visible": true,
             }
         ],
         "pagingType": "simple_numbers",
         "pageLength": 5,
         "ajax": {
-            "url": "viewAjaxCursos.php",
+            "url": "viewAjaxProfessores.php",
             "type": "POST"
         },
         "columns": [{
-                "data": "idCurso"
+                "data": "idProfessor"
             },
             {
-                "data": "nomeCurso",
-                "width": "80%"
+                "data": "nomeProfessor",
+                // "width": "80%"
             },
             {
-                "data": "descricaoCurso"
+                "data": "cpfProfessor",
+                // "width": "80%"
+            },
+            {
+                "data": "dataProfessor",
+                // "width": "80%"
+            },
+            {
+                "data": "emailProfessor",
+                // "width": "80%"
+            },
+            {
+                "data": "senhaProfessor"
             },
             {
                 "data": "button",
-                "width": "20%"
+                // "width": "20%"
             }
         ],
         "order": [[ 0, "desc" ]],
@@ -233,7 +283,7 @@ $(document).ready(function() {
 </script>
 
 
-<?php $cb->get_js('/js/custom/curso.js'); ?>
+<?php $cb->get_js('/js/custom/professor.js'); ?>
 
 
 

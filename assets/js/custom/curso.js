@@ -68,6 +68,7 @@ $(document).ready(function () {
           url: "../controller/controllerCurso.php",
           data: dados,
           success: function (result) {
+            alert(result);
               if (result == 1) {
                 $body.removeClass("loading");
                 alerta("success", "Curso editado com sucesso!", " Ver cursos", "Adicionar novo curso", "viewAdicionarCurso.php");               
