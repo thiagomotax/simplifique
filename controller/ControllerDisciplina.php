@@ -41,13 +41,17 @@ function atualizarDisciplina() {
     require_once ('../dao/DaoDisciplina.php');
     $dao = new DaoDisciplina();
    
-    $id = filter_var($_POST["id"], FILTER_SANITIZE_NUMBER_INT);
+    $id = filter_var($_POST["idD"], FILTER_SANITIZE_NUMBER_INT);
+    $idP = filter_var($_POST["idP"], FILTER_SANITIZE_NUMBER_INT);
+    $idC = filter_var($_POST["idC"], FILTER_SANITIZE_NUMBER_INT);
     $nome = filter_var($_POST["nomeD"], FILTER_SANITIZE_STRING);
     $ano = filter_var($_POST["ano"], FILTER_SANITIZE_STRING);
 
 
     $Disciplina = new ModelDisciplina();
     $Disciplina->setIdDisciplina($id);
+    $Disciplina->setIdCurso($idC);
+    $Disciplina->setIdProfessor($idP);
     $Disciplina->setNomeDisciplina($nome);
     $Disciplina->setAnoDisciplina($ano);
 

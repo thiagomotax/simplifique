@@ -6,6 +6,7 @@
 <!-- Page JS Plugins CSS -->
 <?php $cb->get_css('js/plugins/datatables/dataTables.bootstrap4.css'); ?>
 <?php $cb->get_css('js/plugins/sweetalert2/sweetalert2.min.css'); ?>
+<?php $cb->get_css('js/plugins/select2/css/select2.css'); ?>
 
 <?php require '../inc/_global/views/head_end.php'; ?>
 <?php require '../inc/_global/views/page_start.php'; ?>
@@ -127,20 +128,11 @@ body.loading .fuck{
                             </div>
                         </div>
 
-                        <div id="curso">
+                        <div class="form-group row" id="curso">
                         </div>
-                        <div id="professor">
+                        <div class="form-group row" id="professor">
                         </div>
                         
-
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <div class="form-material">
-                                    <input class="form-control" id="idP" name="idP" disabled></input>
-                                    <label for="ano">Professor da disciplina</label>
-                                </div>
-                            </div>
-                        </div>
                         
                         <div class="form-group row">
                             <div class="col-12">
@@ -175,7 +167,7 @@ body.loading .fuck{
 <?php $cb->get_js('js/plugins/datatables/dataTables.bootstrap4.min.js'); ?>
 <?php $cb->get_js('/js/plugins/jquery-validation/jquery.validate.min.js'); ?>
 <?php $cb->get_js('/js/plugins/sweetalert2/sweetalert2.min.js'); ?>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script> -->
+<?php $cb->get_js('js/plugins/select2/js/select2.full.min.js'); ?>
 
 
 

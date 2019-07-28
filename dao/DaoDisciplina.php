@@ -51,21 +51,21 @@ class DaoDisciplina {
     public function atualizarDisciplina(ModelDisciplina $disciplina) {
         try {
             $idDisciplina = $disciplina->getIdDisciplina();
-            // $idCurso = $disciplina->getIdCurso();
-            // $idProfessor = $disciplina->getIdProfessor();
+            $idCurso = $disciplina->getIdCurso();
+            $idProfessor = $disciplina->getIdProfessor();
             $nomeDisciplina = $disciplina->getNomeDisciplina();
             $anoDisciplina = $disciplina->getAnoDisciplina();
 
 
 
-            // $stmt = $this->conn->prepare("UPDATE disciplina SET idCurso = ?, idProfesor = ?, nomeDisciplina = ?, anoDisciplina = ? WHERE idDisciplina = ?");
-            $stmt = $this->conn->prepare("UPDATE disciplina SET nomeDisciplina = ?, anoDisciplina = ? WHERE idDisciplina = ?");
+            $stmt = $this->conn->prepare("UPDATE disciplina SET idCurso = ?, idProfesor = ?, nomeDisciplina = ?, anoDisciplina = ? WHERE idDisciplina = ?");
+            // $stmt = $this->conn->prepare("UPDATE disciplina SET nomeDisciplina = ?, anoDisciplina = ? WHERE idDisciplina = ?");
 
-            // $stmt->bindparam(1, $idCurso);
-            // $stmt->bindparam(2, $idProfessor);
-            $stmt->bindparam(1, $nomeDisciplina);
-            $stmt->bindparam(2, $anoDisciplina);
-            $stmt->bindparam(3, $idDisciplina);
+            $stmt->bindparam(1, $idCurso);
+            $stmt->bindparam(2, $idProfessor);
+            $stmt->bindparam(3, $nomeDisciplina);
+            $stmt->bindparam(4, $anoDisciplina);
+            $stmt->bindparam(5, $idDisciplina);
 
             $stmt->execute();
 

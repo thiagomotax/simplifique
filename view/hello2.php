@@ -1,7 +1,3 @@
-<?php require '../inc/_global/config.php'; ?>
-<?php require '../inc/backend/config.php'; ?>
-<?php $cb->get_css('js/plugins/select2/css/select2.css'); ?>
-
 <?php
 require_once("../dao/DaoProfessor.php");
 $professoresDao = new DaoProfessor();
@@ -21,13 +17,7 @@ $stmtProfessores->execute();
     </div>
 </div>
 
-<?php $cb->get_js('js/plugins/select2/js/select2.full.min.js'); ?>
 <script>
 $("#idP").select2({
 });
-
-
 </script>
-
-<?php
-?>
