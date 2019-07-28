@@ -165,13 +165,16 @@ function excluirDisciplina(id) {
     var nomeProfesssor = $('#rowEditarDisciplina_' + (id - 1)).attr("data-nomep");
     var nomeCurso = $('#rowEditarDisciplina_' + (id - 1)).attr("data-nomec");
 
-
+    
+        $('#curso').load('../view/hello.php?IdCurso='+idCurso);
+        $('#professor').load('../view/hello2.php?IdProfessor='+idProfessor);
+    
     $('#verDisciplina').modal('show');
 
 
     $('.modal .modal-dialog .modal-content #nomeC').text("Detalhes da disciplina " + nomeDisciplina);
     $('.modal .modal-dialog .modal-content #idC').val(nomeCurso);
-    $('.modal .modal-dialog .modal-content #idP').val(nomeProfesssor);
+    $('.modal .modal-dialog .modal-content #idP').val(idProfessor);
     $('.modal .modal-dialog .modal-content #id').val(idDisciplina);
     $('.modal .modal-dialog .modal-content #nomeP').val(nomeDisciplina);
     $('.modal .modal-dialog .modal-content #nomeD').val(nomeDisciplina);

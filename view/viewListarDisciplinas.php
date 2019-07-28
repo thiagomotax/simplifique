@@ -127,15 +127,12 @@ body.loading .fuck{
                             </div>
                         </div>
 
-  
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <div class="form-material">
-                                    <input class="form-control" id="idC" name="idC" disabled></input>
-                                    <label for="ano">Curso da disciplina</label>
-                                </div>
-                            </div>
+                        <div id="curso">
                         </div>
+                        <div id="professor">
+                        </div>
+                        
+
                         <div class="form-group row">
                             <div class="col-12">
                                 <div class="form-material">
@@ -144,6 +141,7 @@ body.loading .fuck{
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="form-group row">
                             <div class="col-12">
                                 <div class="form-material">
@@ -177,7 +175,7 @@ body.loading .fuck{
 <?php $cb->get_js('js/plugins/datatables/dataTables.bootstrap4.min.js'); ?>
 <?php $cb->get_js('/js/plugins/jquery-validation/jquery.validate.min.js'); ?>
 <?php $cb->get_js('/js/plugins/sweetalert2/sweetalert2.min.js'); ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script> -->
 
 
 
@@ -275,8 +273,6 @@ $(document).ready(function() {
 
 
 <?php $cb->get_js('/js/custom/disciplina.js'); ?>
-<?php $random = $_POST["id"];
- ?>
 
 
 <!-- Page JS Code -->
