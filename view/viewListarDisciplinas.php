@@ -1,10 +1,11 @@
+
 <?php require '../inc/_global/config.php'; ?>
 <?php require '../inc/backend/config.php'; ?>
 <?php require '../inc/_global/views/head_start.php'; ?>
 
 <!-- Page JS Plugins CSS -->
 <?php $cb->get_css('js/plugins/datatables/dataTables.bootstrap4.css'); ?>
-<?php $cb->get_css('js/plugins/select2/css/select2.css'); ?>
+<?php $cb->get_css('js/plugins/sweetalert2/sweetalert2.min.css'); ?>
 
 <?php require '../inc/_global/views/head_end.php'; ?>
 <?php require '../inc/_global/views/page_start.php'; ?>
@@ -103,7 +104,7 @@ body.loading .fuck{
     <!-- Normal Modal -->
     <form class="form-horizontal js-validation-lista-disciplina" id="verDisciplina-form" method="POST">
     <input type="hidden" name="acao" value="editar">
-    <div class="modal" id="verDisciplina" tabindex="-1" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
+    <div class="modal" id="verDisciplina" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered " role="document">
             <div class="modal-content">
             <input type="hidden" name="id" id="id">
@@ -120,27 +121,26 @@ body.loading .fuck{
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <div class="form-material">
-                                    <input type="text" class="form-control" id="nomeD" name="nomeD">
-                                    <label for="nomeD">Nome do disciplina</label>
+                                    <input type="text" class="form-control" id="nomeD" name="nomeD" >
+                                    <label for="nomeD">Nome da disciplina</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <div class="form-material">
-                                    <select class="js-select2 form-control"  style="width: 100%;" data-placeholder="Selecione o professor" single>
-                                    <option></option>
-                                    <option>D</option>
 
-                                    </select>
+  
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <div class="form-material">
+                                    <input class="form-control" id="idC" name="idC" disabled></input>
+                                    <label for="ano">Curso da disciplina</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-12">
                                 <div class="form-material">
-                                    <input class="form-control" id="nomeP" name="nomeP"></input>
-                                    <label for="nomeP">Nome do professor</label>
+                                    <input class="form-control" id="idP" name="idP" disabled></input>
+                                    <label for="ano">Professor da disciplina</label>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +156,7 @@ body.loading .fuck{
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-alt-success" id="btnEditarCurso" data-dismiss="modal">
+                    <button type="button" class="btn btn-alt-success" id="btnEditarDisciplina" data-dismiss="modal">
                         <i class="fa fa-check"></i> Salvar
                     </button>
                 </div>
@@ -177,13 +177,9 @@ body.loading .fuck{
 <?php $cb->get_js('js/plugins/datatables/dataTables.bootstrap4.min.js'); ?>
 <?php $cb->get_js('/js/plugins/jquery-validation/jquery.validate.min.js'); ?>
 <?php $cb->get_js('/js/plugins/sweetalert2/sweetalert2.min.js'); ?>
-<?php $cb->get_js('js/plugins/select2/js/select2.full.min.js'); ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 
-<script>
-jQuery(function() {
-    Codebase.helpers('select2');
-});
-</script>
+
 
 <style>
 table.dataTable tbody td {
@@ -279,7 +275,8 @@ $(document).ready(function() {
 
 
 <?php $cb->get_js('/js/custom/disciplina.js'); ?>
-
+<?php $random = $_POST["id"];
+ ?>
 
 
 <!-- Page JS Code -->

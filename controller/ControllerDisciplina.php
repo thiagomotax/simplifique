@@ -1,5 +1,4 @@
 <?php
-
 $acao = filter_var($_POST["acao"], FILTER_SANITIZE_STRING);
 
 switch ($acao) {
@@ -43,14 +42,14 @@ function atualizarDisciplina() {
     $dao = new DaoDisciplina();
    
     $id = filter_var($_POST["id"], FILTER_SANITIZE_NUMBER_INT);
-    $nome = filter_var($_POST["nome"], FILTER_SANITIZE_STRING);
-    $descricao = filter_var($_POST["descricao"], FILTER_SANITIZE_STRING);
+    $nome = filter_var($_POST["nomeD"], FILTER_SANITIZE_STRING);
+    $ano = filter_var($_POST["ano"], FILTER_SANITIZE_STRING);
 
 
     $Disciplina = new ModelDisciplina();
     $Disciplina->setIdDisciplina($id);
     $Disciplina->setNomeDisciplina($nome);
-    $Disciplina->setDescricaoDisciplina($descricao);
+    $Disciplina->setAnoDisciplina($ano);
 
 
     $dao->atualizarDisciplina($Disciplina);

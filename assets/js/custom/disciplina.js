@@ -100,10 +100,10 @@ $(document).ready(function () {
 
 function excluirDisciplina(id) {
   var nome = $('#rowDeleteDisciplina_' + (id - 1)).attr("data-nome");
-  var id = $('#rowDeleteDisciplina_' + (id - 1)).attr("data-id");
+  var id = $('#rowDeleteDisciplina_' + (id - 1)).attr("data-idD");
 
   Swal.fire({
-      title: "Deseja realmente excluir o disciplina " + nome + "?",
+      title: "Deseja realmente excluir a disciplina " + nome + "?",
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: "#D05BE2",
@@ -162,15 +162,22 @@ function excluirDisciplina(id) {
     var idProfessor = $('#rowEditarDisciplina_' + (id - 1)).attr("data-idP");
     var nomeDisciplina = $('#rowEditarDisciplina_' + (id - 1)).attr("data-nome");
     var anoDisciplina = $('#rowEditarDisciplina_' + (id - 1)).attr("data-ano");
+    var nomeProfesssor = $('#rowEditarDisciplina_' + (id - 1)).attr("data-nomep");
+    var nomeCurso = $('#rowEditarDisciplina_' + (id - 1)).attr("data-nomec");
 
-    // document.getElementById('idPx').options[0].text = nomeDisciplina;
+
     $('#verDisciplina').modal('show');
+
+
     $('.modal .modal-dialog .modal-content #nomeC').text("Detalhes da disciplina " + nomeDisciplina);
-    $('.modal .modal-dialog .modal-content #idD').val(idDisciplina);
-    $('.modal .modal-dialog .modal-content #idP').val(nomeDisciplina);
-    $('.modal .modal-dialog .modal-content #nomeCs').val(idCurso);
+    $('.modal .modal-dialog .modal-content #idC').val(nomeCurso);
+    $('.modal .modal-dialog .modal-content #idP').val(nomeProfesssor);
+    $('.modal .modal-dialog .modal-content #id').val(idDisciplina);
     $('.modal .modal-dialog .modal-content #nomeP').val(nomeDisciplina);
     $('.modal .modal-dialog .modal-content #nomeD').val(nomeDisciplina);
     $('.modal .modal-dialog .modal-content #ano').val(anoDisciplina);
-  
-}
+
+
+
+  }
+
