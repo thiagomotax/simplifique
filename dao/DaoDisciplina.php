@@ -58,7 +58,7 @@ class DaoDisciplina {
 
 
 
-            $stmt = $this->conn->prepare("UPDATE disciplina SET idCurso = ?, idProfesor = ?, nomeDisciplina = ?, anoDisciplina = ? WHERE idDisciplina = ?");
+            $stmt = $this->conn->prepare("UPDATE disciplina SET idCurso = ?, idProfessor = ?, nomeDisciplina = ?, anoDisciplina = ? WHERE idDisciplina = ?");
             // $stmt = $this->conn->prepare("UPDATE disciplina SET nomeDisciplina = ?, anoDisciplina = ? WHERE idDisciplina = ?");
 
             $stmt->bindparam(1, $idCurso);
