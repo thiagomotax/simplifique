@@ -24,6 +24,7 @@ function adicionarAluno() {
     $data = filter_var($_POST["data"], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST["email"], FILTER_SANITIZE_STRING);
     $senha = filter_var($_POST["senha"], FILTER_SANITIZE_STRING);
+    $idc = filter_var($_POST["idC"], FILTER_SANITIZE_STRING);
 
 
 
@@ -34,6 +35,7 @@ function adicionarAluno() {
     $Aluno->setDataAluno($data);
     $Aluno->setEmailAluno($email);
     $Aluno->setSenhaAluno($senha);
+    $Aluno->setIdCurso($idc);
 
 
     $dao->adicionarAluno($Aluno);
@@ -51,6 +53,8 @@ function atualizarAluno() {
     $data = filter_var($_POST["data"], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST["email"], FILTER_SANITIZE_STRING);
     $senha = filter_var($_POST["senha"], FILTER_SANITIZE_STRING);
+    $idc = filter_var($_POST["idC"], FILTER_SANITIZE_STRING);
+
 
 
     $Aluno = new ModelAluno();
@@ -60,6 +64,7 @@ function atualizarAluno() {
     $Aluno->setDataAluno($data);
     $Aluno->setEmailAluno($email);
     $Aluno->setSenhaAluno($senha);
+    $Aluno->setIdCurso($idc);
 
 
     $dao->atualizarAluno($Aluno);

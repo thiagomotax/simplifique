@@ -63,9 +63,10 @@ session_start();
                     <i class="fa fa-times"></i>
                 </button>
             </div>
-        </div> ';
+        </div>';
         $i++;
     }
+    
 
     $datax = array('data' => $data);
 

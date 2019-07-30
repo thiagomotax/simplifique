@@ -24,6 +24,9 @@ class DaoAluno {
             $dataAluno = $aluno->getDataAluno();
             $emailAluno = $aluno->getEmailAluno();
             $senhaAluno = $aluno->getSenhaAluno();
+            $idCurso = $aluno->getIdCurso();
+            date_default_timezone_set('America/Sao_Paulo');
+            $dataInscricao = date("d/m/Y H:i:s");
 
             /*adiciona em usuario, dps em aluno*/
 
@@ -44,7 +47,16 @@ class DaoAluno {
             $stmt2->bindparam(":id", $ultimoId);
             $stmt2->execute();
 
-            if ($stmt->rowCount() > 0 AND $stmt2->rowCount() > 0) {
+            $ultimoId2 = $this->conn->lastInsertId();
+            $stmt3 = $this->conn->prepare("INSERT INTO matricula_curso(idAluno, idCurso, dataMatricula)
+            VALUES (:idA, :idC, :datax)");
+            $stmt3->bindparam(":idA", $ultimoId2);
+            $stmt3->bindparam(":idC", $idCurso);
+            $stmt3->bindparam(":datax", $dataInscricao);
+            $stmt3->execute();
+
+
+            if ($stmt->rowCount() > 0 AND $stmt2->rowCount() > 0 AND $stmt3->rowCount() > 0) {
                 echo 1;
             } else {
                 echo 2;
@@ -64,16 +76,20 @@ class DaoAluno {
             $dataAluno = $aluno->getDataAluno();
             $emailAluno = $aluno->getEmailAluno();
             $senhaAluno = $aluno->getSenhaAluno();
+            $idCurso = $aluno->getIdCurso();
 
 
-            $stmt = $this->conn->prepare("UPDATE aluno a, usuario u SET u.nomeUsuario = ?, u.cpfUsuario = ?, u.nascimentoUsuario = ?, u.emailUsuario = ?, u.senhaUsuario = ? WHERE a.idAluno = ? AND u.idUsuario = a.idUsuario");
+
+            $stmt = $this->conn->prepare("UPDATE aluno a, usuario u, matricula_curso m SET u.nomeUsuario = ?, u.cpfUsuario = ?, u.nascimentoUsuario = ?, u.emailUsuario = ?, u.senhaUsuario = ?, m.idCurso = ? WHERE a.idAluno = ? AND u.idUsuario = a.idUsuario AND m.idAluno = a.idAluno");
 
             $stmt->bindparam(1, $nomeAluno);
             $stmt->bindparam(2, $cpfAluno);
             $stmt->bindparam(3, $dataAluno);
             $stmt->bindparam(4, $emailAluno);
             $stmt->bindparam(5, $senhaAluno);
-            $stmt->bindparam(6, $idAluno);
+            $stmt->bindparam(6, $idCurso);
+            $stmt->bindparam(7, $idAluno);
+
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {

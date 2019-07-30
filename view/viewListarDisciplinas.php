@@ -34,7 +34,7 @@ $stmtProfessores->execute();
 .fuck {
     display:    none;
     position:   fixed;
-    z-index:    1000;
+    +index:    1000;
     top:        0;
     left:       0;
     height:     100%;

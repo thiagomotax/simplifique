@@ -5,6 +5,7 @@
 <!-- Page JS Plugins CSS -->
 <?php $cb->get_css('js/plugins/sweetalert2/sweetalert2.min.css'); ?>
 <?php $cb->get_css('js/plugins/datatables/datatables.min.css'); ?>
+<?php $cb->get_css('js/plugins/select2/css/select2.css'); ?>
 
 
 <?php require '../inc/_global/views/head_end.php'; ?>
@@ -65,6 +66,7 @@ body.loading .fuck{
                         <th>Nome</th>
                         <th>Cpf</th>
                         <th>Data</th>
+                        <th>Curso</th>
                         <th>Email</th>
                         <th>Senha</th>
                         <th>Ações</th>
@@ -93,7 +95,7 @@ body.loading .fuck{
     <!-- Normal Modal -->
     <form class="form-horizontal" id="verAluno-form" method="POST">
     <input type="hidden" name="acao" value="editar">
-    <div class="modal" id="verAluno" tabindex="-1" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
+    <div class="modal" id="verAluno" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered " role="document">
             <div class="modal-content">
             <input type="hidden" name="id" id="id">
@@ -122,6 +124,8 @@ body.loading .fuck{
                                     <label for="cpf">CPF do aluno</label>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group row" id="curso">
                         </div>
                         <div class="form-group row">
                             <div class="col-12">
@@ -173,7 +177,9 @@ body.loading .fuck{
 <!-- Page JS Plugins -->
 <?php $cb->get_js('/js/plugins/jquery-validation/jquery.validate.min.js'); ?>
 <?php $cb->get_js('/js/plugins/sweetalert2/sweetalert2.min.js'); ?>
+<?php $cb->get_js('js/plugins/select2/js/select2.full.min.js'); ?>
 <?php $cb->get_js('/js/plugins/datatables/datatables.min.js'); ?>
+<?php $cb->get_js('js/plugins/masked-inputs/jquery.maskedinput.min.js'); ?>
 
 <script>
 $(document).ready(function() {
@@ -196,10 +202,14 @@ $(document).ready(function() {
             },
             {
                 "targets": [4],
-                "visible": false,
+                "visible": true,
             },
             {
                 "targets": [5],
+                "visible": false,
+            },
+            {
+                "targets": [6],
                 "visible": true,
             }
         ],
@@ -220,6 +230,9 @@ $(document).ready(function() {
                 "data": "dataAluno",
             },
             {
+                "data": "nomeCurso"
+            },
+            {
                 "data": "emailAluno",
             },
             {
@@ -236,7 +249,7 @@ $(document).ready(function() {
             title: 'Simplifica - Relatório de Alunos' + dataAtualFormatada(),
             text: '<i class="fa fa-print"></i> imprimir',
             exportOptions: {
-                columns: [0,1,2,3]
+                columns: [0,1,2,3,4]
             }
         },
         {
@@ -244,7 +257,7 @@ $(document).ready(function() {
             title: 'Simplifica - Relatório de Alunos' + dataAtualFormatada(),
             text: '<i class="fa fa-file-pdf-o"></i> pdf',
             exportOptions: {
-                columns: [0,1,2,3]
+                columns: [0,1,2,3,4]
             }
         },
         {    extend: 'colvis',
@@ -302,7 +315,7 @@ function dataAtualFormatada(){
 
 <?php $cb->get_js('/js/custom/aluno.js'); ?>
 
-<?php $cb->get_js('js/plugins/masked-inputs/jquery.maskedinput.min.js'); ?>
+
 <script>jQuery(function(){ Codebase.helpers(['masked-inputs']); });</script>
 
 <!-- Page JS Code -->

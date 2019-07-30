@@ -1,13 +1,14 @@
 <?php
 
 class ModelAluno{
-    private $idUsuario;
     private $idAluno;
     private $nomeAluno;
     private $cpfALuno;
     private $dataAluno;
     private $emailAluno;
     private $senhaAluno;
+    private $idCurso;
+
 
 
     public function getIdAluno() {
@@ -28,6 +29,9 @@ class ModelAluno{
     public function getSenhaAluno() {
         return $this->senhaAluno;
     }
+    public function getIdCurso() {
+        return $this->idCurso;
+    }
 
     public function setIdAluno($idAluno) {
         $this->idAluno = $idAluno;
@@ -46,6 +50,9 @@ class ModelAluno{
     }
     public function setSenhaAluno($senhaAluno) {
         $this->senhaAluno = $senhaAluno;
+    }
+    public function setIdCurso($idCurso) {
+        $this->idCurso = $idCurso;
     }
 }
 ?>

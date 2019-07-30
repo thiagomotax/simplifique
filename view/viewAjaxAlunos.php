@@ -39,7 +39,7 @@
 
     $encoding = 'UTF-8';
 
-    $stmtAlunos = $alunosDao->runQuery("SELECT * FROM aluno a, usuario u WHERE a.idUsuario = u.idUsuario");
+    $stmtAlunos = $alunosDao->runQuery("SELECT * FROM aluno a, usuario u, matricula_curso m, curso c WHERE a.idUsuario = u.idUsuario AND m.idAluno = a.idAluno AND c.idCurso = m.idCurso");
     $stmtAlunos->execute();
 
     $data = array();
@@ -54,10 +54,11 @@
         $data[$i]{'dataAluno'} = $rowAlunos['nascimentoUsuario'];
         $data[$i]{'emailAluno'} = $rowAlunos['emailUsuario'];
         $data[$i]{'senhaAluno'} = $rowAlunos['senhaUsuario'];
+        $data[$i]{'nomeCurso'} = $rowAlunos['nomeCurso'];
         $data[$i]{'button'} = 
         '<div class="text-center">
             <div class="btn-group" center>
-                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Editar" id="rowEditarAluno_' . $i . '" data-id="' . $rowAlunos['idAluno'] . '" data-nome="' . $rowAlunos['nomeUsuario'] . '" data-data="' . $rowAlunos['nascimentoUsuario'] . '" data-cpf="' . $rowAlunos['cpfUsuario'] . '" data-email="' . $rowAlunos['emailUsuario'] .'" data-senha="' . $rowAlunos['senhaUsuario'] .'" onclick="editarAluno(' . ($i + 1) . ')">
+                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Editar" id="rowEditarAluno_' . $i . '" data-id="' . $rowAlunos['idAluno'] . '" data-nome="' . $rowAlunos['nomeUsuario'] . '" data-data="' . $rowAlunos['nascimentoUsuario'] . '" data-cpf="' . $rowAlunos['cpfUsuario'] . '" data-email="' . $rowAlunos['emailUsuario'] .'" data-senha="' . $rowAlunos['senhaUsuario'] .'" data-idc="' . $rowAlunos['idCurso'] .'" onclick="editarAluno(' . ($i + 1) . ')">
                     <i class="fa fa-pencil"></i>
                 </button>
                 <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Excluir" id="rowDeleteAluno_' . $i . '" data-id="' . $rowAlunos['idAluno']. '" data-nome="' . $rowAlunos['nomeUsuario'] . '" onclick="excluirAluno(' . ($i + 1) . ')">

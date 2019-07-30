@@ -35,6 +35,9 @@ $(document).ready(function () {
           },
           'data': {
               required: true
+          },
+          'idC': {
+              required: true
           }
       },
       messages: {
@@ -60,6 +63,9 @@ $(document).ready(function () {
         },
         'data': {
             required: 'Por favor, preencha a data de nascimento do aluno'
+        },
+        'idC': {
+            required: 'Por favor, selecione qual é o curso do aluno'
         }
     },
         submitHandler: function (form) {
@@ -179,8 +185,12 @@ function excluirAluno(id) {
     var dataAluno = $('#rowEditarAluno_' + (id - 1)).attr("data-data");
     var emailAluno = $('#rowEditarAluno_' + (id - 1)).attr("data-email");
     var senhaAluno = $('#rowEditarAluno_' + (id - 1)).attr("data-senha");
+    var idCurso = $('#rowEditarAluno_' + (id - 1)).attr("data-idc");
+
+    $('#curso').load('../view/hello.php?IdCurso='+idCurso);
 
     $('#verAluno').modal('show');
+
     $('.modal .modal-dialog .modal-content #nomeP').text("Detalhes do aluno(a) " + nomeAluno);
     $('.modal .modal-dialog .modal-content #id').val(idAluno);
     $('.modal .modal-dialog .modal-content #nome').val(nomeAluno);

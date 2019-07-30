@@ -1,10 +1,19 @@
 <?php require '../inc/_global/config.php'; ?>
 <?php require '../inc/backend/config.php'; ?>
+
 <?php require '../inc/_global/views/head_start.php'; ?>
+<?php $cb->get_css('js/plugins/select2/css/select2.css'); ?>
+<?php $cb->get_css('js/plugins/sweetalert2/sweetalert2.min.css'); ?>
+
 <?php require '../inc/_global/views/head_end.php'; ?>
 <?php require '../inc/_global/views/page_start.php'; ?>
 
-<?php $cb->get_css('js/plugins/sweetalert2/sweetalert2.min.css'); ?>
+<?php
+require_once("../dao/DaoCurso.php");    
+$cursosDao = new DaoCurso();
+$stmtCursos = $cursosDao->runQuery("SELECT * FROM curso");
+$stmtCursos->execute();?>
+
 
 <!-- Page Content -->
 
@@ -91,6 +100,26 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                    <div class="col-lg-4">
+                        <p class="text-muted">
+                            Qual curso o aluno irá realizar?
+                        </p>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="form-material">
+                            <select class="js-select2 form-control" id="idC" name="idC" style="width: 100%;" data-placeholder="Selecione o curso" single>
+                                <option></option>
+                                <?php while ($rowCursos = $stmtCursos->fetch(PDO::FETCH_ASSOC)) {?>
+                                <?php echo '<option value="'.$rowCursos['idCurso'].'">'.$rowCursos['nomeCurso'].'</option>'; ?>
+                                <?php }?>
+                            </select>
+                            <!-- <label for="idC">Selecione o curso...</label> -->
+                        </div>
+                    </div>
+                    </div>
+
+
                     <h2 class="content-heading text-black">Informações da conta</h2>
                     <div class="form-group row">
                     <div class="col-lg-4">
@@ -162,11 +191,18 @@
 <?php $cb->get_js('/js/plugins/jquery-validation/jquery.validate.min.js'); ?>
 <?php $cb->get_js('/js/plugins/sweetalert2/sweetalert2.min.js'); ?>
 <?php $cb->get_js('js/plugins/masked-inputs/jquery.maskedinput.min.js'); ?>
+<?php $cb->get_js('js/plugins/select2/js/select2.full.min.js'); ?>
+
 
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#cpf").mask("999.999.999-99");
 	});
+</script>
+<script>
+jQuery(function() {
+    Codebase.helpers('select2');
+});
 </script>
 
 <?php $cb->get_js('/js/custom/aluno.js'); ?>

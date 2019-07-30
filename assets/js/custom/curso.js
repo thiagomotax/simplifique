@@ -148,6 +148,7 @@ function excluirCurso(id) {
     var descricaoCurso = $('#rowEditarCurso_' + (id - 1)).attr("data-descricao");
 
     $('#verCurso').modal('show');
+
     $('.modal .modal-dialog .modal-content #nomeC').text("Detalhes do curso " + nomeCurso);
     $('.modal .modal-dialog .modal-content #id').val(idCurso);
     $('.modal .modal-dialog .modal-content #nome').val(nomeCurso);
