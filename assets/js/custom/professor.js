@@ -75,7 +75,7 @@ $(document).ready(function () {
                 $body.removeClass("loading");
                 $("#form-cadastrar-professor")[0].reset()
                 alerta("success", "Professor cadastrado com sucesso!", " Cadastrar outro", "Ver lista de professores", "viewListarProfessores.php");                               
-              } else if(result == 2){
+              } else{
                 $body.removeClass("loading");
                 alerta("error", "Erro ao cadastrar professor!", " Cadastrar outro", "Ver lista de professores", "viewListarProfessores.php");         
               }     
@@ -103,7 +103,7 @@ $(document).ready(function () {
                 alerta("success", "Professor editado com sucesso!", " Ver professores", "Adicionar novo professor", "viewAdicionarProfessor.php");               
                 atualizarTabela();
                   
-              } else if(result == 2){
+              } else{
                 $body.removeClass("loading");
                 alerta("error", "Erro ao editar professor", " Ver professores", "Adicionar novo professor", "viewAdicionarProfessor.php");               
                 atualizarTabela();
@@ -141,7 +141,7 @@ function excluirProfessor(id) {
                     alerta("success", "Professor excluído com sucesso!", " Ver professores", "Adicionar novo professor", "viewAdicionarProfessor.php");
                     atualizarTabela();
                   }
-                  else if(result == 2){
+                  else{
                     $body.removeClass("loading");
                     alerta("error", "Erro ao excluir o professor!", " Ver professores", "Adicionar novo professor", "viewAdicionarProfessor.php");
                     atualizarTabela();

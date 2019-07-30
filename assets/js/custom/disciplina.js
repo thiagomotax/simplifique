@@ -58,7 +58,7 @@ $(document).ready(function () {
                 alerta("success", "Disciplina cadastrada com sucesso!", " Cadastrar outra", "Ver lista de disciplinas", "viewListarDisciplinas.php");               
                 atualizarTabela();
                 
-              } else if(result == 2){
+              } else{
                 $body.removeClass("loading");
                 alerta("error", "Erro ao cadastrar disciplina!", " Cadastrar outra", "Ver lista de disciplinas", "viewListarDisciplinas.php");         
                 atualizarTabela();
@@ -87,7 +87,7 @@ $(document).ready(function () {
                 alerta("success", "Disciplina editado com sucesso!", " Ver disciplinas", "Adicionar nova disciplina", "viewAdicionarDisciplina.php");               
                 atualizarTabela();
                   
-              } else if(result == 2){
+              } else{
                 $body.removeClass("loading");
                 alerta("error", "Erro ao editar Disciplina", " Ver disciplinas", "Adicionar nova disciplina", "viewAdicionarDisciplina.php");               
                 atualizarTabela();
@@ -125,7 +125,7 @@ function excluirDisciplina(id) {
                     alerta("success", "Disciplina excluída com sucesso!", " Ver disciplinas", "Adicionar nova disciplina", "viewAdicionarDisciplina.php");
                     atualizarTabela();
                   }
-                  else if(result == 2){
+                  else{
                     $body.removeClass("loading");
                     alerta("error", "Erro ao excluir a disciplina!", " Ver disciplinas", "Adicionar nova disciplina", "viewAdicionarDisciplina.php");
                     atualizarTabela();

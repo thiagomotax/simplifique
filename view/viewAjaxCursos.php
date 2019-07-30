@@ -52,18 +52,18 @@
         $data[$i]{'descricaoCurso'} = $rowCursos['descricaoCurso'];
         $data[$i]{'button'} = 
         '<div class="text-center">
-            <div class="btn-group" center>
-                <a id="rowEditarCurso_' . $i . '" data-id="' . $rowCursos['idCurso'] . '" data-nome="' . $rowCursos['nomeCurso'] . '" data-descricao="' . $rowCursos['descricaoCurso'] . '" onclick="editarCurso(' . ($i + 1) . ')"><button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" title="Ver">
-                <i class="fa fa-pencil"></i></button></a>
-                <a id="rowDeleteCurso_' . $i . '" data-id="' . $rowCursos['idCurso'] . '" data-nome="' . $rowCursos['nomeCurso'] . '" onclick="excluirCurso(' . ($i + 1) . ')"> <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Excluir">
-                <i class="fa fa-times"></i></button></a>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Editar" id="rowEditarCurso_' . $i . '" data-id="' . $rowCursos['idCurso'] . '" data-nome="' . $rowCursos['nomeCurso'] . '" data-descricao="' . $rowCursos['descricaoCurso'] . '" onclick="editarCurso(' . ($i + 1) . ')">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Excluir" id="rowDeleteCurso_' . $i . '" data-id="' . $rowCursos['idCurso'] . '" data-nome="' . $rowCursos['nomeCurso'] . '" onclick="excluirCurso(' . ($i + 1) . ')">
+                    <i class="fa fa-times"></i>
+                </button>
             </div>
-        </div> ';
-            
-            
-
+        </div>';         
         $i++;
     }
+    
 
     $datax = array('data' => $data);
 

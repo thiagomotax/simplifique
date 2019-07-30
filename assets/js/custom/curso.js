@@ -44,7 +44,7 @@ $(document).ready(function () {
                 alerta("success", "Curso cadastrado com sucesso!", " Cadastrar outro", "Ver lista de cursos", "viewListarCursos.php");               
                 atualizarTabela();
                 
-              } else if(result == 2){
+              } else{
                 $body.removeClass("loading");
                 alerta("error", "Erro ao cadastrar curso!", " Cadastrar outro", "Ver lista de cursos", "viewListarCursos.php");         
                 atualizarTabela();
@@ -73,7 +73,7 @@ $(document).ready(function () {
                 alerta("success", "Curso editado com sucesso!", " Ver cursos", "Adicionar novo curso", "viewAdicionarCurso.php");               
                 atualizarTabela();
                   
-              } else if(result == 2){
+              } else{
                 $body.removeClass("loading");
                 alerta("error", "Erro ao editar curso", " Ver cursos", "Adicionar novo curso", "viewAdicionarCurso.php");               
                 atualizarTabela();
@@ -111,7 +111,7 @@ function excluirCurso(id) {
                     alerta("success", "Curso excluído com sucesso!", " Ver cursos", "Adicionar novo curso", "viewAdicionarCurso.php");
                     atualizarTabela();
                   }
-                  else if(result == 2){
+                  else{
                     $body.removeClass("loading");
                     alerta("error", "Erro ao excluir o curso!", " Ver cursos", "Adicionar novo curso", "viewAdicionarCurso.php");
                     atualizarTabela();

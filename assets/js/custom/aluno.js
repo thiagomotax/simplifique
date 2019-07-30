@@ -75,7 +75,7 @@ $(document).ready(function () {
                 $body.removeClass("loading");
                 $("#form-cadastrar-aluno")[0].reset()
                 alerta("success", "Aluno cadastrado com sucesso!", " Cadastrar outro", "Ver lista de alunos", "viewListarAlunos.php");                               
-              } else if(result == 2){
+              } else{
                 $body.removeClass("loading");
                 alerta("error", "Erro ao cadastrar aluno!", " Cadastrar outro", "Ver lista de alunos", "viewListarAlunos.php");         
               }     
@@ -103,7 +103,7 @@ $(document).ready(function () {
                 alerta("success", "Aluno editado com sucesso!", " Ver alunos", "Adicionar novo aluno", "viewAdicionarAluno.php");               
                 atualizarTabela();
                   
-              } else if(result == 2){
+              } else{
                 $body.removeClass("loading");
                 alerta("error", "Erro ao editar aluno", " Ver alunos", "Adicionar novo aluno", "viewAdicionarAluno.php");               
                 atualizarTabela();
@@ -141,7 +141,7 @@ function excluirAluno(id) {
                     alerta("success", "Aluno excluído com sucesso!", " Ver alunos", "Adicionar novo aluno", "viewAdicionarAluno.php");
                     atualizarTabela();
                   }
-                  else if(result == 2){
+                  else{
                     $body.removeClass("loading");
                     alerta("error", "Erro ao excluir o aluno!", " Ver alunos", "Adicionar novo aluno", "viewAdicionarAluno.php");
                     atualizarTabela();

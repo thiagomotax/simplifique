@@ -57,10 +57,12 @@
         $data[$i]{'button'} = 
         '<div class="text-center">
             <div class="btn-group" center>
-                <a id="rowEditarProfessor_' . $i . '" data-id="' . $rowProfessores['idProfessor'] . '" data-nome="' . $rowProfessores['nomeUsuario'] . '" data-data="' . $rowProfessores['nascimentoUsuario'] . '" data-cpf="' . $rowProfessores['cpfUsuario'] . '" data-email="' . $rowProfessores['emailUsuario'] .'" data-senha="' . $rowProfessores['senhaUsuario'] .'" onclick="editarProfessor(' . ($i + 1) . ')"><button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" title="Ver">
-                <i class="fa fa-eye"></i></button></a>
-                <a id="rowDeleteProfessor_' . $i . '" data-id="' . $rowProfessores['idProfessor']. '" data-nome="' . $rowProfessores['nomeUsuario'] . '" onclick="excluirProfessor(' . ($i + 1) . ')"> <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Excluir">
-                <i class="fa fa-times"></i></button></a>
+                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Editar" id="rowEditarProfessor_' . $i . '" data-id="' . $rowProfessores['idProfessor'] . '" data-nome="' . $rowProfessores['nomeUsuario'] . '" data-data="' . $rowProfessores['nascimentoUsuario'] . '" data-cpf="' . $rowProfessores['cpfUsuario'] . '" data-email="' . $rowProfessores['emailUsuario'] .'" data-senha="' . $rowProfessores['senhaUsuario'] .'" onclick="editarProfessor(' . ($i + 1) . ')">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Excluir" id="rowDeleteProfessor_' . $i . '" data-id="' . $rowProfessores['idProfessor']. '" data-nome="' . $rowProfessores['nomeUsuario'] . '" onclick="excluirProfessor(' . ($i + 1) . ')">
+                    <i class="fa fa-times"></i>
+                </button>
             </div>
         </div> ';
             
