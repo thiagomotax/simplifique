@@ -62,6 +62,9 @@
         <!-- END Sign In Form -->
     </div>
 </div>
+<div id="page-loader" class="show"></div>
+
+
 <!-- END Page Content -->
 
 <?php require '../inc/_global/views/page_end.php'; ?>

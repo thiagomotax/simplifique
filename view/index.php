@@ -9,6 +9,9 @@
 <!-- Page Content -->
 <div class="content">
 </div>
+<div id="page-loader" class="show"></div>
+
+
 <!-- END Page Content -->
 
 <?php require '../inc/_global/views/page_end.php'; ?>

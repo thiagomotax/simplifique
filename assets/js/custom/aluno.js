@@ -98,7 +98,6 @@ $(document).ready(function () {
           url: "../controller/ControllerAluno.php",
           data: dados,
           success: function (result) {
-              alert(result);
               if (result == 1) {
                 $body.removeClass("loading");
                 alerta("success", "Aluno editado com sucesso!", " Ver alunos", "Adicionar novo aluno", "viewAdicionarAluno.php");               

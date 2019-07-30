@@ -152,6 +152,8 @@
         </div>
     </div>
 </div>
+<div id="page-loader" class="show"></div>
+
 <!-- END Terms Modal -->
 
 <?php require '../inc/_global/views/footer_start.php'; ?>

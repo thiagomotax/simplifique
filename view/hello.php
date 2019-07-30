@@ -13,6 +13,7 @@ $stmtCursos->execute();
             <?php echo '<option value="'.$rowCursos['idCurso'].'">'.$rowCursos['nomeCurso'].'</option>'; }?>
             <?php }?>
         </select>
+        <label for="idC">Curso</label>
     </div>
 </div>
 

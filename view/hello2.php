@@ -14,6 +14,7 @@ $stmtProfessores->execute();
             <?php echo '<option value="'.$rowProfessores['idProfessor'].'">'.$rowProfessores['nomeUsuario'].'</option>'; }?>
             <?php }?>
         </select>
+        <label for="idP">Professor</label>
     </div>
 </div>
 

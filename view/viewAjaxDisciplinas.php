@@ -56,8 +56,8 @@ session_start();
         $data[$i]{'button'} = 
         '<div class="text-center">
             <div class="btn-group" center>
-                <a id="rowEditarDisciplina_' . $i . '" data-idD="' . $rowDisciplinas['idDisciplina'] . '" data-idC="' . $rowDisciplinas['idCurso'] . '" data-idP="' . $rowDisciplinas['idProfessor']. '" data-nome="' . $rowDisciplinas['nomeDisciplina'] . '" data-ano="' . $rowDisciplinas['anoDisciplina'] . '"data-nomec="' . $rowDisciplinas['nomeCurso'] . '"data-nomep="' . $rowDisciplinas['nomeUsuario'] . '"  onclick="editarDisciplina(' . ($i + 1) . ')"><button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" title="Ver">
-                <i class="fa fa-eye"></i></button></a>
+                <a id="rowEditarDisciplina_' . $i . '" data-idD="' . $rowDisciplinas['idDisciplina'] . '" data-idC="' . $rowDisciplinas['idCurso'] . '" data-idP="' . $rowDisciplinas['idProfessor']. '" data-nome="' . $rowDisciplinas['nomeDisciplina'] . '" data-ano="' . $rowDisciplinas['anoDisciplina'] . '"data-nomec="' . $rowDisciplinas['nomeCurso'] . '"data-nomep="' . $rowDisciplinas['nomeUsuario'] . '"  onclick="editarDisciplina(' . ($i + 1) . ')"><button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" title="Editar">
+                <i class="fa fa-pencil"></i></button></a>
                 <a id="rowDeleteDisciplina_' . $i . '" data-idD="' . $rowDisciplinas['idDisciplina'] . '" data-nome="' . $rowDisciplinas['nomeDisciplina'] . '" onclick="excluirDisciplina(' . ($i + 1) . ')"> <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Excluir">
                 <i class="fa fa-times"></i></button></a>
             </div>

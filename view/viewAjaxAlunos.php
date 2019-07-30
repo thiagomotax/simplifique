@@ -58,7 +58,7 @@
         '<div class="text-center">
             <div class="btn-group" center>
                 <a id="rowEditarAluno_' . $i . '" data-id="' . $rowAlunos['idAluno'] . '" data-nome="' . $rowAlunos['nomeUsuario'] . '" data-data="' . $rowAlunos['nascimentoUsuario'] . '" data-cpf="' . $rowAlunos['cpfUsuario'] . '" data-email="' . $rowAlunos['emailUsuario'] .'" data-senha="' . $rowAlunos['senhaUsuario'] .'" onclick="editarAluno(' . ($i + 1) . ')"><button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" title="Ver">
-                <i class="fa fa-eye"></i></button></a>
+                <i class="fa fa-pencil"></i></button></a>
                 <a id="rowDeleteAluno_' . $i . '" data-id="' . $rowAlunos['idAluno']. '" data-nome="' . $rowAlunos['nomeUsuario'] . '" onclick="excluirAluno(' . ($i + 1) . ')"> <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Excluir">
                 <i class="fa fa-times"></i></button></a>
             </div>

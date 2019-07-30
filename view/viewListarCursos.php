@@ -3,13 +3,14 @@
 <?php require '../inc/_global/views/head_start.php'; ?>
 
 <!-- Page JS Plugins CSS -->
-<?php $cb->get_css('js/plugins/datatables/dataTables.bootstrap4.css'); ?>
+<?php $cb->get_css('js/plugins/sweetalert2/sweetalert2.min.css'); ?>
+<?php $cb->get_css('js/plugins/datatables/datatables.min.css'); ?>
+
 
 
 <?php require '../inc/_global/views/head_end.php'; ?>
 <?php require '../inc/_global/views/page_start.php'; ?>
 
-<?php $cb->get_css('js/plugins/sweetalert2/sweetalert2.min.css'); ?>
 
 <style>
     /* Start by setting display:none to make this hidden.
@@ -53,19 +54,18 @@ body.loading .fuck{
     </div>
 
     <!-- Dynamic Table Full -->
-    <div class="block block-rounded block-fx-shadow table-responsive">
+    <div class="block block-rounded block-fx-shadow">
         <!-- <div class="block-header block-header-default">
             <h3 class="block-title">Dynamic Table <small>Full</small></h3>
         </div> -->
         <div class="block-content block-content-full">
-            <table class="table table-bordered table-hover js-dataTable-full" cellspacing="0" width="100%"
+            <table class="table table-bordered table-hover table-striped js-dataTable-full"
                 style="width: 100%; white-space: normal;" id="listar_cursos">
                 <thead>
                     <tr>
-                        <th></th>
                         <th>Nome do curso</th>
                         <th>Descrição</th>
-                        <th class="text-center">Ações</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -135,6 +135,9 @@ body.loading .fuck{
     <!-- END Normal Modal -->
 </div>
 <div class="fuck"><!-- Place at bottom of page --></div>
+<div id="page-loader" class="show"></div>
+
+
 
 <!-- END Page Content -->
 
@@ -142,28 +145,17 @@ body.loading .fuck{
 <?php require '../inc/_global/views/footer_start.php'; ?>
 
 <!-- Page JS Plugins -->
-<?php $cb->get_js('js/plugins/datatables/jquery.dataTables.min.js'); ?>
-<?php $cb->get_js('js/plugins/datatables/dataTables.bootstrap4.min.js'); ?>
 <?php $cb->get_js('/js/plugins/jquery-validation/jquery.validate.min.js'); ?>
 <?php $cb->get_js('/js/plugins/sweetalert2/sweetalert2.min.js'); ?>
+<?php $cb->get_js('/js/plugins/datatables/datatables.min.js'); ?>
 
-<style>
-table.dataTable tbody td {
-    word-break: break-word;
-    vertical-align: top;
-}
-
-table.dataTable tbody td {
-    word-break: break-word;
-    vertical-align: top;
-}
-</style>
 <script>
 $(document).ready(function() {
     jQuery('.js-dataTable-full').dataTable({
-        "columnDefs": [{
+        "columnDefs": [
+            {
                 "targets": [0],
-                "visible": false,
+                "visible": true,
             },
             {
                 "targets": [1],
@@ -171,40 +163,54 @@ $(document).ready(function() {
             },
             {
                 "targets": [2],
-                "visible": false,
-            },
-            {
-                "targets": [3],
                 "visible": true,
             }
         ],
         "pagingType": "simple_numbers",
-        "pageLength": 5,
+        "pageLength": 10,
         "ajax": {
             "url": "viewAjaxCursos.php",
             "type": "POST"
         },
-        "columns": [{
-                "data": "idCurso"
-            },
+        "columns": [
             {
                 "data": "nomeCurso",
-                "width": "80%"
             },
             {
                 "data": "descricaoCurso"
             },
             {
                 "data": "button",
-                "width": "20%"
             }
         ],
+        dom: 'Bfrtip',
+        buttons: [
+        {
+            extend: 'print',
+            title: 'Simplifica - Relatório de Cursos' + dataAtualFormatada(),
+            text: '<i class="fa fa-print"></i> imprimir',
+            exportOptions: {
+                columns: [0,1]
+            }
+        },
+        {
+            extend: 'pdf',
+            title: 'Simplifica - Relatório de Cursos' + dataAtualFormatada(),
+            text: '<i class="fa fa-file-pdf-o"></i> pdf',
+            exportOptions: {
+                columns: [0,1]
+            }
+        },
+        {    extend: 'colvis',
+                text: '<i class="fa fa-eye-slash"></i> colunas',
+        }], 
+        "colReorder": true,
         "order": [[ 0, "desc" ]],
         "lengthMenu": [
             [5, 10, 15, 20],
             [5, 10, 15, 20]
         ],
-        "autoWidth": false,
+        "responsive": true,
         "language": {
             "sEmptyTable": "Nenhum registro encontrado",
             "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -232,6 +238,16 @@ $(document).ready(function() {
 });
 </script>
 
+<script>
+function dataAtualFormatada(){
+    var data = new Date(),
+        dia  = data.getDate().toString().padStart(2, '0'),
+        mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano  = data.getFullYear();
+        time = data.getHours()+"h" + data.getMinutes()+"min";
+    return " " + dia+"-"+mes+"-"+ano+" "+time;
+}
+</script>
 
 <?php $cb->get_js('/js/custom/curso.js'); ?>
 

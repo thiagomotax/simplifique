@@ -150,6 +150,9 @@
     </div>
     </div>
     <div class="modal"><!-- Place at bottom of page --></div>
+    <div id="page-loader" class="show"></div>
+
+
 
 <!-- END Page Content -->
 
