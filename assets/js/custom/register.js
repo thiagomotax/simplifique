@@ -1,16 +1,4 @@
-/*
- *  Document   : op_auth_signup.js
- *  Author     : pixelcave
- *  Description: Custom JS code used in Sign Up Page
- */
 
-// Form Validation, for more examples you can check out https://github.com/jzaefferer/jquery-validation
-class OpAuthSignUp {
-    /*
-     * Init Sign Up Form Validation
-     *
-     */
-    static initValidationSignUp() {
         jQuery('.js-validation-signup').validate({
             errorClass: 'invalid-feedback animated fadeInDown',
             errorElement: 'div',
@@ -81,20 +69,7 @@ class OpAuthSignUp {
                 }
             }
         });
-    }
-
-    /*
-     * Init functionality
-     *
-     */
-    static init() {
-        this.initValidationSignUp();
-    }
-}
-
-// Initialize when page loads
-jQuery(() => { OpAuthSignUp.init(); });
-
+ 
 
 
 

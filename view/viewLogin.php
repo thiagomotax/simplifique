@@ -3,6 +3,37 @@
 <?php require '../inc/_global/views/head_end.php'; ?>
 <?php require '../inc/_global/views/page_start.php'; ?>
 
+
+<style>
+    /* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.fuck {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba(255, 255, 255, .8) url('../assets/loading.gif') 50% 50% no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading .fuck {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .fuck{
+    display: block;
+}
+</style>
+
 <!-- Page Content -->
 <div class="bg-gd-dusk">
     <div class="hero-static content content-full bg-white invisible" data-toggle="appear">
@@ -22,7 +53,7 @@
             <div class="col-sm-8 col-md-6 col-xl-4">
                 <!-- jQuery Validation functionality is initialized with .js-validation-signin class in js/pages/op_auth_signin.min.js which was auto compiled from _es6/pages/op_auth_signin.js -->
                 <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                <form class="js-validation-signin" action="index.php" method="post">
+                <form class="js-validation-signin" id="form-login" name="form-login" method="post">
                     <div class="form-group row">
                         <div class="col-12">
                             <div class="form-material floating">
@@ -41,7 +72,7 @@
                     </div>
                     <div class="form-group row gutters-tiny">
                         <div class="col-12 mb-10">
-                            <button type="submit" class="btn btn-block btn-hero btn-noborder btn-rounded btn-alt-primary">
+                            <button type="submit" id="button-login" class="btn btn-block btn-hero btn-noborder btn-rounded btn-alt-primary">
                                 <i class="si si-login mr-10"></i> Login
                             </button>
                         </div>
@@ -62,6 +93,7 @@
         <!-- END Sign In Form -->
     </div>
 </div>
+<div class="fuck"><!-- Place at bottom of page --></div>
 <div id="page-loader" class="show"></div>
 
 

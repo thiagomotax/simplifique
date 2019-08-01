@@ -1,16 +1,5 @@
-/*
- *  Document   : op_auth_signin.js
- *  Author     : pixelcave
- *  Description: Custom JS code used in Sign In Page
- */
-
-// Form Validation, for more examples you can check out https://github.com/jzaefferer/jquery-validation
-class OpAuthSignIn {
-    /*
-     * Init Sign In Form Validation
-     *
-     */
-    static initValidationSignIn() {
+$(document).ready(function() {
+    $('#button-login').click(function() {
         jQuery('.js-validation-signin').validate({
             errorClass: 'invalid-feedback animated fadeInDown',
             errorElement: 'div',
@@ -43,18 +32,32 @@ class OpAuthSignIn {
                     required: 'Por favor, preencha sua senha',
                     minlength: 'Sua senha tem no mínimo 8 caracteres'
                 }
-            }
+            },
+            submitHandler: function (form) {
+                var dados = $('#form-login').serializeArray();
+                console.log(dados);
+                $body = $("body");
+                $body.addClass("loading");
+                $.ajax({
+                  type: "POST",
+                  url: "../controller/controllerLogin.php",
+                  data: dados,
+                  success: function (result) {
+                    alert(result);
+                    if (result == 1) {
+                      $body.removeClass("loading");
+                      $("#form-login")[0].reset()
+                      alert("sucesso");
+                    } else{
+                      $body.removeClass("loading");
+                      alert("erro");
+                      
+                    }     
+                  }
+                });
+                return false;
+              }
         });
-    }
 
-    /*
-     * Init functionality
-     *
-     */
-    static init() {
-        this.initValidationSignIn();
-    }
-}
-
-// Initialize when page loads
-jQuery(() => { OpAuthSignIn.init(); });
+    });
+});

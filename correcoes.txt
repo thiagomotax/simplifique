@@ -1,9 +1,7 @@
 tratar formulario modal de edit
-mudar o tipo de datatable pra ser + responsiva
-
 
 
 sempre pegar em minusculo os campos
 
 
-ao adicionar o aluno, colocar um select pra selecionar o curso dele, já no professor, selecionar as disciplinas que ele ministra, talvez fique bom, porém no aluno é obritatório 
+ao adc outra disc o campo continua preenc

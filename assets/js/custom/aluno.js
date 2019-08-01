@@ -79,7 +79,8 @@ $(document).ready(function () {
             success: function (result) {
               if (result == 1) {
                 $body.removeClass("loading");
-                $("#form-cadastrar-aluno")[0].reset()
+                $("#form-cadastrar-aluno")[0].reset();
+                $('#idC').val('').trigger('change');
                 alerta("success", "Aluno cadastrado com sucesso!", " Cadastrar outro", "Ver lista de alunos", "viewListarAlunos.php");                               
               } else{
                 $body.removeClass("loading");
