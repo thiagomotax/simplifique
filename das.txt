@@ -1,0 +1,6 @@
+tipo
+-sou professor
+se é tira o curso
+sou aluno, ai coloca oc urso dele
+
+se é professor, coloca as disciplinas que ele dá com select multiple

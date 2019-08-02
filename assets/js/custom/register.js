@@ -1,4 +1,5 @@
-
+$(document).ready(function() {
+    $('#button-cadastrar-usuario').click(function() {
         jQuery('.js-validation-signup').validate({
             errorClass: 'invalid-feedback animated fadeInDown',
             errorElement: 'div',
@@ -34,9 +35,14 @@
                 },
                 'signup-terms': {
                     required: true
-                }
-                ,
+                },
                 'signup-data': {
+                    required: true
+                },
+                'signup-curso': {
+                    required: true
+                },
+                'signup-disciplina': {
                     required: true
                 }
             },
@@ -66,12 +72,59 @@
                 },
                 'signup-data': {
                     required: 'Por favor, preencha sua data de nascimento'
+                },
+                'signup-curso': {
+                    required: 'Por favor, preencha seu curso'
+                },
+                'signup-disciplina': {
+                    required: 'Por favor, preencha sua disciplina'
                 }
+            },
+            submitHandler: function(form) {
+                var dados = $('#form-cadastrar-aluno').serializeArray();
+                nome = $('#signup-name').val();
+                email = $('#signup-email').val();
+                senha = $('#signup-password').val();
+                $body = $("body");
+                $body.addClass("loading");
+                $.ajax({
+                    type: "POST",
+                    url: "../controller/ControllerRegistro.php",
+                    data: dados,
+                    success: function(result) {
+                        alert(result);
+                        if (result == 1) {
+                            $body.removeClass("loading");
+                            Swal.fire({
+                                position: 'center',
+                                type: 'success',
+                                title: 'Inscrição realizada com sucesso',
+                                html:
+                                  nome+', você irá receber um e-mail confirmando(ou não) sua inscrição, mediante aprovação.<br/>' +
+                                  '<br/>Caso você tenha inserido dados incorretos, entre em contato com a administração da plataforma. Não se esqueça de salvar seus dados de acesso.<br/>' +
+                                  '<br/>Seu email: ' + email + '<br/>' +
+                                  '<br/>Sua senha: ' + senha + '<br/>',
+                                showConfirmButton: false,
+                                //timer: 50000
+                              });
+                            $("#form-cadastrar-aluno")[0].reset();
+                            // $('#idC').val('').trigger('change');
+                        } else {
+                            $body.removeClass("loading");
+                        }
+                    }
+                });
+                return false;
             }
         });
+    });
+});
  
 
-
+$(':radio').change(function (event) {
+    var id = $(this).data('id');
+    $('#' + id).addClass('none').siblings().removeClass('none');
+});
 
 /*
  * Brazillian CPF number (Cadastrado de Pessoas Físicas) is the equivalent of a Brazilian tax registration number.
