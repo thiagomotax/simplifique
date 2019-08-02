@@ -87,5 +87,19 @@ $cb->main_nav                   = array(
                 'url'   => 'viewAdicionarDisciplina.php'
             )
         )
+            ),
+    array(
+        'name'  => '<span class="sidebar-mini-hide">Inscrições</span>',
+        'icon'  => 'fa fa-plus',
+        'sub'   => array(
+            array(
+                'name'  => 'Alunos',
+                'url'   => 'viewListarInscricoesAlunos.php'
+            ),
+            array(
+                'name'  => 'Professores',
+                'url'   => ''
+            )
+        )
     )
 );
