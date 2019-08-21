@@ -1,0 +1,47 @@
+Problemas:
+
+-> Mover arquivo para a pasta e adicionar no bd, em "ControllerAnexo.php" (funçao adicionar e atualizar anexo)
+	-Arquivo parece nao ser armazenado na variavel 'file', em "viewAdicionarAnexo.php" e "viewListarAnexo.php"
+
+-> Verificar se há riscos na comparaçao de datas com LIKE, em "viewAdicionarFrequencia". Converti o campo no bd para string, gera problemas?
+   (Porem o input não permite que o usuario entre com dados como letras ou meses/dias invalidos)
+
+-> A tabela de cronogramas será atualizada ao clicar em um botao "atualizar", ou seja, dependerá do usuario. funcao atualizatabela() não funcionou no js da  pg
+
+-> Verificar se é eficiente essa forma alternativa para add as frequencias, "presente" e "ausente", no banco de dados
+	-Adicionando um por vez tem a demora do carregamento da pag
+	-Pequena vantagem: é possivel saber a frequencia de qual aluno não foi adicionada
+	-Para add tds de uma vez: há problemas com inputs de mesmo nome. Utilizando nomes de inputs como arrays, name = "nome[' . array['idAluno'] . ']",
+	 não consegui pegar todos os dados em 'controller' e passar para os comandos 'sets'. 
+
+-> Propor uma outra forma para listar as listas de chamada apanas uma vez, exemplo: uma linha com a data; o curso; e a disciplina, não tds as linhas. 
+  (Pois no bd sao geradas a quantidade de linhas referente a qntd de alunos matriculados, para add a situacao em particular)
+	-Tentei com, DISTINCT/GRUP BY no select, mas sem resultados
+	-Da forma que está não é listado se houver outra chamada para esse idProfesor na mesma data, mesmo com idCurso/idDisciplina diferente
+
+->Campo input date no form modal não é preenchido com data vinda do js, em editar cronograma na pag AdicionarCronograma
+	-Dessa forma, se o usuario não preencher, a data que esta passará a ter valor null, e não sera listada na timeline dos cronogramas de aula, em viewAdicionarCronograma 
+
+
+
+
+
+
+Fazer quando acabar:
+-ADD curso, disciplina e data (escolhidas, as que estão no subtitulo) na opç pdf e imprimir de "viewAdicionarFrequencia.php"
+
+
+
+
+
+Mudanças BD
+-Tabela Noticia: tipoNoticia --> idCurso (foreign key)
+-Tabela Anexo: idCurso e idProfessor (foreign key)
+-Tabela Frequencia: idProfessor (foreign key)
+- Criaçao da tabela "cronograma" (depois que criei os codigos que vi que tinha tabela calendrio kk)
+	-Com idCronograma/Curso/Professor/Disciplina (foreign key), dataCronograma, descricaoCronograma e tituloCronograma
+
+
+
+obs:
+	- Uso de apis do google, necessario internet
