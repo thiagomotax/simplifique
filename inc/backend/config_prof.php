@@ -67,17 +67,17 @@ $cb->main_nav                   = array(
 
     
     array(
-        'name'  => '<span class="sidebar-mini-hide">Lançar frequência</span>',
+        'name'  => '<span class="sidebar-mini-hide">LanÃ§ar frequÃªncia</span>',
         'icon'  => 'fa fa-check-square-o',
         'sub'   => array(
 
             array(
-                'name'  => 'Gerar listagem',
-                'url'   => 'viewGerarFrequencia.php'
+                'name'  => 'Ver frequencias lanÃ§adas ',
+                'url'   => 'viewListarFrequencia.php'
             ),
             array(
-                'name'  => 'Ver frequencias lançadas ',
-                'url'   => 'viewListarFrequencia.php'
+                'name'  => 'Gerar listagem',
+                'url'   => 'viewGerarFrequencia.php'
             )
         )
     ),
@@ -91,7 +91,7 @@ $cb->main_nav                   = array(
 
 
     array(
-        'name'  => '<span class="sidebar-mini-hide">Anexar matériais</span>',
+        'name'  => '<span class="sidebar-mini-hide">Anexar matÃ©riais</span>',
         'icon'  => 'fa fa-upload',
         'sub'   => array(
 
@@ -117,7 +117,7 @@ $cb->main_nav                   = array(
     
     
     array(
-        'name'  => '<span class="sidebar-mini-hide">Cadastrar notícia</span>',
+        'name'  => '<span class="sidebar-mini-hide">Cadastrar notÃ­cia</span>',
         'icon'  => 'fa fa-newspaper-o',
         'sub'   => array(
             array(
@@ -126,7 +126,7 @@ $cb->main_nav                   = array(
             ),
 
             array(
-                'name'  => 'Adicionar notícia',
+                'name'  => 'Adicionar notÃ­cia',
                 'url'   => 'viewAdicionarNoticias.php'
             )
 
@@ -146,7 +146,7 @@ $cb->main_nav                   = array(
     
     
     array(
-        'name'  => '<span class="sidebar-mini-hide">Calendário Acadêmico</span>',
+        'name'  => '<span class="sidebar-mini-hide">CalendÃ¡rio AcadÃªmico</span>',
         'icon'  => 'fa  fa-calendar',
         'sub'   => array(
             array(
