@@ -10,7 +10,7 @@
 <div class="content">
 
 
-<font color=black> <center> <i>  Não há notícias cadastradas. </i> </center>  </font>
+<font color=black> <center> <i>  </i> </center>  </font>
 
 </div>
 
