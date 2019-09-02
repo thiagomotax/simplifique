@@ -35,14 +35,14 @@ function adicionarAnexo() {
 
 
 
-    if (isset($_FILES['file'])){
+    if (isset($_FILES['filex'])){
 
 
-    $extensao=strtolower(substr($_FILES['file']['name'],  -4)); //pega a extenção do arquivo
-    $novo_nome=md5(time()) . $extensao;  //gera um novo nome com a extenção
-    $diretorio="../controller/anexos"; //define o diretório do arquivo
+    $extensao=strtolower(substr($_FILES['filex']['name'],  -4)); //pega a extenï¿½ï¿½o do arquivo
+    $novo_nome=md5(time()) . $extensao;  //gera um novo nome com a extenï¿½ï¿½o
+    $diretorio="../controller/anexos"; //define o diretï¿½rio do arquivo
 
-    move_uploaded_file($_FILES['file']['tmp_name'], $diretorio.$novo_nome ); //copia o arquivo para a pasta
+    move_uploaded_file($_FILES['filex']['tmp_name'], $diretorio.$novo_nome ); //copia o arquivo para a pasta
 
 
 
@@ -74,14 +74,14 @@ function atualizarAnexo() {
     $disciplina = filter_var($_POST["idD"], FILTER_SANITIZE_NUMBER_INT);
     $url = filter_var($_POST["url"], FILTER_SANITIZE_STRING);
     
-     if (isset($_FILES['file'])){
+     if (isset($_FILES['filex'])){
 
 
-    $extensao=strtolower(substr($_FILES['file']['name'],  -4)); //pega a extenção do arquivo
-    $novo_nome=md5(time()) . $extensao;  //gera um novo nome com a extenção
-    $diretorio="../controller/anexos"; //define o diretório do arquivo
+    $extensao=strtolower(substr($_FILES['filex']['name'],  -4)); //pega a extenï¿½ï¿½o do arquivo
+    $novo_nome=md5(time()) . $extensao;  //gera um novo nome com a extenï¿½ï¿½o
+    $diretorio="../controller/anexos"; //define o diretï¿½rio do arquivo
 
-    move_uploaded_file($_FILES['file']['tmp_name'], $diretorio.$novo_nome ); //copia o arquivo para a pasta
+    move_uploaded_file($_FILES['filex']['tmp_name'], $diretorio.$novo_nome ); //copia o arquivo para a pasta
 
 
 

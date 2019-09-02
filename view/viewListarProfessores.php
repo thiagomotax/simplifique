@@ -238,7 +238,7 @@ $(document).ready(function() {
             title: 'Simplifica - Relatório de Professores' + dataAtualFormatada(),
             text: '<i class="fa fa-print"></i> imprimir',
             exportOptions: {
-                columns: [0,1,2,3]
+                columns: [0, ':visible' ]
             }
         },
         {
@@ -252,6 +252,7 @@ $(document).ready(function() {
         {    extend: 'colvis',
                 text: '<i class="fa fa-eye-slash"></i> colunas',
         }], 
+        "select": true,
         "colReorder": true,
         "order": [[ 0, "desc" ]],
         "lengthMenu": [

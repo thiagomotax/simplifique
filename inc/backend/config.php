@@ -95,11 +95,12 @@ $cb->main_nav                   = array(
             array(
                 'name'  => 'Alunos',
                 'url'   => 'viewListarInscricoesAlunos.php'
-            ),
-            array(
-                'name'  => 'Professores',
-                'url'   => ''
             )
+            // ,
+            // array(
+            //     'name'  => 'Professores',
+            //     'url'   => ''
+            // )
         )
     )
 );

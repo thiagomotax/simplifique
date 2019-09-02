@@ -4,9 +4,6 @@
 session_start();
 
 
- header("Content-Type: text/html; charset=ISO-8859-1",true);
-ini_set('default_charset','UTF-8');
-
 
 /**
  * backend/config.php

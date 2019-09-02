@@ -32,7 +32,7 @@ while($array = $buscando->fetch(PDO::FETCH_ASSOC)){
 
 ?>
 
-<script type="text/javascript" src="jquery.js"> </script>
+<!-- <script type="text/javascript" src="jquery.js"> </script> -->
 
    <style type="text/css">
 
@@ -109,11 +109,11 @@ body.loading .fuck{
                 style="width: 100%; white-space: normal;" id="listar_frequencia">
                 <thead>
                     <tr>
-                        <th style="width: 5%;">Número</th>
+                        <th style="width: 5%;">NÃºmero</th>
                         <th>Matricula</th>
                         <th>Nome</th>
-                        <th>Situação</th>
-                        <th>Alterar situação </th>
+                        <th>SituaÃ§Ã£o</th>
+                        <th>Alterar situaÃ§Ã£o </th>
                         </tr>
                     </thead>
                     
@@ -232,7 +232,7 @@ $(document).ready(function() {
         buttons: [
         {
             extend: 'print',
-            title: 'Relatório de Frequencia - Curso - Disciplina - data',
+            title: 'Relatï¿½rio de Frequencia - Curso - Disciplina - data',
             text: '<i class="fa fa-print"></i> imprimir',
             exportOptions: {
                 columns: [0,2,3]
@@ -240,7 +240,7 @@ $(document).ready(function() {
         },
         {
             extend: 'pdf',
-            title: 'Relatório de Frequencia',
+            title: 'Relatï¿½rio de Frequencia',
             text: '<i class="fa fa-file-pdf-o"></i> pdf',
             exportOptions: {
                 columns: [0,2,3]
@@ -295,6 +295,7 @@ function dataAtualFormatada(){
     return " " + dia+"-"+mes+"-"+ano+" "+time;
 }
 </script> -->
+<div class="fuck"><!-- Place at bottom of page --></div>
 
 <?php $cb->get_js('js/plugins/select2/js/select2.full.min.js'); ?>
 

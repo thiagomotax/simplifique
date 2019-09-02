@@ -52,7 +52,7 @@ $conn=mysqli_connect("localhost","root","","bd_simplifique");
                 </button>
                 <div class="dropdown-menu dropdown-menu-right min-width-200"
                     aria-labelledby="page-header-user-dropdown">
-                    <h5 class="h6 text-center py-10 mb-5 border-b text-uppercase">Usu·rio</h5>
+                    <h5 class="h6 text-center py-10 mb-5 border-b text-uppercase">Usu√°rio</h5>
                     <a class="dropdown-item" data-toggle="layout" data-action="side_overlay_toggle">
                         <i class="si si-user mr-5"></i> Perfil
                     </a>

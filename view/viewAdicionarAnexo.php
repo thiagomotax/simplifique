@@ -109,13 +109,13 @@ $conn=mysqli_connect("localhost","root","","bd_simplifique");
                     <div class="form-group row">
                     <div class="col-lg-4">
                             <p class="text-muted">
-                                Título do anexo
+                                Tï¿½tulo do anexo
                             </p>
                         </div>
                         <div class="col-lg-8">
                             <div class="form-material floating">
                                 <input type="text" class=" form-control" id="titulo" name="titulo">
-                                <label for="titulo">Título</label>
+                                <label for="titulo">Tï¿½tulo</label>
                             </div>
                         </div>
                     </div>
@@ -134,8 +134,8 @@ $conn=mysqli_connect("localhost","root","","bd_simplifique");
                             <div class="custom-file form">
                                 <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                                 <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
-                                <input type="file" class="custom-file-input" id="file" name="file" data-toggle="custom-file-input" multiple>
-                                <label class="custom-file-label" for="re-listing-photos">Escolha o arquivo</label>
+                                <input type="file" id="filex" name="filex">
+                                <label>Escolha o arquivo</label>
                             </div>
                         </div>
                     </div>
@@ -188,7 +188,7 @@ $conn=mysqli_connect("localhost","root","","bd_simplifique");
             <div class="form-group row">
                 <div class="mx-auto">
                     <div class="form-group">
-                        <button type="submit" id="button-cadastrar-anexo" enctype="multipart/form-data" class="btn btn-alt-primary">
+                        <button type="submit" enctype="multipart/form-data" id="button-cadastrar-anexo"  class="btn btn-alt-primary">
                             <i class="fa fa-plus mr-5"></i>
                             Adicionar
                         </button>
