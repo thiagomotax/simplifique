@@ -1,136 +1,3 @@
-$(document).ready(function () {
-    $('#btnEditarLogado').click(function () {
-      jQuery('.js-validation-logado').validate({
-        errorClass: 'invalid-feedback animated fadeInDown',
-        errorElement: 'div',
-        errorPlacement: (error, e) => {
-            jQuery(e).parents('.form-group > div').append(error);
-        },
-        highlight: e => {
-            jQuery(e).closest('.form-group').removeClass('is-invalid').addClass('is-invalid');
-        },
-        success: e => {
-            jQuery(e).closest('.form-group').removeClass('is-invalid');
-            jQuery(e).remove();
-        },
-        rules: {
-          'cpf': {
-              cpfBR: true
-          },
-          'email': {
-              email: true
-          },
-          'senha': {
-             minlength: 6
-          },
-          'confirm-senha': {
-              equalTo: '#senha'
-          }
-      },
-      messages: {
-        'cpf': {
-            cpfBR: 'Digite um cpf válido'
-        },
-        'email': {
-            email: 'Digite um endereÃ§o de email válido'
-        },
-        'senha': {
-            minlength: 'A senha deve ter no mínimo 8 caracteres'
-        },
-        'confirm-senha': {
-            minlength: 'A senha deve ter no mínimo 8 caracteres',
-            equalTo: 'Digite a mesma senha do campo acima'
-        }
-    },
-        /*submitHandler: function (form) {
-          var dados = $('#form-cadastrar-logado').serializeArray();
-          $body = $("body");
-          $body.addClass("loading");
-          $.ajax({
-            type: "POST",
-            url: "../controller/ControllerLogado.php",
-            data: dados,
-            success: function (result) {
-              if (result == 1) {
-                $body.removeClass("loading");
-                $("#form-cadastrar-logado")[0].reset();
-                $('#idC').val('').trigger('change');
-                alerta("success", "Logado cadastrado com sucesso!", " Cadastrar outro", "Ver lista de logado", "viewListarLogado.php");
-              } else{
-                $body.removeClass("loading");
-                alerta("error", "Erro ao cadastrar logado!", " Cadastrar outro", "Ver lista de logado", "viewListarLogado.php");
-              }     
-            }
-          });
-          return false;
-        }*/
-
-
-$submitHandler: function (form) {
-    var dados = $('#form-cadastrar-logado').serializeArray();
-      $body = $("body");
-      $body.addClass("loading");
-      $.ajax({
-          type: "POST",
-          url: "../controller/ControllerLogado.php",
-          data: dados,
-          success: function (result) {
-          alert(result);
-              if (result == 1) {
-                $body.removeClass("loading");
-                alerta("success", "Dados editados com sucesso!", " Voltar", "", "");
-
-              } else{
-                $body.removeClass("loading");
-                alerta("error", "Erro ao editar dados", " Voltar", "", "");
-                atualizarTabela();
-              }
-          }
-      });
-      return false;
-}
-  });
-    });
-  });
-function excluirLogado(id) {
-  var nome = $('#rowDeleteLogado_' + (id - 1)).attr("data-nome");
-  var id = $('#rowDeleteLogado_' + (id - 1)).attr("data-id");
-
-  Swal.fire({
-      title: "Deseja realmente excluir o logado " + nome + "?",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: "#D05BE2",
-      confirmButtonText: "<i class='fa fa-times'></i> Excluir",
-      cancelButtonText: "<i class='fa fa-check'></i> Cancelar",
-      preConfirm: function () {
-        $body = $("body");
-        $body.addClass("loading");
-          $.ajax({
-              type: "POST",
-              url: "../controller/ControllerLogado.php",
-              data: {
-                  acao: "excluir",
-                  id: id
-              },
-              success: function (result) {
-                  if (result == 1) {
-                    $body.removeClass("loading");
-                    alerta("success", "Logado excluÃ­do com sucesso!", " Ver logado", "Adicionar novo logado", "viewAdicionarLogado.php");
-                    atualizarTabela();
-                  }
-                  else{
-                    $body.removeClass("loading");
-                    alerta("error", "Erro ao excluir o logado!", " Ver logado", "Adicionar novo logado", "viewAdicionarLogado.php");
-                    atualizarTabela();
-                  }
-
-              }
-          });
-      }
-  });
-  return false;
-}
   function alerta(type, title, button, footer, link){
     Swal.fire({
       type: type,
@@ -145,35 +12,13 @@ function excluirLogado(id) {
     });
   }
 
-  function atualizarTabela(){
+  /*function atualizarTabela(){
     var table = $('#listar_logado').DataTable();
     table.ajax.reload(null, false);
-  }
+  }*/
 
-  function editarLogado(id) {
-    var idLogado = $('#rowEditarLogado_' + (id - 1)).attr("data-id");
-    var nomeLogado = $('#rowEditarLogado_' + (id - 1)).attr("data-nome");
-    var cpfLogado = $('#rowEditarLogado_' + (id - 1)).attr("data-cpf");
-    var dataLogado = $('#rowEditarLogado_' + (id - 1)).attr("data-data");
-    var emailLogado = $('#rowEditarLogado_' + (id - 1)).attr("data-email");
-    var senhaLogado = $('#rowEditarLogado_' + (id - 1)).attr("data-senha");
-    var idCurso = $('#rowEditarLogado_' + (id - 1)).attr("data-idc");
 
-    $('#curso').load('../view/hello.php?IdCurso='+idCurso);
-
-    $('#verLogado').modal('show');
-
-    $('.modal .modal-dialog .modal-content #nomeP').text("Detalhes do logado(a) " + nomeLogado);
-    $('.modal .modal-dialog .modal-content #id').val(idLogado);
-    $('.modal .modal-dialog .modal-content #nome').val(nomeLogado);
-    $('.modal .modal-dialog .modal-content #cpf').val(cpfLogado);
-    $('.modal .modal-dialog .modal-content #data').val(dataLogado);
-    $('.modal .modal-dialog .modal-content #email').val(emailLogado);
-    $('.modal .modal-dialog .modal-content #senha').val(senhaLogado);
-  
-}
-
-$.validator.addMethod( "cpfBR", function( value, element ) {
+/* $.validator.addMethod( "cpfBR", function( value, element ) {
 	"use strict";
 
 	if ( this.optional( element ) ) {
@@ -233,4 +78,4 @@ $.validator.addMethod( "cpfBR", function( value, element ) {
 	}
 	return false;
 
-}, "Please specify a valid CPF number" );
+}, "Please specify a valid CPF number" ); */
