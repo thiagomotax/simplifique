@@ -24,6 +24,16 @@
              }
 
 ?>
+
+<style type="text/css">
+
+    .erroNome, .erroEmail, .erroSenha, .erroConfirm-Senha{
+
+    display: none;
+
+    }
+     </style>
+
 <!-- Side Overlay-->
 <aside id="side-overlay">
     <!-- Side Header -->
@@ -74,7 +84,7 @@
                     <div class="form-group mb-15">
                         <label for="nome">Nome</label>
                         <div class="input-group">
-                            <input required type="text" class="form-control" id="nome"
+                            <input type="text" class="form-control" id="nome"
                                 name="nome" placeholder="Seu nome.." value="<?php echo $idAux; ?>" >
                             <div class="input-group-append">
                                 <span class="input-group-text">
@@ -82,11 +92,12 @@
                                 </span>
                             </div>
                         </div>
+                        <div class="invalid-feedback erroNome">Digite o nome completo</div>
                     </div>
                     <div class="form-group mb-15">
                         <label for="email">Email</label>
                         <div class="input-group">
-                            <input required type="email" class="form-control" id="email"
+                            <input type="email" class="form-control" id="email"
                                 name="email" placeholder="Seu email.." value="<?php echo $email; ?>" >
                             <div class="input-group-append">
                                 <span class="input-group-text">
@@ -94,11 +105,12 @@
                                 </span>
                             </div>
                         </div>
+                        <div class="invalid-feedback erroEmail">Digite um email válido</div>
                     </div>
 
                     <div class="form-group row">
                         <div class="col-12">
-                            <button  id="btnEditarLogado" class="btn btn-alt-primary"   onclick="enviarDados()">
+                            <button type="button id="btnEditarLogado" class="btn btn-alt-primary"   onclick="enviarDados()">
                                 <i class="fa fa-refresh mr-5"></i> Atualizar dados
                             </button>
                         </div>
@@ -139,6 +151,7 @@
                                 </span>
                             </div>
                         </div>
+                        <div class="invalid-feedback erroSenha">A senha deve ter no mínimo 8 caracteres</div>
                     </div>
                     <div class="form-group mb-15">
                         <label for="confirm-senha">Confirmação de senha</label>
@@ -151,10 +164,11 @@
                                 </span>
                             </div>
                         </div>
+                        <div class="invalid-feedback erroConfirm-Senha">As senhas não conferem</div>
                     </div>
                     <div class="form-group row">
                         <div class="col-12">
-                            <button   id="btnEditarSenha" class="btn btn-alt-primary" onclick="tamSenha()">
+                            <button type="button"  id="btnEditarSenha" class="btn btn-alt-primary" onclick="enviarSenha()">
                                 <i class="fa fa-refresh mr-5"></i> Atualizar senha
                             </button>
                         </div>
@@ -181,58 +195,60 @@
 function enviarDados(){
 
     var nome = document.getElementById('nome');
+    var email = document.getElementById('email');
 
     if (nome.value.length < 8){
 
-        nome.setCustomValidity('Digite o nome completo');
+        $('.erroNome').show();
     }
 
     else {
-
-        nome.setCustomValidity('');
-        alerta("success", "Dados alterados com sucesso!", "" , "Recarregue a página", "");
-        document.getElementById('atualizarSenha').submit();
-        document.getElementById('atualizarSenha').reset();
     
-    }      
+        $('.erroNome').hide();
+    
+        if (email.value.length < 11){
+
+            $('.erroEmail').show();
+        }
+
+        else {
+
+            $('.erroEmail').hide();
+            alerta("success", "Dados alterados com sucesso!", "" , "Recarregue a página", "");
+            document.getElementById('atualizarDados').submit();
+            document.getElementById('atualizarDados').reset();
+        } 
+    }     
 }
 
-function tamSenha(){ 
+function enviarSenha(){ 
 
     var senha = document.getElementById('senha')
     var confirm = document.getElementById('confirmSenha');
 
     if (senha.value.length < 8) {
 
-        senha.setCustomValidity('A senha deve ter no mínimo 8 caracteres');
+        $('.erroSenha').show();
         
     }
 
     else {
     
-        senha.setCustomValidity('');
+        $('.erroSenha').hide();
 
         if (confirm.value != senha.value) {
             
-            confirm.setCustomValidity('Repita a senha corretamente');
+            $('.erroConfirm-Senha').show();
         }  
         
          else {
-            confirm.setCustomValidity('');
-            document.getElementById("btnEditarSenha").addEventListener("click", alertar); 
-                                  
+            $('.erroConfirm-Senha').hide();
+            alerta("success", "Senha alterada com sucesso!", " Voltar" , "Sair e fazer login", "viewLogin.php");
+            document.getElementById('atualizarSenha').submit();
+            document.getElementById('atualizarSenha').reset();                           
         }    
     }
     
-}
-
-
-
-function alertar (){
-    alerta("success", "Senha alterada com sucesso!", " Voltar" , "Sair e fazer login", "viewLogin.php");
-    document.getElementById('atualizarSenha').submit();
-    document.getElementById('atualizarSenha').reset();
-    document.getElementById('senha').setCustomValidity('');
 }
 
 
