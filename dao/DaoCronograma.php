@@ -23,25 +23,6 @@ class DaoCronograma {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function adicionarCronograma(ModelCronograma $cronograma) {
         try {
 
@@ -98,71 +79,43 @@ class DaoCronograma {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function atualizarCronograma(ModelCronograma $cronograma) {
         try {
             //update user where idprof
+
             $idCronograma = $cronograma->getIdCronograma();
             $descricaoCronograma = $cronograma->getDescricaoCronograma();
             $tituloCronograma = $cronograma->getTituloCronograma();
             $dataCronograma = $cronograma->getDataCronograma();
 
-            $stmt = $this->conn->prepare("UPDATE cronograma SET  tituloCronograma = ?, descricaoCronograma = ?, dataCronograma = ?   WHERE idCronograma = ?");
+            if ($dataCronograma != 0){
+
+                $stmt = $this->conn->prepare("UPDATE cronograma SET  tituloCronograma = ?, descricaoCronograma = ?, dataCronograma = ?   WHERE idCronograma = ?");
 
 
-            $stmt->bindparam(1, $tituloCronograma);
-            $stmt->bindparam(2, $descricaoCronograma);
-            $stmt->bindparam(3, $dataCronograma);
-            $stmt->bindparam(4, $idCronograma);
-            $stmt->execute();
+                $stmt->bindparam(1, $tituloCronograma);
+                $stmt->bindparam(2, $descricaoCronograma);
+                $stmt->bindparam(3, $dataCronograma);
+                $stmt->bindparam(4, $idCronograma);
+                $stmt->execute();
             
 
 
-            if ($stmt->rowCount() > 0) {
-                echo 1;
-            } else {
+                if ($stmt->rowCount() > 0) {
+                    echo 1;
+                } else {
+                    echo 2;
+                }
+            }
+
+            else {
+
                 echo 2;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
