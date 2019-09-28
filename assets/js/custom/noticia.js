@@ -32,10 +32,10 @@ $(document).ready(function () {
       },
       messages: {
         'titulo': {
-            required: 'Por favor, digite o titulo da notÌcia',
+            required: 'Por favor, digite o titulo da not√≠cia',
         },
         'descricao': {
-            required: 'Por favor, descreva a notÌcia',
+            required: 'Por favor, descreva a not√≠cia',
         },
         'data': {
             required: 'Por favor, preencha a data do cadastro',
@@ -60,10 +60,10 @@ $(document).ready(function () {
               if (result == 1) {
                 $body.removeClass("loading");
                 $("#form-cadastrar-noticia")[0].reset()
-                alerta("success", "NotÌcia cadastrada com sucesso!", " Cadastrar outra", "Ver notÌcias cadastradas", "viewListarNoticias.php");
+                alerta("success", "Not√≠cia cadastrada com sucesso!", " Cadastrar outra", "Ver not√≠cias cadastradas", "viewListarNoticias.php");
               } else {
                 $body.removeClass("loading");
-                alerta("error", "Erro ao cadastrar notÌcia!", " Cadastrar outra", "Ver notÌcias cadastradas", "viewListarNoticias.php");
+                alerta("error", "Erro ao cadastrar not√≠cia!", " Cadastrar outra", "Ver not√≠cias cadastradas", "viewListarNoticias.php");
               }
             }
           });
@@ -87,12 +87,12 @@ $(document).ready(function () {
           alert(result);
               if (result == 1) {
                 $body.removeClass("loading");
-                alerta("success", "NotÌcia editada com sucesso!", " Ver notÌcia", "Adicionar nova notÌcia", "viewAdicionarNoticias.php");
+                alerta("success", "Not√≠cia editada com sucesso!", " Ver not√≠cia", "Adicionar nova not√≠cia", "viewAdicionarNoticias.php");
                 atualizarTabela();
 
               } else{
                 $body.removeClass("loading");
-                alerta("error", "Erro ao editar notÌcia", " Ver notÌcia", "Adicionar nova notÌcia", "viewAdicionarNoticias.php");
+                alerta("error", "Erro ao editar not√≠cia", " Ver not√≠cia", "Adicionar nova not√≠cia", "viewAdicionarNoticias.php");
                 atualizarTabela();
               }
           }
@@ -105,7 +105,7 @@ function excluirNoticia(id) {
   var id = $('#rowDeleteNoticia_' + (id - 1)).attr("data-id");
 
   Swal.fire({
-      title: "Deseja realmente excluir a notÌcia ?",
+      title: "Deseja realmente excluir a not√≠cia ?",
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: "#D05BE2",
@@ -124,12 +124,12 @@ function excluirNoticia(id) {
               success: function (result) {
                   if (result == 1) {
                     $body.removeClass("loading");
-                    alerta("success", "NotÌcia exclu√≠da com sucesso!", " Ver notÌcia", "Adicionar nova notÌcia", "viewAdicionarNoticias.php");
+                    alerta("success", "Not√≠cia exclu√≠da com sucesso!", " Ver not√≠cia", "Adicionar nova not√≠cia", "viewAdicionarNoticias.php");
                     atualizarTabela();
                   }
                   else{
                     $body.removeClass("loading");
-                    alerta("error", "Erro ao excluir notÌcia!", " Ver notÌcia", "Adicionar nova notÌcia", "viewAdicionarNoticias.php");
+                    alerta("error", "Erro ao excluir not√≠cia!", " Ver not√≠cia", "Adicionar nova not√≠cia", "viewAdicionarNoticias.php");
                     atualizarTabela();
                   }
 

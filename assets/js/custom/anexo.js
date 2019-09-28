@@ -38,10 +38,10 @@ $(document).ready(function () {
             required: 'Por favor, digite titulo do anexo',
         },
         'url': {
-            required: 'Por favor, digite o cpf do anexo',
+            required: 'Por favor, digite a url do anexo',
         },
-        'file': {
-            required: 'Por favor, digite o e-mail do anexo',
+        '': {
+            required: 'Por favor, insira o anexo',
         },
          'disciplina': {
             required: 'Por favor, selecione a disciplina',
@@ -131,7 +131,7 @@ function excluirAnexo(id) {
               success: function (result) {
                   if (result == 1) {
                     $body.removeClass("loading");
-                    alerta("success", "Anexo excluído com sucesso!", " Ver anexo", "Adicionar novo anexo", "viewAdicionarAnexo.php");
+                    alerta("success", "Anexo excluÃ­do com sucesso!", " Ver anexo", "Adicionar novo anexo", "viewAdicionarAnexo.php");
                     atualizarTabela();
                   }
                   else if(result == 2){

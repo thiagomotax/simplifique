@@ -22,19 +22,19 @@ $(document).ready(function () {
           },
           'data': {
               required: true
-          },
-      },
-      messages: {
-        'curso': {
+          }
+        },
+        messages: {
+          'curso': {
             required: 'Por favor, selecione o curso',
-        },
-        'disciplina': {
+          },
+          'disciplina': {
             required: 'Por favor, selecione a disciplina',
+          },
+          'data': {
+            required: 'Por favor, selecione a data'
+          }
         },
-        'data': {
-            required: 'Por favor, selecione a data',
-        }
-    },
         submitHandler: function (form) {
           var dados = $('#form-cadastrar-frequencia').serializeArray();
           $body = $("body");
@@ -44,7 +44,7 @@ $(document).ready(function () {
             url: "../controller/ControllerFrequencia.php",
             data: dados,
             success: function (result) {
-            alert(result);
+              alert(result);
               if (result == 1) {
                 $body.removeClass("loading");
                 $("#form-cadastrar-frequencia")[0].reset();
@@ -59,7 +59,7 @@ $(document).ready(function () {
         }
       });
     });
-  });
+});
 
 
 function editarFrequencia(id) {
@@ -148,12 +148,12 @@ function excluirFrequencia(id) {
               alert(result);
                   if (result == 1) {
                     $body.removeClass("loading");
-                    alerta("success", "Lista exclu�da com sucesso!", " Ver frequencias lan�adas", "Gerar nova lista", "viewGerarFrequencia.php");
+                    alerta("success", "Lista excluída com sucesso!", " Ver frequencias lançadas", "Gerar nova lista", "viewGerarFrequencia.php");
                     atualizarTabela();
                   }
                   else{
                     $body.removeClass("loading");
-                    alerta("error", "Erro ao excluir lista!", " Ver frequencias lan�adas", "Gerar nova lista", "viewGerarFrequencia.php");
+                    alerta("error", "Erro ao excluir lista!", " Ver frequencias lançadas", "Gerar nova lista", "viewGerarFrequencia.php");
                     atualizarTabela();
                   }
 

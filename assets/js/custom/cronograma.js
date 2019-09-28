@@ -1,4 +1,50 @@
 $(document).ready(function () {
+    $('#button-Gerar-Cronograma').click(function () {
+      jQuery('.js-validation-cronograma').validate({
+        errorClass: 'invalid-feedback animated fadeInDown',
+        errorElement: 'div',
+        errorPlacement: (error, e) => {
+            jQuery(e).parents('.form-group > div').append(error);
+        },
+        highlight: e => {
+            jQuery(e).closest('.form-group').removeClass('is-invalid').addClass('is-invalid');
+        },
+        success: e => {
+            jQuery(e).closest('.form-group').removeClass('is-invalid');
+            jQuery(e).remove();
+        },
+        rules: {
+          'curso': {
+              required: true,
+          },
+          'disciplina': {
+              required: true,
+          },
+          '': {
+              required: true,
+              email: true
+          }
+        },
+        messages: {
+          'curso': {
+            required: 'Por favor, selecione um curso',
+          },
+          'disciplina': {
+            required: 'Por favor, selecione uma disciplina',
+          },
+          '': {
+            required: 'Por favor, digite o e-mail do cronograma',
+            email: 'Digite um endereço de email válido'
+          },
+          '': {
+            required: 'Por favor, digite a senha do cronograma',
+            minlength: 'A senha deve ter no mínimo 8 caracteres'
+          }
+         },
+      });
+    });
+
+
     $('#button-cadastrar-cronograma').click(function () {
       jQuery('.js-validation-cronograma').validate({
         errorClass: 'invalid-feedback animated fadeInDown',
@@ -17,32 +63,12 @@ $(document).ready(function () {
           '': {
               required: true,
           },
+        },
+        messages: {
           '': {
-              required: true,
-              cpfBR: true
+            required: '',
           },
-          '': {
-              required: true,
-              email: true
-          }
-      },
-      messages: {
-        '': {
-            required: 'Por favor, digite o nome do cronograma',
-        },
-        '': {
-            required: 'Por favor, digite o cpf do cronograma',
-            cpfBR: 'Digite um cpf válido'
-        },
-        '': {
-            required: 'Por favor, digite o e-mail do cronograma',
-            email: 'Digite um endereço de email válido'
-        },
-        '': {
-            required: 'Por favor, digite a senha do cronograma',
-            minlength: 'A senha deve ter no mínimo 8 caracteres'
-        }
-    },
+         },
         submitHandler: function (form) {
           var dados = $('#form-cadastrar-cronograma').serializeArray();
           $body = $("body");
@@ -56,10 +82,11 @@ $(document).ready(function () {
               if (result == 1) {
                 $body.removeClass("loading");
                 $("#form-cadastrar-cronograma")[0].reset();
-                alerta("success", "Cadastrado com sucesso! <BR> Atualize a lista", " Voltar", "", "");
+                alerta("success", "Cadastrado com sucesso!", " ", "Atualizar lista", "");
+                $("#listar_cronograma").bootstrapTable('refresh');
               } else{
                 $body.removeClass("loading");
-                alerta("error", "Erro!", " Tentar novamente", "", "");
+                alerta("error", "Erro!", " Tentar novamente", "Voltar", "");
               }
             }
           });
@@ -83,11 +110,11 @@ $(document).ready(function () {
           alert(result);
               if (result == 1) {
                 $body.removeClass("loading");
-                alerta("success", "Cronograma editado com sucesso! <BR> Atualize a lista", " Voltar", "", "");
+                alerta("success", "Cronograma editado com sucesso!", " Voltar", "Atualizar lista", "");
 
               } else{
                 $body.removeClass("loading");
-                alerta("error", "Erro ao editar cronograma", " Voltar", "", "");
+                alerta("error", "Erro ao editar cronograma <br> Verifique se a data foi adicionada", " Voltar", "", "");
               }
           }
       });
@@ -118,7 +145,7 @@ function excluirCronograma(id) {
               success: function (result) {
                   if (result == 1) {
                     $body.removeClass("loading");
-                    alerta("success", "Exclu�do com sucesso! Atualize a tabela", " Voltar", "", "");
+                    alerta("success", "Excluído com sucesso!", " Voltar", "Atualizar lista", "");
                   }
                   else{
                     $body.removeClass("loading");
