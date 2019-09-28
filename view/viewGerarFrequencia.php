@@ -215,7 +215,7 @@ jQuery(function() {
 });
 </script>
 
-<?php $cb->get_js('/js/custom/frequencia.js'); ?>
+<?php $cb->get_js('js/custom/frequencia.js'); ?>
 <script>jQuery(function(){ Codebase.helpers(['masked-inputs']); });</script>
 
 

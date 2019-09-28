@@ -109,13 +109,13 @@ $conn=mysqli_connect("localhost","root","","bd_simplifique");
                     <div class="form-group row">
                     <div class="col-lg-4">
                             <p class="text-muted">
-                                T�tulo do anexo
+                                Título do anexo
                             </p>
                         </div>
                         <div class="col-lg-8">
                             <div class="form-material floating">
                                 <input type="text" class=" form-control" id="titulo" name="titulo">
-                                <label for="titulo">T�tulo</label>
+                                <label for="titulo">Título</label>
                             </div>
                         </div>
                     </div>
@@ -128,18 +128,19 @@ $conn=mysqli_connect("localhost","root","","bd_simplifique");
                             </p>
                         </div>
 
-                    <div class="col-lg-7 ">
+                    <div class="col-lg-8 ">
                         <div class="form-group">
-                        <BR><BR>
-                            <div class="custom-file form">
-                                <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                                <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
-                                <input type="file" id="filex" name="filex">
-                                <label>Escolha o arquivo</label>
+                            <BR><BR>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="filex" name="filex">
+                                    <label class="custom-file-label" for="filex">Escolha um arquivo...</label>
+                                    <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
+                                    <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
+              
                             </div>
                         </div>
                     </div>
-                  </div>
+                    </div>
 
                     <div class="form-group row">
                     <div class="col-lg-4">

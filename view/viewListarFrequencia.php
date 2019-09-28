@@ -46,10 +46,10 @@ body.loading .fuck{
 <div class="content">
     <div class="my-50 text-center">
         <h2 class="font-w700 text-black mb-10">
-            <i class="fa fa-eye text-muted mr-5 text-primary"></i> Frequencias Lançadas
+            <i class="fa fa-eye text-muted mr-5 text-primary"></i> Frequencias LanÃ§adas
         </h2>
         <h3 class="h5 text-muted mb-0">
-            Clique em excluir para excluir esta lista e todas suas alterações <BR> Você poderá criá-la novamente em "Gerar Listagem"
+            Clique em excluir para excluir esta lista e todas suas alteraÃ§Ãµes <BR> VocÃª poderÃ¡ criÃ¡-la novamente em "Gerar Listagem"
         </h3>
     </div>
 
@@ -145,12 +145,12 @@ $(document).ready(function() {
         "responsive": true,
         "language": {
             "sEmptyTable": "Nenhum registro encontrado",
-            "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-            "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+            "sInfo": "Mostrando de _START_ atÃ© _END_ de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando 0 atÃ© 0 de 0 registros",
             "sInfoFiltered": "(Filtrados de _MAX_ registros)",
             "sInfoPostFix": "",
             "sInfoThousands": ".",
-            "sLengthMenu": "_MENU_ resultados por página",
+            "sLengthMenu": "_MENU_ resultados por pÃ¡gina",
             "sLoadingRecords": "Carregando...",
             "sProcessing": "Processando...",
             "sZeroRecords": "Nenhum registro encontrado",

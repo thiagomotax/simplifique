@@ -61,14 +61,14 @@
     <div class="content">
         <div class="my-50 text-center">
             <h2 class="font-w700 text-black mb-10">
-                <i class="fa fa-plus text-muted mr-5 text-primary"></i> Cadastro de notícias </h2>
+                <i class="fa fa-plus text-muted mr-5 text-primary"></i> Cadastro de notÃ­cias </h2>
 
 
 
 
 
             <h3 class="h5 text-muted mb-0">
-                Preencha as informações abaixo e clique em adicionar
+                Preencha as informaÃ§Ã£es abaixo e clique em adicionar
             </h3>
         </div>
 
@@ -83,17 +83,17 @@
 
 
 
-                    <h2 class="content-heading text-black">Dados da notícia</h2>
+                    <h2 class="content-heading text-black">Dados da notÃ­cia</h2>
                     <div class="form-group row">
                     <div class="col-lg-4">
                             <p class="text-muted">
-                                Títilo da notícia
+                                TÃ­tilo da notÃ­cia
                             </p>
                         </div>
                         <div class="col-lg-8">
                             <div class="form-material floating">
                                 <input type="text" class="form-control" id="titulo" name="titulo">
-                                <label for="titulo">Título</label>
+                                <label for="titulo">TÃ­tulo</label>
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                     <div class="form-group row">
                     <div class="col-lg-4">
                             <p class="text-muted">
-                               Notícia para o curso
+                               NotÃ­cia para o curso
                             </p>
                         </div>
                         <div class="col-lg-8">
@@ -143,7 +143,7 @@
                     <div class="form-group row">
                     <div class="col-lg-4">
                             <p class="text-muted">
-                               Descreva a notícia
+                               Descreva a notÃ­cia
                             </p>
                         </div>
                         <div class="col-lg-8">

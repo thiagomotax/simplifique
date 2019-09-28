@@ -58,12 +58,12 @@
                 <i class="fa fa-plus text-muted mr-5 text-primary"></i> Gerar cronograma de aula
             </h2>
             <h3 class="h5 text-muted mb-0">
-                Selecione as ap��es
+                Selecione as apções
             </h3>
         </div>
         <div class="block block-rounded block-fx-shadow">
             <div class="block-content">
-                <form class="js-validation-frequencia" id="form-cadastrar-frequencia" method="POST" action="viewAdicionarCronograma.php">
+                <form class="js-validation-cronograma" id="form-cadastrar-frequencia" method="POST" action="viewAdicionarCronograma.php">
                     <input type="hidden" name="acao" value="adicionar">
 
 
@@ -151,7 +151,7 @@
             <div class="form-group row">
                 <div class="mx-auto">
                     <div class="form-group">
-                        <button type="submit"  class="btn btn-alt-primary">
+                        <button type="submit"  id="button-Gerar-Cronograma" class="btn btn-alt-primary">
                             <i class="fa fa-plus mr-5"></i>
                             Gerar
                         </button>
@@ -199,8 +199,13 @@
 					});
 				} else {
 					$('#disciplina').html('<option value="">– Escolha o curso –</option>');
-				}
-			});
+                }
+                
+
+            });
+
+            /*var curso = document.getElementById('curso');
+            curso.setCustomValidity('Selecione um curso');*/
 		});
 		</script>
 		

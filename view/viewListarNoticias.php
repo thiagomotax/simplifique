@@ -46,10 +46,10 @@ body.loading .fuck{
 <div class="content">
     <div class="my-50 text-center">
         <h2 class="font-w700 text-black mb-10">
-            <i class="fa fa-eye text-muted mr-5 text-primary"></i> Listar notícias
+            <i class="fa fa-eye text-muted mr-5 text-primary"></i> Listar notÃ­cias
         </h2>
         <h3 class="h5 text-muted mb-0">
-            Clique em ver notícia para ver/editar seus detalhes ou a exclua
+            Clique em ver notÃ­cia para ver/editar seus detalhes ou a exclua
         </h3>
     </div>
 
@@ -63,11 +63,11 @@ body.loading .fuck{
                 style="width: 100%; white-space: normal;" id="listar_noticias">
                 <thead>
                     <tr>
-                        <th>Título</th>
-                        <th>Descrição</th>
-                        <th>Data da última atualização</th>
+                        <th>TÃ­tulo</th>
+                        <th>DescriÃ§Ã£o</th>
+                        <th>Data da Ãºltima atualizaÃ§Ã£o</th>
                         <th>Curso</th>
-                        <th >Ações</th>
+                        <th >AÃ§Ãµes</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -111,7 +111,7 @@ body.loading .fuck{
                             <div class="col-md-12">
                                 <div class="form-material">
                                     <input type="text" class="form-control" id="titulo" name="titulo">  </input>
-                                    <label for="titulo">Título da Notícia</label>
+                                    <label for="titulo">TÃ­tulo da NotÃ­cia</label>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@ body.loading .fuck{
                             <div class="col-12">
                                 <div class="form-material">
                                     <textarea   class="form-control" id="descricao" name="descricao" > </textarea>
-                                    <label for="descricao">Descrição</label>
+                                    <label for="descricao">DescriÃ§Ã£o</label>
                                 </div>
                             </div>
                         </div>

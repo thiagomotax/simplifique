@@ -69,8 +69,8 @@ body.loading .fuck{
                         <th>Link</th>
                         <th>Curso</th>
                         <th>Discipina</th>
-                        <th title="Data da última atualização">Data</th>
-                         <th>Ações</th>
+                        <th title="Data da Ãºltima atualizaÃ§Ã£o">Data</th>
+                         <th>AÃ§Ãµes</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -114,7 +114,7 @@ body.loading .fuck{
                             <div class="col-md-12">
                                 <div class="form-material">
                                     <input type="text" class="form-control" id="titulo" name="titulo">
-                                    <label for="titulo">Título do Anexo</label>
+                                    <label for="titulo">TÃ­tulo do Anexo</label>
                                 </div>
                             </div>
                         </div>
@@ -129,11 +129,12 @@ body.loading .fuck{
                         
                         <div class="form-group row">
                             <div class="col-12">
-                                 <div class="custom-file form">
-                                <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                                <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
-                                <input type="file" class="custom-file-input" id="file" name="file" data-toggle="custom-file-input" multiple>
-                                <label class="custom-file-label" for="re-listing-photos">Escolha o arquivo</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="file" name="file">
+                                    <label class="custom-file-label" for="file">Escolha um arquivo...</label>
+                                    <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
+                                    <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
+              
                             </div>
                         </div>
                      </div>
@@ -283,7 +284,7 @@ $(document).ready(function() {
 function dataAtualFormatada(){
     var data = new Date(),
         dia  = data.getDate().toString().padStart(2, '0'),
-        mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro comeï¿½a com zero.
         ano  = data.getFullYear();
         time = data.getHours()+"h" + data.getMinutes()+"min";
     return " " + dia+"-"+mes+"-"+ano+" "+time;

@@ -135,7 +135,7 @@ body.loading .fuck{
                     <div class="form-group">
                            <a href="viewGerarFrequencia.php">
                               <button type="button" class="btn btn-alt-primary">
-                                      <i class="fa fa-plus mr-5"></i>
+                                      <i class="fa fa-chevron-circle-left"></i>
                                          Voltar
                               </button>
                            </a>
@@ -143,7 +143,9 @@ body.loading .fuck{
                 </div>
              </div>
           </div>
-          
+          <div class="">
+            <em class="font-size-xs text-muted"><i class="fa fa-check-circle-o"></i> As alterações são salvas automaticamente </em>
+          </div>  
 
     </div>
     </div>
@@ -232,7 +234,7 @@ $(document).ready(function() {
         buttons: [
         {
             extend: 'print',
-            title: 'Relat�rio de Frequencia - Curso - Disciplina - data',
+            title: 'Relatório de Frequencia - Curso - Disciplina - data',
             text: '<i class="fa fa-print"></i> imprimir',
             exportOptions: {
                 columns: [0,2,3]
@@ -240,7 +242,7 @@ $(document).ready(function() {
         },
         {
             extend: 'pdf',
-            title: 'Relat�rio de Frequencia',
+            title: 'Relatório de Frequencia',
             text: '<i class="fa fa-file-pdf-o"></i> pdf',
             exportOptions: {
                 columns: [0,2,3]

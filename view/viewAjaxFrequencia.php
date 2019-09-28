@@ -54,11 +54,12 @@
 
     
             
-    $stmtAux = $frequenciaDao->runQuery("SELECT DISTINCT f.dataFrequencia FROM frequencia f, disciplina d, curso c WHERE f.idDisciplina = d.idDisciplina AND f.idCurso = c.idCurso AND f.idProfessor = ?  ");
+    $stmtAux = $frequenciaDao->runQuery("SELECT DISTINCT f.dataFrequencia, f.idCurso FROM frequencia f, disciplina d, curso c WHERE f.idDisciplina = d.idDisciplina AND f.idCurso = c.idCurso AND f.idProfessor = ?  ");
     $stmtAux->bindparam(1, $idAuxFrequencia);
     $stmtAux->execute();
 
      $datas = array();
+     $cursos = array();
      
      $n=0;
      
@@ -68,6 +69,7 @@
     while ($rowAuxiliar = $stmtAux->fetch(PDO::FETCH_ASSOC)) {
 
                 $datas[$n] = $rowAuxiliar['dataFrequencia'];
+                $cursos[$n] = $rowAuxiliar['idCurso'];
 
                  $n++;
                         }
@@ -82,14 +84,16 @@
 
 
      $idAux = $datas[$j];
+     $cursoF = $cursos[$j];
      $new = date('d/m/Y', strtotime($idAux ));
 
 
 
 
-    $stmtFrequencia = $frequenciaDao->runQuery("SELECT * FROM frequencia f, disciplina d, curso c WHERE f.idDisciplina = d.idDisciplina AND f.idCurso = c.idCurso AND f.idProfessor = ? AND f.dataFrequencia = ?");
-    $stmtFrequencia->bindparam(1, $idAuxFrequencia);
-    $stmtFrequencia->bindparam(2, $idAux);
+    $stmtFrequencia = $frequenciaDao->runQuery("SELECT * FROM frequencia f, disciplina d, curso c WHERE f.idDisciplina = d.idDisciplina AND f.idCurso = ? AND f.idCurso = c.idCurso AND f.idProfessor = ? AND f.dataFrequencia = ?");
+    $stmtFrequencia->bindparam(1, $cursoF);
+    $stmtFrequencia->bindparam(2, $idAuxFrequencia);
+    $stmtFrequencia->bindparam(3, $idAux);
     $stmtFrequencia->execute();
 
 

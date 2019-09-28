@@ -56,7 +56,7 @@ while($laco = $buscando->fetch(PDO::FETCH_ASSOC)){
 
 
             <h3 class="h5 text-muted mb-0">
-                Adicione e edite as informações de suas aulaas
+                Adicione e edite as informaÃ§Ãµes de suas aulaas
             </h3>
         </div>
 
@@ -78,7 +78,7 @@ while($laco = $buscando->fetch(PDO::FETCH_ASSOC)){
                            <div class="input-group" style="width:80%;">
                             <input required type="date" class=" form-control"  name="data">
 
-                            <input required type="text"  class=" form-control"  name="titulo" placeholder="Conteúdo da aula..">
+                            <input required type="text"  class=" form-control"  name="titulo" placeholder="ConteÃºdo da aula..">
 
                            </div>
                            <div class="input-group" style="width:80%;">
@@ -88,7 +88,7 @@ while($laco = $buscando->fetch(PDO::FETCH_ASSOC)){
 
 
                            <div class="input-group-append" style="float: right; ">
-                               <button type="submit" id="button-cadastrar-cronograma"  class="btn btn-secondary" >
+                               <button type="submit" id="button-cadastrar-cronograma"  class="btn btn-secondary" data-toggle="tooltip" title="Adicionar" >
                                   <i class="fa fa-plus-circle"></i>
                                 </button>
                             </div>
@@ -156,7 +156,7 @@ while($laco = $buscando->fetch(PDO::FETCH_ASSOC)){
                      ?>
                      <BR><BR><BR>
                     <div class="">
-                        <em class="font-size-xs text-muted"><i class="fa fa-external-link"></i> Conteúdo referênte ao ano atual, para gerar conteúdo de anos anteriores <a href="viewGerarCronograma.php?ano=1"> clique aqui </a> </em>
+                        <em class="font-size-xs text-muted"><i class="fa fa-external-link"></i> ConteÃºdo referÃªnte ao ano atual, para gerar conteÃºdo de anos anteriores <a href="viewGerarCronograma.php?ano=1"> clique aqui </a> </em>
                     </div>
 
 
@@ -186,7 +186,7 @@ while($laco = $buscando->fetch(PDO::FETCH_ASSOC)){
                        <div class="form-group row">
                             <div class="col-12">
                                 <div class="form-material">
-                                    <input type="date" class="js-masked-date form-control" id="data" name="data"></input>
+                                    <input type="date" required class="js-masked-date form-control datepicker" id="data" name="data" ></input>
                                     <label for="data">Data da aula</label>
                                 </div>
                             </div>
@@ -195,7 +195,7 @@ while($laco = $buscando->fetch(PDO::FETCH_ASSOC)){
                             <div class="col-12">
                                 <div class="form-material">
                                     <input type="text" required class="form-control" id="titulo" name="titulo"></input>
-                                    <label for="titulo">Conteúdo da aula</label>
+                                    <label for="titulo">ConteÃºdo da aula</label>
                                 </div>
                             </div>
                         </div>
@@ -203,7 +203,7 @@ while($laco = $buscando->fetch(PDO::FETCH_ASSOC)){
                             <div class="col-12">
                                 <div class="form-material">
                                   <textarea class="form-control form-control-lg text-secondary" id="descricao" name="descricao"></textarea>
-                                   <label for="descricao">Descrição</label>
+                                   <label for="descricao">DescriÃ§Ã£o</label>
                                 </div>
                             </div>
                         </div>
