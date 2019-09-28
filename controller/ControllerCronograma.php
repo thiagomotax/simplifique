@@ -49,11 +49,21 @@ function atualizarCronograma() {
 
     $descricaoCronograma = filter_var($_POST["descricao"], FILTER_SANITIZE_STRING);
     $tituloCronograma = filter_var($_POST["titulo"], FILTER_SANITIZE_STRING);
-    $dataCronograma = filter_var($_POST["data"], FILTER_SANITIZE_STRING);
     $idCronograma = filter_var($_POST["id"], FILTER_SANITIZE_NUMBER_INT);
 
-    $date = date('Y-m-d', strtotime($dataCronograma ));
+    if (empty($_POST["data"])){
+   
+        $date=0;
+    }
 
+    else {
+
+        $dataCronograma = filter_var($_POST["data"], FILTER_SANITIZE_STRING);
+        $date = date('Y-m-d', strtotime($dataCronograma ));
+
+    }
+
+    
 
     $Cronograma = new ModelCronograma();
     
