@@ -56,7 +56,7 @@ while($laco = $buscando->fetch(PDO::FETCH_ASSOC)){
 
 
             <h3 class="h5 text-muted mb-0">
-                Adicione e edite as informações de suas aulaas
+                Adicione, edite ou exclua as informações de suas aulas
             </h3>
         </div>
 
