@@ -16,25 +16,96 @@
 require_once ('../dao/DaoLogin.php');
 $loginDao = new DaoLogin();
 
-$stmt = $loginDao->runQuery("SELECT * FROM aluno a, disciplina d, matricula_curso m  WHERE a.idUsuario =" . $_SESSION['user_id'] . "  AND a.idAluno = m.idAluno AND m.idCurso = d.idCurso ");
+$stmt = $loginDao->runQuery("SELECT * FROM aluno a, disciplina d, matricula_curso m, curso c  WHERE a.idUsuario =" . $_SESSION['user_id'] . "  AND a.idAluno = m.idAluno AND m.idCurso = d.idCurso AND c.idCurso = m.idCurso");
 $stmt->execute();
 
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $nomeCurso = $row['nomeCurso'];
+}
 ?>
 
 
+<style type="text/css">
+
+    .informacoes{
+
+    display: none;
+
+    }
+</style>
 <!-- Page Content -->
 <div class="content">
-     <div class="block block-rounded block-fx-shadow">
+    <div class="my-50 text-center">
+        <h2 class="font-w700 text-black mb-10">
+            <i class="fa fa-eye text-muted mr-5 text-primary"></i> Matériais
+        </h2>
+        <h3 class="h5 text-muted mb-0">
+            O botão para download estará disponível apenas se houver algum anexo  
+        </h3>
+    </div> 
+    <div class="block block-rounded block-fx-shadow">
 
     <!-- Dynamic Table Full -->
    <!-- <div class="block-header block-header-default">
             <h3 class="block-title">Dynamic Table <small>Full</small></h3>
         </div> -->
         <!-- END -->
+        <div class="block-content">
+            <span class="informacoes" style=""> 
+                <h2 class="content-heading text-black">
+                    <?php echo $nomeCurso; ?> - <input type="text" readonly id="disciplinaTitulo" style="border:0;">  
+                    <span style="float:right">
+                        Docente: 
+                        <a onclick="verProfessor()" > 
+                            <input type readonly id="professorTitulo" class="text-primary" style="border:0; cursor: pointer; text-decoration: none;"/> 
+                        </a> 
+                    </span>
+                </h2>
+            </span> 
+        </div>
 
          <div class="block-content" >
 
-            <div >
+
+<form class="form-horizontal" id="verProfessor-form" method="POST">
+    <div class="modal" id="verProfessor" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+            <div class="modal-content">
+                <div class="block block-themed block-transparent mb-0">
+                    <div class="block-header bg-primary">
+                        <h3 class="block-title" id="nomeP"></h3>
+                        <div class="block-options">
+                            <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                <i class="si si-close"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="block-content">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="form-material">
+                                    <input readonly type="text" class="form-control" id="nome" name="nome">
+                                    <label for="nome">Nome do Professor</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <div class="form-material">
+                                    <input readonly type="text" class="form-control" id="contato" name="contato"></input>
+                                    <label for="contato">Contato</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+</form>
              <div class="dropdown">
              <a class="btn btn-alt-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Disciplinas
@@ -45,8 +116,10 @@ $stmt->execute();
 
                         <?php
                         $i=1;
+                        $stmt = $loginDao->runQuery("SELECT * FROM aluno a, disciplina d, matricula_curso m, curso c, usuario u, professor p  WHERE a.idUsuario =" . $_SESSION['user_id'] . "  AND a.idAluno = m.idAluno AND m.idCurso = d.idCurso AND c.idCurso = m.idCurso AND d.idProfessor = p.idProfessor AND p.idUsuario = u.idUsuario");
+                        $stmt->execute();
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {?>
-                                <?php  echo ' <button type="button" class="btn btn-alt-primary dropdown-item" data-toggle="tooltip"  id="rowInsereDisciplina_' . $i . '" data-id="'.$row['idDisciplina'].'" onclick="InsereDisciplina3(' . ($i) . ')">'.$row['nomeDisciplina'].'
+                                <?php  echo ' <button type="button" class="btn btn-alt-primary dropdown-item" data-toggle="tooltip"  id="rowInsereDisciplina_' . $i . '" data-id="'.$row['idDisciplina'].'" data-nome="'.$row['nomeDisciplina'].'" data-nomeProfessor="'.$row['nomeUsuario'].'" data-contato="'.$row['emailUsuario'].'" onclick="InsereDisciplina3(' . ($i) . ')">'.$row['nomeDisciplina'].'
                                             </button> <div class="dropdown-divider"></div>'; ?>
                                 <?php $i++; }?>
                            <BR><BR> <!-- <label for="idC">Selecione o curso...</label> -->
