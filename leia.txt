@@ -2,18 +2,19 @@ Problemas:
 
 PROFESSOR
 
--> Mover arquivo para a pasta e adicionar no bd, em "ControllerAnexo.php" (funÁao adicionar e atualizar anexo)
+-> Mover arquivo para a pasta e adicionar no bd, em "ControllerAnexo.php" (fun√ßao adicionar e atualizar anexo)
 	-Arquivo parece nao ser armazenado na variavel 'file', em "viewAdicionarAnexo.php" e "viewListarAnexo.php"
 
 
 
 ALUNO
 
-->Foto de perfil n„o È movida para a pasta. Parece que o input n„o envia o arquivo p/ ControllerLogado.php sÛ o texto(nome), 
-portanto, o arquivo n„o È movido para pasta sÛ add no bd
+->Foto de perfil n√£o √© movida para a pasta. Parece que o input n√£o envia o arquivo p/ ControllerLogado.php s√≥ o texto(nome), 
+portanto, o arquivo n√£o √© movido para pasta s√≥ add no bd
 
+*Deve ser criada uma pasta com nome "anexos" em ..controller/
 
 Fazer quando acabar:
--ADD curso, disciplina e data (escolhidas, as que est„o no subtitulo) na opÁ pdf e imprimir de "viewAdicionarFrequencia.php" para gera uma lista de frequencia fisica ??
+-ADD curso, disciplina e data (escolhidas, as que est√£o no subtitulo) na op√ß pdf e imprimir de "viewAdicionarFrequencia.php" para gera uma lista de frequencia fisica ??
 
 
