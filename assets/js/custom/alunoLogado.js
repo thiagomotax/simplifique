@@ -1,6 +1,9 @@
 function InsereDisciplina(id) {
 
       var idDisciplina = $('#rowInsereDisciplina_' + (id)).attr("data-id");
+      var nomeDisciplina = $('#rowInsereDisciplina_' + (id)).attr("data-nome");
+      var nomeProfessor = $('#rowInsereDisciplina_' + (id)).attr("data-nomeProfessor");
+      var contato = $('#rowInsereDisciplina_' + (id)).attr("data-contato");
       $body = $("body");
       $body.addClass("loading");
       $.ajax({
@@ -11,7 +14,13 @@ function InsereDisciplina(id) {
                 },
           success: function (result) {
           alert(result);
+          $('#disciplinaTitulo').val(nomeDisciplina);
+          $('#professorTitulo').val(nomeProfessor);
+          $('.informacoes').show();
           atualizarTabela();
+          $('.modal .modal-dialog .modal-content #nomeP').text("Detalhes do Professor ");
+          $('.modal .modal-dialog .modal-content #nome').val(nomeProfessor);
+          $('.modal .modal-dialog .modal-content #contato').val(contato);
           $body.removeClass("loading");
 
               }
@@ -24,6 +33,9 @@ function InsereDisciplina(id) {
  function InsereDisciplina2(id) {
 
       var idDisciplina = $('#rowInsereDisciplina_' + (id)).attr("data-id");
+      var nomeDisciplina = $('#rowInsereDisciplina_' + (id)).attr("data-nome");
+      var nomeProfessor = $('#rowInsereDisciplina_' + (id)).attr("data-nomeProfessor");
+      var contato = $('#rowInsereDisciplina_' + (id)).attr("data-contato");
       $body = $("body");
       $body.addClass("loading");
       $.ajax({
@@ -34,7 +46,13 @@ function InsereDisciplina(id) {
                 },
           success: function (result) {
           alert(result);
+          $('#disciplinaTitulo').val(nomeDisciplina);
+          $('#professorTitulo').val(nomeProfessor);
+          $('.informacoes').show();
           atualizarTabela();
+          $('.modal .modal-dialog .modal-content #nomeP').text("Detalhes do Professor ");
+          $('.modal .modal-dialog .modal-content #nome').val(nomeProfessor);
+          $('.modal .modal-dialog .modal-content #contato').val(contato);
           $body.removeClass("loading");
 
               }
@@ -47,6 +65,9 @@ function InsereDisciplina(id) {
   function InsereDisciplina3(id) {
 
       var idDisciplina = $('#rowInsereDisciplina_' + (id)).attr("data-id");
+      var nomeDisciplina = $('#rowInsereDisciplina_' + (id)).attr("data-nome");
+      var nomeProfessor = $('#rowInsereDisciplina_' + (id)).attr("data-nomeProfessor");
+      var contato = $('#rowInsereDisciplina_' + (id)).attr("data-contato");
       $body = $("body");
       $body.addClass("loading");
       $.ajax({
@@ -57,7 +78,13 @@ function InsereDisciplina(id) {
                 },
           success: function (result) {
           alert(result);
-          atualizarTabela();
+          $('#disciplinaTitulo').val(nomeDisciplina);
+          $('#professorTitulo').val(nomeProfessor);
+          $('.informacoes').show();
+          atualizarTabela();  
+          $('.modal .modal-dialog .modal-content #nomeP').text("Detalhes do Professor ");
+          $('.modal .modal-dialog .modal-content #nome').val(nomeProfessor);
+          $('.modal .modal-dialog .modal-content #contato').val(contato);
           $body.removeClass("loading");
 
               }
@@ -65,6 +92,13 @@ function InsereDisciplina(id) {
 
       return false;
  }
+
+ function verProfessor() {
+
+    $('#verProfessor').modal('show');
+
+  }
+
  
   /*function IniciaDownload(id) {
 
