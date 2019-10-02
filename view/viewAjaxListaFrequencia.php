@@ -52,8 +52,9 @@
         $data[$i]{'matricula'} = $rowFrequencia['idAluno'];
         $data[$i]{'nome'} = $rowFrequencia['nomeUsuario'];
         $data[$i]{'situacaoAt'} = $rowFrequencia['statusFrequencia'];
-        $data[$i]{'button'} = '<input type="button" class="btn btn-alt-primary" name="situacao" value="Presente" id="btnEditarFrequencia_' . $j . '" data-id="' . $rowFrequencia['idFrequencia'] . '"  data-situacao="Presente"  onclick="editarFrequencia(' . ($j) . ')"/>
-                               <input type="button" class="btn btn-alt-primary" name="situacao" value="Ausente" id="btnEditarrFrequencia_' . $j . '" data-id="' . $rowFrequencia['idFrequencia'] . '"  data-situacao="Ausente"  onclick="editarrFrequencia(' . ($j) . ')"/>';
+        $data[$i]{'button'} = '<center> <input type="button" class="btn btn-alt-primary" name="situacao" value="Presente" id="btnEditarFrequencia_' . $j . '" data-id="' . $rowFrequencia['idFrequencia'] . '"  data-situacao="Presente"  onclick="editarFrequencia(' . ($j) . ')"/>
+                               <input type="button" class="btn btn-alt-primary" name="situacao" value="Ausente" id="btnEditarrFrequencia_' . $j . '" data-id="' . $rowFrequencia['idFrequencia'] . '"  data-situacao="Ausente"  onclick="editarrFrequencia(' . ($j) . ')"/> </center>';
+        $data[$i]{'pImprimir'} = '';
 
         $i++; $j++;
     }

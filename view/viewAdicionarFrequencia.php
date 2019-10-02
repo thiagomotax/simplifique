@@ -32,6 +32,10 @@ while($array = $buscando->fetch(PDO::FETCH_ASSOC)){
 
 ?>
 
+<input type="hidden" id="nomeCurso" value="<?php echo $nomeCurso ?>">
+<input type="hidden" id="nomeDisciplina" value="<?php echo $nomeDisciplina ?>">
+
+
 <!-- <script type="text/javascript" src="jquery.js"> </script> -->
 
    <style type="text/css">
@@ -109,11 +113,20 @@ body.loading .fuck{
                 style="width: 100%; white-space: normal;" id="listar_frequencia">
                 <thead>
                     <tr>
-                        <th style="width: 5%;">Número</th>
+                        <th style="width: 5%;">Nº</th>
                         <th>Matricula</th>
                         <th>Nome</th>
                         <th>Situação</th>
                         <th>Alterar situação </th>
+                        <?php 
+                        $i=1;
+
+                        while($i <= 31){
+
+                            echo'<th width=5%> &nbsp </th>';
+                            $i++;
+                        }
+                        ?>
                         </tr>
                     </thead>
                     
@@ -183,8 +196,11 @@ body.loading .fuck{
 
 $(document).ready(function() {
 
+    var nomeCurso = $("#nomeCurso").val();
+    var nomeDisciplina = $("#nomeDisciplina").val();
 
     jQuery('.js-dataTable-full').dataTable({
+
         "columnDefs": [{
                 "targets": [0],
                 "visible": false,
@@ -204,6 +220,130 @@ $(document).ready(function() {
             {
                 "targets": [4],
                 "visible": true,
+            },
+            {
+                "targets": [5],
+                "visible": false,
+            },
+            {
+                "targets": [6],
+                "visible": false,
+            },
+            {
+                "targets": [7],
+                "visible": false,
+            },
+            {
+                "targets": [8],
+                "visible": false,
+            },
+            {
+                "targets": [9],
+                "visible": false,
+            },
+            {
+                "targets": [10],
+                "visible": false,
+            },
+            {
+                "targets": [11],
+                "visible": false,
+            },
+            {
+                "targets": [12],
+                "visible": false,
+            },
+            {
+                "targets": [13],
+                "visible": false,
+            },
+            {
+                "targets": [14],
+                "visible": false,
+            },
+            {
+                "targets": [15],
+                "visible": false,
+            },
+            {
+                "targets": [16],
+                "visible": false,
+            },
+            {
+                "targets": [17],
+                "visible": false,
+            },
+            {
+                "targets": [18],
+                "visible": false,
+            },
+            {
+                "targets": [19],
+                "visible": false,
+            },
+            {
+                "targets": [20],
+                "visible": false,
+            },
+            {
+                "targets": [21],
+                "visible": false,
+            },
+            {
+                "targets": [22],
+                "visible": false,
+            },
+            {
+                "targets": [23],
+                "visible": false,
+            },
+            {
+                "targets": [24],
+                "visible": false,
+            },
+            {
+                "targets": [25],
+                "visible": false,
+            },
+            {
+                "targets": [26],
+                "visible": false,
+            },
+            {
+                "targets": [27],
+                "visible": false,
+            },
+            {
+                "targets": [28],
+                "visible": false,
+            },
+            {
+                "targets": [29],
+                "visible": false,
+            },
+            {
+                "targets": [30],
+                "visible": false,
+            },
+            {
+                "targets": [31],
+                "visible": false,
+            },
+            {
+                "targets": [32],
+                "visible": false,
+            },
+            {
+                "targets": [33],
+                "visible": false,
+            },
+            {
+                "targets": [34],
+                "visible": false,
+            },
+            {
+                "targets": [35],
+                "visible": false,
             }
         ],
         "pagingType": "simple_numbers",
@@ -227,6 +367,99 @@ $(document).ready(function() {
             },
             {
                 "data": "button",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
+            },
+            {
+                "data": "pImprimir",
             }
         ],
         dom: 'Bfrtip',
@@ -234,22 +467,11 @@ $(document).ready(function() {
         buttons: [
         {
             extend: 'print',
-            title: 'Relatório de Frequencia - Curso - Disciplina - data',
-            text: '<i class="fa fa-print"></i> imprimir',
+            title: '<center> Relatório de Frequência </center> <br> Curso: '+ nomeCurso +' <br> Disciplina: '+ nomeDisciplina,
+            text: '<i class="fa fa-print"></i> imprimir lista',
             exportOptions: {
-                columns: [0,2,3]
+                columns: [0,2,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35]
             }
-        },
-        {
-            extend: 'pdf',
-            title: 'Relatório de Frequencia',
-            text: '<i class="fa fa-file-pdf-o"></i> pdf',
-            exportOptions: {
-                columns: [0,2,3]
-            }
-        },
-        {    extend: 'colvis',
-                text: '<i class="fa fa-eye-slash"></i> colunas',
         }],
         "colReorder": true,
 
