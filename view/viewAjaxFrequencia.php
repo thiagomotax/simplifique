@@ -46,114 +46,45 @@
     $stmtAuxFrequencia->execute();
 
     while ($rowAuxiliar = $stmtAuxFrequencia->fetch(PDO::FETCH_ASSOC)) {
-                $idAuxFrequencia = $rowAuxiliar['idProfessor'];
-            }
+                
+        $idAuxFrequencia = $rowAuxiliar['idProfessor'];        
+    }
 
 
     
 
+     
+    $data = array();
     
+    $i = 0;
             
-    $stmtAux = $frequenciaDao->runQuery("SELECT DISTINCT f.dataFrequencia, f.idCurso FROM frequencia f, disciplina d, curso c WHERE f.idDisciplina = d.idDisciplina AND f.idCurso = c.idCurso AND f.idProfessor = ?  ");
+    $stmtAux = $frequenciaDao->runQuery("SELECT DISTINCT f.dataFrequencia, f.idDisciplina, f.idCurso, d.nomeDisciplina, c.nomeCurso FROM frequencia f, disciplina d, curso c WHERE f.idDisciplina = d.idDisciplina AND f.idCurso = c.idCurso AND f.idProfessor = ?  ");
     $stmtAux->bindparam(1, $idAuxFrequencia);
     $stmtAux->execute();
 
-     $datas = array();
-     $cursos = array();
-     
-     $n=0;
-     
-     $data = array();
-
-    $i = 0;
+    
     while ($rowAuxiliar = $stmtAux->fetch(PDO::FETCH_ASSOC)) {
 
-                $datas[$n] = $rowAuxiliar['dataFrequencia'];
-                $cursos[$n] = $rowAuxiliar['idCurso'];
+        $new = date('d/m/Y', strtotime($rowAuxiliar['dataFrequencia']));
+        $data[$i]{'dataFrequencia'} = $new;
+        $data[$i]{'disciplinaFrequencia'} = $rowAuxiliar['nomeDisciplina'];
+        $data[$i]{'cursoFrequencia'} = $rowAuxiliar['nomeCurso'];
 
-                 $n++;
-                        }
+        $data[$i]{'button'} =
+
+        '<div class="text-center">
+            <div class="btn-group" center>
+                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Excluir" id="rowDeleteFrequencia_' . $i . '" data-curso="' . $rowAuxiliar['idCurso'] . '" data-data="' . $rowAuxiliar['dataFrequencia'] . '" data-disciplina="' . $rowAuxiliar['idDisciplina'] . '" onclick="excluirFrequencia(' . ($i + 1) . ')">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div> ';
+
+                 
+        $i++;
                         
-
-      $vez=1;
-      $j=0;
-
-
-     while ($j < $n ) {
-
-
-
-     $idAux = $datas[$j];
-     $cursoF = $cursos[$j];
-     $new = date('d/m/Y', strtotime($idAux ));
-
-
-
-
-    $stmtFrequencia = $frequenciaDao->runQuery("SELECT * FROM frequencia f, disciplina d, curso c WHERE f.idDisciplina = d.idDisciplina AND f.idCurso = ? AND f.idCurso = c.idCurso AND f.idProfessor = ? AND f.dataFrequencia = ?");
-    $stmtFrequencia->bindparam(1, $cursoF);
-    $stmtFrequencia->bindparam(2, $idAuxFrequencia);
-    $stmtFrequencia->bindparam(3, $idAux);
-    $stmtFrequencia->execute();
-
-
-
-
-    while ($rowFrequencia = $stmtFrequencia->fetch(PDO::FETCH_ASSOC)) {
-
-         if (($j == 0) && ($vez == 1)){
-
-        $data[$i]{'dataFrequencia'} = $new;
-        $data[$i]{'disciplinaFrequencia'} = $rowFrequencia['nomeDisciplina'];
-        $data[$i]{'cursoFrequencia'} = $rowFrequencia['nomeCurso'];
-
-        $data[$i]{'button'} =
-
-        '<div class="text-center">
-            <div class="btn-group" center>
-                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Excluir" id="rowDeleteFrequencia_' . $i . '" data-curso="' . $rowFrequencia['idCurso'] . '" data-data="' . $rowFrequencia['dataFrequencia'] . '" data-disciplina="' . $rowFrequencia['idDisciplina'] . '" onclick="excluirFrequencia(' . ($i + 1) . ')">
-                    <i class="fa fa-times"></i>
-                </button>
-            </div>
-        </div> ';
-        $vez++;
-        $i++;
-       }
-        else if ($vez == 1) {
-         $x= ($j - 1);
-         $anteidAux = $datas[$x];
-
-         $Curso = $rowFrequencia['idCurso'];
-
-         if (($idCurso != $Curso) || ($idAux != $anteidAux) ) {
-
-
-        $data[$i]{'dataFrequencia'} = $new;
-        $data[$i]{'disciplinaFrequencia'} = $rowFrequencia['nomeDisciplina'];
-        $data[$i]{'cursoFrequencia'} = $rowFrequencia['nomeCurso'];
-
-        $data[$i]{'button'} =
-
-        '<div class="text-center">
-            <div class="btn-group" center>
-                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Excluir" id="rowDeleteFrequencia_' . $i . '" data-curso="' . $rowFrequencia['idCurso'] . '" data-data="' . $rowFrequencia['dataFrequencia'] . '" data-disciplina="' . $rowFrequencia['idDisciplina'] . '" onclick="excluirFrequencia(' . ($i + 1) . ')">
-                    <i class="fa fa-times"></i>
-                </button>
-            </div>
-        </div> ';
-
-              }
-        $i++;
-        $vez++;
-        }
-
-
-        $idCurso = $rowFrequencia['idCurso'];
-         }
-
-         $j++;
-         $vez=1; }
-
+    }
+                        
 
     $datax = array('data' => $data);
 
