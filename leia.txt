@@ -15,6 +15,6 @@ portanto, o arquivo não é movido para pasta só add no bd
 *Deve ser criada uma pasta com nome "anexos" em ..controller/
 
 Fazer quando acabar:
--ADD curso, disciplina e data (escolhidas, as que estão no subtitulo) na opç pdf e imprimir de "viewAdicionarFrequencia.php" para gera uma lista de frequencia fisica ??
+
 
 
