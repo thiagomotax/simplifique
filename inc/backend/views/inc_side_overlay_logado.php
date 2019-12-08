@@ -80,7 +80,8 @@
             <iframe src="../controller/ControllerLogado.php" name="controladorDados" style="display: none;"></iframe>
                 <form  action="../controller/ControllerLogado.php"class="js-validation-logado" 
                     id="atualizarDados" method="post" target="controladorDados">
-                  <input type="hidden" name="id" id="id" value="<?php echo $session; ?>"> <input type="hidden" name="acao" id="acao" value="editar">
+                  <input type="hidden" name="id" id="id" value="<?php echo $session; ?>"> 
+                  <input type="hidden" name="acao" id="acao" value="editar">
                     <div class="form-group mb-15">
                         <label for="nome">Nome</label>
                         <div class="input-group">
@@ -110,7 +111,7 @@
 
                     <div class="form-group row">
                         <div class="col-12">
-                            <button type="button id="btnEditarLogado" class="btn btn-alt-primary"   onclick="enviarDados()">
+                            <button type="button" id="btnEditarLogado" class="btn btn-alt-primary"   onclick="enviarDados()">
                                 <i class="fa fa-refresh mr-5"></i> Atualizar dados
                             </button>
                         </div>
