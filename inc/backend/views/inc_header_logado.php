@@ -1,6 +1,4 @@
 <?php
-$conn=mysqli_connect("localhost","root","","bd_simplifique");
-
  /**
  * backend/views/inc_header.php
  *
@@ -11,11 +9,10 @@ $conn=mysqli_connect("localhost","root","","bd_simplifique");
  */
  
  $session= $_SESSION['user_id'];
- $query=mysqli_query($conn,"SELECT * FROM usuario WHERE idUsuario = $session ")
-  or die("Erro ao realizar a busca:".mysql_error());
+ $query=$loginDao->runQuery("SELECT * FROM usuario WHERE idUsuario = $session ");
+ $query->execute();
 
-
-   while($row=mysqli_fetch_array($query)){
+   while($row=$query->fetch(PDO::FETCH_ASSOC)){
     
          $idAux = $row['nomeUsuario'];
              }
@@ -52,13 +49,13 @@ $conn=mysqli_connect("localhost","root","","bd_simplifique");
                 </button>
                 <div class="dropdown-menu dropdown-menu-right min-width-200"
                     aria-labelledby="page-header-user-dropdown">
-                    <h5 class="h6 text-center py-10 mb-5 border-b text-uppercase">Usu·rio</h5>
+                    <h5 class="h6 text-center py-10 mb-5 border-b text-uppercase">Usu√°rio</h5>
                     <a class="dropdown-item" data-toggle="layout" data-action="side_overlay_toggle">
                         <i class="si si-user mr-5"></i> Perfil
                     </a>
 
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="viewLogin.php">
+                    <a class="dropdown-item" href="index.php">
                         <i class="si si-logout mr-5"></i> Sair
                     </a>
                 </div>
