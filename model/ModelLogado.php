@@ -6,6 +6,7 @@ class ModelLogado{
     private $cpflogado;
     private $emailLogado;
     private $senhaLogado;
+    private $fotoLogado;
 
 
 
@@ -24,6 +25,10 @@ class ModelLogado{
     public function getSenhaLogado() {
         return $this->senhaLogado;
     }
+    public function getFotoLogado() {
+        return $this->fotoLogado;
+    }
+    
 
     public function setIdLogado($idLogado) {
         $this->idLogado = $idLogado;
@@ -39,6 +44,9 @@ class ModelLogado{
     }
     public function setSenhaLogado($senhaLogado) {
         $this->senhaLogado = $senhaLogado;
+    }
+    public function setFotoLogado($fotoLogado) {
+        $this->fotoLogado = $fotoLogado;
     }
 }
 ?>
