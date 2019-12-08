@@ -23,17 +23,15 @@ class DaoLogado {
             //update user where idprof
             $idLogado = $logado->getIdLogado();
             $nomeLogado = $logado->getNomeLogado();
-            $cpfLogado = $logado->getCpfLogado();
             $emailLogado = $logado->getEmailLogado();
 
 
 
-            $stmt = $this->conn->prepare("UPDATE usuario SET nomeUsuario = ?, cpfUsuario = ?, emailUsuario = ? WHERE idLogado = ? ");
+            $stmt = $this->conn->prepare("UPDATE usuario SET nomeUsuario = ?, emailUsuario = ? WHERE idUsuario = ? ");
 
             $stmt->bindparam(1, $nomeLogado);
-            $stmt->bindparam(2, $cpfLogado);
-            $stmt->bindparam(3, $emailLogado);
-            $stmt->bindparam(4, $idLogado);
+            $stmt->bindparam(2, $emailLogado);
+            $stmt->bindparam(3, $idLogado);
 
             $stmt->execute();
 
@@ -56,7 +54,7 @@ class DaoLogado {
 
 
 
-            $stmt2 = $this->conn->prepare("UPDATE  usuario SET senhaUsuario = ? WHERE idLogado = ?");
+            $stmt2 = $this->conn->prepare("UPDATE  usuario SET senhaUsuario = ? WHERE idUsuario = ?");
 
             $stmt2->bindparam(1, $senhaLogado);
             $stmt2->bindparam(2, $idLogado);
@@ -73,6 +71,32 @@ class DaoLogado {
         }
     }
 
+
+
+    public function atualizarFoto(ModelLogado $logado) {
+        try {
+            //update user where idprof
+            $idLogado = $logado->getIdLogado();
+            $fotoLogado = $logado->getFotoLogado();
+
+
+
+            $stmt3 = $this->conn->prepare("UPDATE  usuario SET fotoUsuario = ? WHERE idUsuario = ?");
+
+            $stmt3->bindparam(1, $fotoLogado);
+            $stmt3->bindparam(2, $idLogado);
+
+            $stmt3->execute();
+
+            if ($stmt3->rowCount() > 0) {
+                echo 1;
+            } else {
+                echo 2;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 
 }
 ?>

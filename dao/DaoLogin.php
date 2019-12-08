@@ -27,7 +27,7 @@ class DaoLogin {
 
             $logado = false;
 
-            $stmt = $this->conn->prepare("SELECT DISTINCT u.idUsuario, u.senhaUsuario, u.emailUsuario FROM aluno a, professor p, usuario u WHERE (a.idUsuario = u.idUsuario AND u.emailUsuario = :email) OR (p.idUsuario = u.idUsuario AND u.emailUsuario = :email)");
+            $stmt = $this->conn->prepare("SELECT DISTINCT u.idUsuario, u.senhaUsuario, u.emailUsuario, u.nivelUsuario FROM aluno a, professor p,gerente g, usuario u WHERE (a.idUsuario = u.idUsuario AND u.emailUsuario = :email) OR (p.idUsuario = u.idUsuario AND u.emailUsuario = :email) OR (g.idUsuario = u.idUsuario AND u.emailUsuario = :email)");
             $stmt->execute(array(':email' => $email));
             $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($stmt->rowCount() == 1) {
@@ -35,13 +35,20 @@ class DaoLogin {
                     session_start();
                     $_SESSION['user_session'] = $userRow['emailUsuario'];
                     $_SESSION['user_id'] = $userRow['idUsuario'];
-                    echo 1;
+                   
+                    if($userRow['nivelUsuario'] == 1){
+                        echo 1;
+                    }
+                    else if($userRow['nivelUsuario'] == 2){
+                        echo 2;
+                    }
+                    else if($userRow['nivelUsuario'] == 3){
+                        echo 3;
+                    }
                 } else {
-                    echo 2;
+                    echo 0;
                 }
-            } else {
-                echo 3;
-            }
+            } 
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
