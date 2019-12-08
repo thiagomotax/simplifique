@@ -43,20 +43,27 @@ $(document).ready(function() {
                   url: "../controller/controllerLogin.php",
                   data: dados,
                   success: function (result) {
-                    alert(result);
                     if (result == 1) {
                       $body.removeClass("loading");
                       $("#form-login")[0].reset()
-                      alert("sucesso");
+                      window.location="../view/viewGerencia.php";
+                    } else if (result == 2) {
+                        $body.removeClass("loading");
+                        $("#form-login")[0].reset()
+                        window.location="../view/viewProfessor.php"; 
+                    } else if (result == 3) {
+                        $body.removeClass("loading");
+                        $("#form-login")[0].reset()
+                        window.location="../view/viewAluno.php";
                     } else{
                       $body.removeClass("loading");
-                      alert("erro");
-                      
+                      alert("Dados incorretos"); 
                     }     
                   }
                 });
                 return false;
               }
+              
         });
 
     });

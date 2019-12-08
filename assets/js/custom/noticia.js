@@ -56,7 +56,6 @@ $(document).ready(function () {
             url: "../controller/ControllerNoticia.php",
             data: dados,
             success: function (result) {
-            alert(result);
               if (result == 1) {
                 $body.removeClass("loading");
                 $("#form-cadastrar-noticia")[0].reset()
@@ -84,7 +83,6 @@ $(document).ready(function () {
           url: "../controller/ControllerNoticia.php",
           data: dados,
           success: function (result) {
-          alert(result);
               if (result == 1) {
                 $body.removeClass("loading");
                 alerta("success", "Notícia editada com sucesso!", " Ver notícia", "Adicionar nova notícia", "viewAdicionarNoticias.php");

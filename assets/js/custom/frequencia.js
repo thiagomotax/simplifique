@@ -44,7 +44,6 @@ $(document).ready(function () {
             url: "../controller/ControllerFrequencia.php",
             data: dados,
             success: function (result) {
-              alert(result);
               if (result == 1) {
                 $body.removeClass("loading");
                 $("#form-cadastrar-frequencia")[0].reset();
@@ -145,7 +144,6 @@ function excluirFrequencia(id) {
 
               },
               success: function (result) {
-              alert(result);
                   if (result == 1) {
                     $body.removeClass("loading");
                     alerta("success", "Lista excluída com sucesso!", " Ver frequencias lançadas", "Gerar nova lista", "viewGerarFrequencia.php");

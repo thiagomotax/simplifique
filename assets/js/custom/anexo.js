@@ -62,7 +62,6 @@ $(document).ready(function () {
             url: "../controller/ControllerAnexo.php",
             data: dados,
             success: function (result) {
-             alert(result);
               if (result == 1) {
                 $body.removeClass("loading");
                 $("#form-cadastrar-anexo")[0].reset()
@@ -90,7 +89,6 @@ $(document).ready(function () {
           url: "../controller/ControllerAnexo.php",
           data: dados,
           success: function (result) {
-          alert(result);
               if (result == 1) {
                 $body.removeClass("loading");
                 alerta("success", "Anexo editado com sucesso!", " Ver anexo", "Adicionar novo anexo", "viewAdicionarAnexo.php");

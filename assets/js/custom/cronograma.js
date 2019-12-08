@@ -78,7 +78,6 @@ $(document).ready(function () {
             url: "../controller/ControllerCronograma.php",
             data: dados,
             success: function (result) {
-            alert(result);
               if (result == 1) {
                 $body.removeClass("loading");
                 $("#form-cadastrar-cronograma")[0].reset();
@@ -107,7 +106,6 @@ $(document).ready(function () {
           url: "../controller/ControllerCronograma.php",
           data: dados,
           success: function (result) {
-          alert(result);
               if (result == 1) {
                 $body.removeClass("loading");
                 alerta("success", "Cronograma editado com sucesso!", " Voltar", "Atualizar lista", "");

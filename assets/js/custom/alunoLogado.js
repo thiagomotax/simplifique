@@ -13,7 +13,6 @@ function InsereDisciplina(id) {
                 idDisciplina: idDisciplina
                 },
           success: function (result) {
-          alert(result);
           $('#disciplinaTitulo').val(nomeDisciplina);
           $('#professorTitulo').val(nomeProfessor);
           $('.informacoes').show();
@@ -45,7 +44,6 @@ function InsereDisciplina(id) {
                 idDisciplina: idDisciplina
                 },
           success: function (result) {
-          alert(result);
           $('#disciplinaTitulo').val(nomeDisciplina);
           $('#professorTitulo').val(nomeProfessor);
           $('.informacoes').show();
@@ -77,7 +75,6 @@ function InsereDisciplina(id) {
                 idDisciplina: idDisciplina
                 },
           success: function (result) {
-          alert(result);
           $('#disciplinaTitulo').val(nomeDisciplina);
           $('#professorTitulo').val(nomeProfessor);
           $('.informacoes').show();
