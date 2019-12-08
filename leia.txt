@@ -14,7 +14,9 @@ portanto, o arquivo não é movido para pasta só add no bd
 
 *Deve ser criada uma pasta com nome "anexos" em ..controller/
 
-Fazer quando acabar:
+Mudanças:
+ -Para o redirecionamento apos o login comparei o nivel e usuario, 1-gerente 2-professor 3-aluno
+ -criei uma tabela 'gerente' (importe o novo banco de daods)
 
 
 
