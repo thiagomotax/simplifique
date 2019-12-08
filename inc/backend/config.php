@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 /**
  * backend/config.php
  *
@@ -12,9 +14,9 @@
 // INCLUDED VIEWS
 // **************************************************************************************************
 
-$cb->inc_side_overlay           = '../inc/backend/views/inc_side_overlay.php';
-$cb->inc_sidebar                = '../inc/backend/views/inc_sidebar.php';
-$cb->inc_header                 = '../inc/backend/views/inc_header.php';
+$cb->inc_side_overlay           = '../inc/backend/views/inc_side_overlay_logado.php';
+$cb->inc_sidebar                = '../inc/backend/views/inc_sidebar_logado.php';
+$cb->inc_header                 = '../inc/backend/views/inc_header_logado.php';
 $cb->inc_footer                 = '../inc/backend/views/inc_footer.php';
 
 
@@ -26,7 +28,7 @@ $cb->main_nav                   = array(
     array(
         'name'  => '<span class="sidebar-mini-hide">Home</span>',
         'icon'  => 'si si-cup',
-        'url'   => 'index.php'
+        'url'   => 'viewGerencia.php'
     ),
     array(
         'name'  => '<span class="sidebar-mini-visible">ADM</span><span class="sidebar-mini-hidden">Administrador</span>',
