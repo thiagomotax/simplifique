@@ -1,7 +1,9 @@
 <?php
+require_once("../dao/DaoAnexo.php");
 
-$conn=mysqli_connect("localhost","root","","bd_simplifique");
-
+$anexosDao = new DaoAnexo();
+$query=$anexosDao->runQuery("Select * From curso");
+$query->execute();
   ?>
   
 <?php require '../inc/_global/config.php'; ?>
@@ -23,7 +25,7 @@ $conn=mysqli_connect("localhost","root","","bd_simplifique");
 
     <style type="text/css">
 
-    .carregando{
+    .carregando .escolha {
 
     display: block;
 
@@ -71,7 +73,7 @@ $conn=mysqli_connect("localhost","root","","bd_simplifique");
         </div>
         <div class="block block-rounded block-fx-shadow">
             <div class="block-content">
-                <form class="js-validation-anexo" id="form-cadastrar-anexo" method="POST" enctype="multipart/form-data" >
+                <form class="js-validation-anexo md-form" id="form-cadastrar-anexo" method="POST" enctype="multipart/form-data" >
                     <input type="hidden" name="acao" value="adicionar"  >
 
 
@@ -90,12 +92,7 @@ $conn=mysqli_connect("localhost","root","","bd_simplifique");
                                  <option value=""> <label for="curso"> Selecione o curso </label> </option>
 
                                <?php
-
-
-                                $query=mysqli_query($conn,"Select * From curso")
-                                 or die("Erro ao realizar a busca:".mysql_error());
-
-                                 while($row=mysqli_fetch_array($query)){
+                                 while($row=$query->fetch(PDO::FETCH_ASSOC)){
                                     echo '<option name="curso" value="'.$row['idCurso'].'">'.$row['nomeCurso'].'</option>';
                                            }
 
@@ -131,13 +128,14 @@ $conn=mysqli_connect("localhost","root","","bd_simplifique");
                     <div class="col-lg-8 ">
                         <div class="form-group">
                             <BR><BR>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="filex" name="filex">
-                                    <label class="custom-file-label" for="filex">Escolha um arquivo...</label>
+                            <div class="file-field big">
+                                <a class="btn-floating btn-lg mt-0">
+                                    <input type="file"> 
+                                </a> 
+                            </div>
                                     <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                                     <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
               
-                            </div>
                         </div>
                     </div>
                     </div>
@@ -253,7 +251,11 @@ $conn=mysqli_connect("localhost","root","","bd_simplifique");
 <?php $cb->get_js('js/plugins/select2/js/select2.full.min.js'); ?>
 
 <script type="text/javascript">
-	$(document).ready(function());
+    function arquivo(){ 
+
+        document.getElementById('oFile') = document.getElementById('filex');
+
+    }
 </script>
 
 

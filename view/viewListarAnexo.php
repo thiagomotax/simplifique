@@ -129,12 +129,10 @@ body.loading .fuck{
                         
                         <div class="form-group row">
                             <div class="col-12">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="file" name="file">
-                                    <label class="custom-file-label" for="file">Escolha um arquivo...</label>
-                                    <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                                    <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
-              
+                            <div class="file-field big">
+                                <a class="btn-floating btn-lg mt-0">
+                                    <input type="file"> 
+                                </a> 
                             </div>
                         </div>
                      </div>
